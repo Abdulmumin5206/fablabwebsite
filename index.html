@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabLab Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Theme and language settings -->
+    <script src="translations.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <h1>FabLab</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="#services" data-i18n="services">Services</a></li>
+            <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
+            <li><a href="#about" data-i18n="about">About</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact</a></li>
+        </ul>
+        <div class="nav-controls">
+            <div class="theme-toggle">
+                <img src="./icons/dark.svg" alt="Dark Mode" id="theme-toggle-icon" class="theme-icon">
+            </div>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                    <option value="uz">O'zbek</option>
+                </select>
+            </div>
+        </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="welcome">Welcome to Our FabLab</h1>
+            <p data-i18n="slogan">Where innovation meets fabrication</p>
+            <button class="cta-button" data-i18n="exploreServices">Explore Our Services</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <i class="fas fa-print"></i>
+                <h3>3D Printing</h3>
+                <p>High-quality 3D printing services for prototypes and final products.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Laser Cutting</h3>
+                <p>Precision laser cutting for various materials and projects.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-microchip"></i>
+                <h3>Electronics</h3>
+                <p>Circuit design and electronic prototyping solutions.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>CAD Design</h3>
+                <p>Professional CAD design services for your projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">Our Work</h2>
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="3d">3D Printing</button>
+            <button class="filter-btn" data-filter="laser">Laser Cutting</button>
+            <button class="filter-btn" data-filter="electronics">Electronics</button>
+        </div>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="3d">
+                <img src="/api/placeholder/400/300" alt="3D Printed Model">
+                <div class="portfolio-overlay">
+                    <h3>Product Prototype</h3>
+                    <p>3D Printed functional prototype</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <img src="/api/placeholder/400/300" alt="Laser Cut Project">
+                <div class="portfolio-overlay">
+                    <h3>Custom Sign</h3>
+                    <p>Laser cut acrylic signage</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="electronics">
+                <img src="/api/placeholder/400/300" alt="Electronic Project">
+                <div class="portfolio-overlay">
+                    <h3>IoT Device</h3>
+                    <p>Custom IoT monitoring solution</p>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="3d">
+                <img src="/api/placeholder/400/300" alt="3D Printed Art">
+                <div class="portfolio-overlay">
+                    <h3>Architectural Model</h3>
+                    <p>Detailed architectural visualization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Our FabLab is equipped with state-of-the-art fabrication tools and staffed by experienced makers. We provide services to individuals, startups, and established businesses looking to prototype, create, and innovate.</p>
+                <p>With years of experience in digital fabrication, our team can help bring your ideas to life.</p>
+            </div>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team Member">
+                    <h3>Jane Doe</h3>
+                    <p>Lead Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team Member">
+                    <h3>John Smith</h3>
+                    <p>Fabrication Expert</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team Member">
+                    <h3>Alex Johnson</h3>
+                    <p>Electronics Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123 Innovation Street, Tech City</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@yourfablab.com</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <select>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="3d">3D Printing</option>
+                    <option value="laser">Laser Cutting</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="cad">CAD Design</option>
+                    <option value="other">Other</option>
+                </select>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>FabLab</h2>
+                <p>Where innovation meets fabrication</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FabLab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
