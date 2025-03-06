@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Language and theme are initialized in translations.js
     
+    // Add background to nav when scrolling
+    const navbar = document.querySelector('nav');
+    
+    // Check scroll position on page load
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
     // Mobile Navigation
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
