@@ -294,6 +294,98 @@ body.dark-mode nav.scrolled .burger div {
     color: #333;
 }
 
+/* Equipment Section */
+.equipment {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+body.dark-mode .equipment {
+    background-color: #141414;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.equipment-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 300px;
+    background-color: white;
+}
+
+body.dark-mode .equipment-item {
+    background-color: #2a2a2a;
+}
+
+.equipment-item img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.equipment-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.equipment-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+body.dark-mode .equipment-info h3 {
+    color: #f5f5f5;
+}
+
+.equipment-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body.dark-mode .equipment-info p {
+    color: #aaa;
+}
+
+.equipment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.equipment-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Design for Equipment */
+@media screen and (max-width: 1200px) {
+    .equipment-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .equipment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .equipment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Portfolio Section */
 .portfolio {
     padding-bottom: 60px;
