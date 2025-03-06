@@ -20,13 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            item.querySelector('.portfolio-overlay').style.opacity = '1';
+            item.querySelector('.portfolio-overlay').style.transform = 'translateY(0)';
         });
         
         item.addEventListener('mouseleave', () => {
-            item.querySelector('.portfolio-overlay').style.opacity = '0';
+            item.querySelector('.portfolio-overlay').style.transform = 'translateY(100%)';
         });
     });
+    
+    // Equipment image hover effect with enhanced smooth transition
+    setupEquipmentHoverImages();
     
     // Mobile Navigation
     const burger = document.querySelector('.burger');
@@ -136,3 +139,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function setupEquipmentHoverImages() {
+    const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
+    
+    equipmentItems.forEach(item => {
+        const mainImage = item.querySelector('img');
+        const originalSrc = mainImage.src;
+        
+        // Create container
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'image-transition-container';
+        
+        // Move original image
+        item.removeChild(mainImage);
+        imageContainer.appendChild(mainImage);
+        
+        // Create hover image
+        const hoverImage = document.createElement('img');
+        hoverImage.src = originalSrc.replace('.jpg', '-hover.jpg').replace('.webp', '-hover.webp');
+        hoverImage.alt = mainImage.alt;
+        hoverImage.className = 'hover-image';
+        imageContainer.appendChild(hoverImage);
+        
+        // Add container to item
+        item.insertBefore(imageContainer, item.firstChild);
+        
+        // Hover effects
+        item.addEventListener('mouseenter', () => {
+            imageContainer.classList.add('hover');
+            hoverImage.classList.add('active');
+            mainImage.classList.add('inactive');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            hoverImage.classList.remove('active');
+            mainImage.classList.remove('inactive');
+            imageContainer.classList.remove('hover');
+        });
+    });
+}
