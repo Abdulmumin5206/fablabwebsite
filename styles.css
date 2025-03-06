@@ -431,13 +431,14 @@ body.dark-mode .category-title:after {
     padding: 0 20px;
 }
 
+/* Update portfolio item dimensions */
 .portfolio-item {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 280px;
+    height: 400px; /* Increased from 280px */
     background-color: #fff;
 }
 
@@ -790,7 +791,7 @@ footer {
 .modal-content {
     position: relative;
     width: 90%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 5% auto;
     height: 80%;
 }
@@ -905,14 +906,10 @@ footer {
     overflow: hidden;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 12010px) {
     .portfolio-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .nav-links {
-        width: 50%;
+        grid-template-columns: repeat(3, 1fr); /* Changed from 4 to 3 columns */
+        max-width: 1600px;
     }
 }
 
@@ -1011,6 +1008,7 @@ footer {
     }
 }
 
+/* Update media query for responsive design */
 @media screen and (max-width: 576px) {
     .portfolio-container {
         grid-template-columns: 1fr;
@@ -1021,7 +1019,7 @@ footer {
     }
     
     .portfolio-item {
-        height: 250px;
+        height: 400px; /* Increased from 250px */
     }
     
     .service-card {
