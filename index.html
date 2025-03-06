@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Theme and language settings -->
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+    <script src="translations.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -18,15 +18,15 @@
         </div>
         <ul class="nav-links">
             <li><a href="#home" data-i18n="home">Home</a></li>
-    <li><a href="#services" data-i18n="services">Services</a></li>
-    <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
-    <li><a href="#equipment" data-i18n="equipment">Equipment</a></li>
-    <li><a href="#about" data-i18n="about">About</a></li>
-    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+            <li><a href="#services" data-i18n="services">Services</a></li>
+            <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
+            <li><a href="#equipment" data-i18n="equipment">Equipment</a></li>
+            <li><a href="#about" data-i18n="about">About</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact</a></li>
         </ul>
         <div class="nav-controls">
             <div class="theme-toggle">
-                <img src="icons/dark.svg" alt="Dark Mode" id="theme-toggle-icon" class="theme-icon">
+                <i class="fas fa-moon" id="theme-toggle-icon"></i>
             </div>
             <div class="language-selector">
                 <select id="language-select">
@@ -54,27 +54,27 @@
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
+        <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
         <div class="services-container">
             <div class="service-card">
                 <i class="fas fa-print"></i>
-                <h3>3D Printing</h3>
-                <p>High-quality 3D printing services for prototypes and final products.</p>
+                <h3 data-i18n="threeD">3D Printing</h3>
+                <p data-i18n="threeDDesc">High-quality 3D printing services for prototypes and final products.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-cut"></i>
-                <h3>Laser Cutting</h3>
-                <p>Precision laser cutting for various materials and projects.</p>
+                <h3 data-i18n="laser">Laser Cutting</h3>
+                <p data-i18n="laserDesc">Precision laser cutting for various materials and projects.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-microchip"></i>
-                <h3>Electronics</h3>
-                <p>Circuit design and electronic prototyping solutions.</p>
+                <h3 data-i18n="electronics">Electronics</h3>
+                <p data-i18n="electronicsDesc">Circuit design and electronic prototyping solutions.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-drafting-compass"></i>
-                <h3>CAD Design</h3>
-                <p>Professional CAD design services for your projects.</p>
+                <h3 data-i18n="cad">CAD Design</h3>
+                <p data-i18n="cadDesc">Professional CAD design services for your projects.</p>
             </div>
         </div>
     </section>

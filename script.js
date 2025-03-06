@@ -20,15 +20,49 @@ document.addEventListener('DOMContentLoaded', () => {
     
     portfolioItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            item.querySelector('.portfolio-overlay').style.transform = 'translateY(0)';
+            const overlay = item.querySelector('.portfolio-overlay');
+            if (overlay) {
+                overlay.style.transform = 'translateY(0)';
+            }
+            
+            // Add hover class to image container if it exists
+            const imageContainer = item.querySelector('.image-transition-container');
+            if (imageContainer) {
+                imageContainer.classList.add('hover');
+            }
+            
+            // Activate hover image if it exists
+            const hoverImage = item.querySelector('.hover-image');
+            const mainImage = item.querySelector('.main-image');
+            if (hoverImage && mainImage) {
+                hoverImage.classList.add('active');
+                mainImage.classList.add('inactive');
+            }
         });
         
         item.addEventListener('mouseleave', () => {
-            item.querySelector('.portfolio-overlay').style.transform = 'translateY(100%)';
+            const overlay = item.querySelector('.portfolio-overlay');
+            if (overlay) {
+                overlay.style.transform = 'translateY(100%)';
+            }
+            
+            // Remove hover class from image container
+            const imageContainer = item.querySelector('.image-transition-container');
+            if (imageContainer) {
+                imageContainer.classList.remove('hover');
+            }
+            
+            // Deactivate hover image
+            const hoverImage = item.querySelector('.hover-image');
+            const mainImage = item.querySelector('.main-image');
+            if (hoverImage && mainImage) {
+                hoverImage.classList.remove('active');
+                mainImage.classList.remove('inactive');
+            }
         });
     });
     
-    // Equipment image hover effect with enhanced smooth transition
+    // Equipment image hover effect - handle case where hover-images might not exist yet
     setupEquipmentHoverImages();
     
     // Mobile Navigation
@@ -36,22 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
     
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
-        
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+    if (burger && nav && navLinks) {
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+            
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
         });
-        
-        // Burger Animation
-        burger.classList.toggle('toggle');
-    });
+    }
     
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -61,52 +97,72 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
-            window.scrollTo({
-                top: targetElement.offsetTop - 70, // Offset for fixed navbar
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            if (nav.classList.contains('nav-active')) {
-                nav.classList.remove('nav-active');
-                burger.classList.toggle('toggle');
-                navLinks.forEach(link => {
-                    link.style.animation = '';
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70, // Offset for fixed navbar
+                    behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                if (nav && nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                    navLinks.forEach(link => {
+                        link.style.animation = '';
+                    });
+                }
             }
         });
     });
     
-    // Form Submission (you'll need a backend for actual processing)
+    // Form Submission
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // For demonstration only - normally you'd send to a server
-            alert('Thank you for your message! In a real website, this would be sent to our server.');
+            // Get current language for message
+            const lang = localStorage.getItem('language') || 'en';
+            let message = 'Thank you for your message! In a real website, this would be sent to our server.';
+            
+            if (translations[lang] && translations[lang].formSubmitted) {
+                message = translations[lang].formSubmitted;
+            }
+            
+            alert(message);
             contactForm.reset();
         });
     }
     
     // Scroll to top button
+    createScrollToTopButton();
+    
+    // CTA Button Scroll
+    const ctaButton = document.querySelector('.cta-button');
+    
+    if (ctaButton) {
+        ctaButton.addEventListener('click', () => {
+            const servicesSection = document.querySelector('#services');
+            
+            if (servicesSection) {
+                window.scrollTo({
+                    top: servicesSection.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+    
+    // Theme Toggle
+    initThemeToggle();
+});
+
+// Function to create scroll to top button
+function createScrollToTopButton() {
     const scrollBtn = document.createElement('button');
-    scrollBtn.innerHTML = '&uarr;';
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     scrollBtn.className = 'scroll-top-btn';
-    scrollBtn.style.position = 'fixed';
-    scrollBtn.style.bottom = '20px';
-    scrollBtn.style.right = '20px';
-    scrollBtn.style.height = '50px';
-    scrollBtn.style.width = '50px';
-    scrollBtn.style.fontSize = '25px';
-    scrollBtn.style.backgroundColor = '#4a90e2';
-    scrollBtn.style.color = 'white';
-    scrollBtn.style.border = 'none';
-    scrollBtn.style.borderRadius = '50%';
-    scrollBtn.style.cursor = 'pointer';
-    scrollBtn.style.display = 'none';
-    scrollBtn.style.zIndex = '999';
     
     document.body.appendChild(scrollBtn);
     
@@ -124,58 +180,196 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollBtn.style.display = 'none';
         }
     });
-    
-    // CTA Button Scroll
-    const ctaButton = document.querySelector('.cta-button');
-    
-    if (ctaButton) {
-        ctaButton.addEventListener('click', () => {
-            const servicesSection = document.querySelector('#services');
-            
-            window.scrollTo({
-                top: servicesSection.offsetTop - 70,
-                behavior: 'smooth'
-            });
-        });
-    }
-});
+}
 
+// Initialize theme toggle functionality
+function initThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    
+    if (!themeToggle) return;
+    
+    // Set initial theme based on localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+    
+    // Create both icons if they don't exist
+    if (!document.querySelector('.theme-toggle .fa-sun')) {
+        const sunIcon = document.createElement('i');
+        sunIcon.className = 'fas fa-sun';
+        themeToggle.appendChild(sunIcon);
+    }
+    
+    if (!document.querySelector('.theme-toggle .fa-moon')) {
+        const moonIcon = document.createElement('i');
+        moonIcon.className = 'fas fa-moon';
+        themeToggle.appendChild(moonIcon);
+    }
+    
+    // Toggle theme on click
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+}
+
+// Function to set up equipment hover images
 function setupEquipmentHoverImages() {
     const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
     
     equipmentItems.forEach(item => {
+        // Skip if already processed or missing main components
+        if (item.querySelector('.image-transition-container')) return;
+        
         const mainImage = item.querySelector('img');
+        if (!mainImage) return;
+        
         const originalSrc = mainImage.src;
+        const hoverSrc = originalSrc.replace('.jpg', '-hover.jpg').replace('.webp', '-hover.webp');
         
         // Create container
         const imageContainer = document.createElement('div');
         imageContainer.className = 'image-transition-container';
         
         // Move original image
-        item.removeChild(mainImage);
+        const originalParent = mainImage.parentNode;
+        originalParent.removeChild(mainImage);
+        mainImage.classList.add('main-image');
         imageContainer.appendChild(mainImage);
         
         // Create hover image
         const hoverImage = document.createElement('img');
-        hoverImage.src = originalSrc.replace('.jpg', '-hover.jpg').replace('.webp', '-hover.webp');
+        hoverImage.src = hoverSrc;
         hoverImage.alt = mainImage.alt;
         hoverImage.className = 'hover-image';
         imageContainer.appendChild(hoverImage);
         
         // Add container to item
-        item.insertBefore(imageContainer, item.firstChild);
+        originalParent.appendChild(imageContainer);
+    });
+}
+
+// Gallery Modal functionality
+function createGalleryModal() {
+    // Create modal if it doesn't exist
+    if (!document.querySelector('.gallery-modal')) {
+        const modal = document.createElement('div');
+        modal.className = 'gallery-modal';
         
-        // Hover effects
-        item.addEventListener('mouseenter', () => {
-            imageContainer.classList.add('hover');
-            hoverImage.classList.add('active');
-            mainImage.classList.add('inactive');
+        modal.innerHTML = `
+            <span class="close-modal">&times;</span>
+            <div class="modal-content">
+                <div class="gallery-images"></div>
+                <div class="gallery-controls">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close modal event
+        const closeBtn = modal.querySelector('.close-modal');
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
         });
         
-        item.addEventListener('mouseleave', () => {
-            hoverImage.classList.remove('active');
-            mainImage.classList.remove('inactive');
-            imageContainer.classList.remove('hover');
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Navigation buttons
+        const prevBtn = modal.querySelector('.prev-btn');
+        const nextBtn = modal.querySelector('.next-btn');
+        
+        prevBtn.addEventListener('click', () => {
+            navigateGallery(-1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            navigateGallery(1);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'block') {
+                if (e.key === 'ArrowLeft') {
+                    navigateGallery(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateGallery(1);
+                }
+            }
+        });
+    }
+}
+
+// Initialize portfolio gallery if needed
+function initPortfolioGallery() {
+    const portfolioItems = document.querySelectorAll('.portfolio-container .portfolio-item');
+    
+    // Create gallery modal
+    createGalleryModal();
+    
+    // Add click event to portfolio items
+    portfolioItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openGalleryModal(item, index);
         });
     });
+}
+
+// Open gallery modal with selected image
+function openGalleryModal(item, index) {
+    const modal = document.querySelector('.gallery-modal');
+    const galleryImages = modal.querySelector('.gallery-images');
+    
+    // Clear existing images
+    galleryImages.innerHTML = '';
+    
+    // Find all images in the same category
+    const category = item.getAttribute('data-category');
+    const categoryItems = document.querySelectorAll(`.portfolio-item[data-category="${category}"]`);
+    
+    // Add images to modal
+    categoryItems.forEach((categoryItem, i) => {
+        const img = categoryItem.querySelector('img').cloneNode(true);
+        img.classList.toggle('active', i === index);
+        galleryImages.appendChild(img);
+    });
+    
+    // Store current index
+    modal.setAttribute('data-current-index', index);
+    modal.setAttribute('data-category', category);
+    
+    // Show modal
+    modal.style.display = 'block';
+}
+
+// Navigate through gallery images
+function navigateGallery(direction) {
+    const modal = document.querySelector('.gallery-modal');
+    const images = modal.querySelectorAll('.gallery-images img');
+    
+    let currentIndex = parseInt(modal.getAttribute('data-current-index'));
+    let newIndex = currentIndex + direction;
+    
+    // Loop around if at end
+    if (newIndex < 0) newIndex = images.length - 1;
+    if (newIndex >= images.length) newIndex = 0;
+    
+    // Update active image
+    images.forEach((img, i) => {
+        img.classList.toggle('active', i === newIndex);
+    });
+    
+    // Update current index
+    modal.setAttribute('data-current-index', newIndex);
 }
