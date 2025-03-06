@@ -20,78 +20,83 @@ function updatePageLanguage(lang) {
 
 // Update elements that need special handling (placeholders, etc.)
 function updateSpecificElements(lang) {
-    // Hero section
-    document.querySelector('.hero-content h1').textContent = translations[lang].welcome;
-    document.querySelector('.hero-content p').textContent = translations[lang].slogan;
-    document.querySelector('.cta-button').textContent = translations[lang].exploreServices;
-    
-    // Services section
-    document.querySelector('#services .section-title').textContent = translations[lang].ourServices;
-    
-    // Update service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards[0].querySelector('h3').textContent = translations[lang].threeD;
-    serviceCards[0].querySelector('p').textContent = translations[lang].threeDDesc;
-    serviceCards[1].querySelector('h3').textContent = translations[lang].laser;
-    serviceCards[1].querySelector('p').textContent = translations[lang].laserDesc;
-    serviceCards[2].querySelector('h3').textContent = translations[lang].electronics;
-    serviceCards[2].querySelector('p').textContent = translations[lang].electronicsDesc;
-    serviceCards[3].querySelector('h3').textContent = translations[lang].cad;
-    serviceCards[3].querySelector('p').textContent = translations[lang].cadDesc;
-    
-    // Portfolio section
-    document.querySelector('#portfolio .section-title').textContent = translations[lang].ourWork;
-    document.querySelector('.filter-btn[data-filter="all"]').textContent = translations[lang].all;
-    document.querySelector('.filter-btn[data-filter="3d"]').textContent = translations[lang].threeD;
-    document.querySelector('.filter-btn[data-filter="laser"]').textContent = translations[lang].laser;
-    document.querySelector('.filter-btn[data-filter="electronics"]').textContent = translations[lang].electronics;
-    
-    // Portfolio items
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems[0].querySelector('h3').textContent = translations[lang].productPrototype;
-    portfolioItems[0].querySelector('p').textContent = translations[lang].threeDPrintedPrototype;
-    portfolioItems[1].querySelector('h3').textContent = translations[lang].customSign;
-    portfolioItems[1].querySelector('p').textContent = translations[lang].laserCutSignage;
-    portfolioItems[2].querySelector('h3').textContent = translations[lang].iot;
-    portfolioItems[2].querySelector('p').textContent = translations[lang].iotDesc;
-    portfolioItems[3].querySelector('h3').textContent = translations[lang].arch;
-    portfolioItems[3].querySelector('p').textContent = translations[lang].archDesc;
-    
-    // About section
-    document.querySelector('#about .section-title').textContent = translations[lang].aboutUs;
-    const aboutParagraphs = document.querySelectorAll('.about-text p');
-    aboutParagraphs[0].textContent = translations[lang].aboutDesc1;
-    aboutParagraphs[1].textContent = translations[lang].aboutDesc2;
-    
-    // Team members
-    const teamMembers = document.querySelectorAll('.team-member');
-    teamMembers[1].querySelector('p').textContent = translations[lang].fabricationExpert;
-    teamMembers[2].querySelector('p').textContent = translations[lang].electronicsSpecialist;
-    
-    // Contact section
-    document.querySelector('#contact .section-title').textContent = translations[lang].contactUs;
-    
-    // Form elements
-    const formElements = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
-    formElements[0].placeholder = translations[lang].yourName;
-    formElements[1].placeholder = translations[lang].yourEmail;
-    
-    // Select options
-    const selectElement = document.querySelector('.contact-form select');
-    selectElement.options[0].text = translations[lang].selectService;
-    selectElement.options[1].text = translations[lang].threeD;
-    selectElement.options[2].text = translations[lang].laser;
-    selectElement.options[3].text = translations[lang].electronics;
-    selectElement.options[4].text = translations[lang].cad;
-    selectElement.options[5].text = translations[lang].other;
-    
-    // Textarea and button
-    document.querySelector('.contact-form textarea').placeholder = translations[lang].yourMessage;
-    document.querySelector('.submit-btn').textContent = translations[lang].sendMessage;
-    
-    // Footer
-    document.querySelector('.footer-logo p').textContent = translations[lang].slogan;
-    document.querySelector('.footer-bottom p').textContent = `© 2025 FabLab. ${translations[lang].rights}`;
+    try {
+        // Hero section
+        document.querySelector('.hero-content h1').textContent = translations[lang].welcome;
+        document.querySelector('.hero-content p').textContent = translations[lang].slogan;
+        document.querySelector('.cta-button').textContent = translations[lang].exploreServices;
+        
+        // Services section
+        document.querySelector('#services .section-title').textContent = translations[lang].ourServices;
+        
+        // Update service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        if(serviceCards.length > 0) {
+            serviceCards[0].querySelector('h3').textContent = translations[lang].threeD;
+            serviceCards[0].querySelector('p').textContent = translations[lang].threeDDesc;
+            serviceCards[1].querySelector('h3').textContent = translations[lang].laser;
+            serviceCards[1].querySelector('p').textContent = translations[lang].laserDesc;
+            serviceCards[2].querySelector('h3').textContent = translations[lang].electronics;
+            serviceCards[2].querySelector('p').textContent = translations[lang].electronicsDesc;
+            serviceCards[3].querySelector('h3').textContent = translations[lang].cad;
+            serviceCards[3].querySelector('p').textContent = translations[lang].cadDesc;
+        }
+        
+        // Portfolio section
+        document.querySelector('#portfolio .section-title').textContent = translations[lang].ourWork;
+        
+        // About section
+        document.querySelector('#about .section-title').textContent = translations[lang].aboutUs;
+        const aboutParagraphs = document.querySelectorAll('.about-text p');
+        if(aboutParagraphs.length > 0) {
+            aboutParagraphs[0].textContent = translations[lang].aboutDesc1;
+            aboutParagraphs[1].textContent = translations[lang].aboutDesc2;
+        }
+        
+        // Team members
+        const teamMembers = document.querySelectorAll('.team-member');
+        if(teamMembers.length > 1) {
+            teamMembers[1].querySelector('p').textContent = translations[lang].fabricationExpert;
+            if(teamMembers.length > 2) {
+                teamMembers[2].querySelector('p').textContent = translations[lang].electronicsSpecialist;
+            }
+        }
+        
+        // Contact section
+        document.querySelector('#contact .section-title').textContent = translations[lang].contactUs;
+        
+        // Form elements
+        const formElements = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
+        if(formElements.length > 0) {
+            formElements[0].placeholder = translations[lang].yourName;
+            formElements[1].placeholder = translations[lang].yourEmail;
+        }
+        
+        // Select options
+        const selectElement = document.querySelector('.contact-form select');
+        if(selectElement && selectElement.options.length > 0) {
+            selectElement.options[0].text = translations[lang].selectService;
+            selectElement.options[1].text = translations[lang].threeD;
+            selectElement.options[2].text = translations[lang].laser;
+            selectElement.options[3].text = translations[lang].electronics;
+            selectElement.options[4].text = translations[lang].cad;
+            selectElement.options[5].text = translations[lang].other;
+        }
+        
+        // Textarea and button
+        const textarea = document.querySelector('.contact-form textarea');
+        const submitBtn = document.querySelector('.submit-btn');
+        if(textarea) textarea.placeholder = translations[lang].yourMessage;
+        if(submitBtn) submitBtn.textContent = translations[lang].sendMessage;
+        
+        // Footer
+        const footerLogo = document.querySelector('.footer-logo p');
+        const footerBottom = document.querySelector('.footer-bottom p');
+        if(footerLogo) footerLogo.textContent = translations[lang].slogan;
+        if(footerBottom) footerBottom.textContent = `© 2025 FabLab. ${translations[lang].rights}`;
+    } catch(e) {
+        console.error("Error updating language elements:", e);
+    }
 }
 
 // Initialize language selection
@@ -118,9 +123,9 @@ function initThemeToggle() {
     // Set initial theme
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        themeIcon.src = './icons/light.svg';
+        themeIcon.src = 'icons/light.svg';
     } else {
-        themeIcon.src = './icons/dark.svg';
+        themeIcon.src = 'icons/dark.svg';
     }
     
     themeToggle.addEventListener('click', function() {
@@ -128,10 +133,10 @@ function initThemeToggle() {
         const isDark = document.body.classList.contains('dark-mode');
         
         if (isDark) {
-            themeIcon.src = './icons/light.svg';
+            themeIcon.src = 'icons/light.svg';
             localStorage.setItem('theme', 'dark');
         } else {
-            themeIcon.src = './icons/dark.svg';
+            themeIcon.src = 'icons/dark.svg';
             localStorage.setItem('theme', 'light');
         }
     });

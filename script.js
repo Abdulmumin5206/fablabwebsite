@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Language and theme are initialized in translations.js
-    
     // Add background to nav when scrolling
     const navbar = document.querySelector('nav');
     
@@ -15,6 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('scrolled');
         }
+    });
+    
+    // Portfolio items hover
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    portfolioItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.querySelector('.portfolio-overlay').style.opacity = '1';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.querySelector('.portfolio-overlay').style.opacity = '0';
+        });
     });
     
     // Mobile Navigation
@@ -39,30 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         burger.classList.toggle('toggle');
     });
     
-    // Portfolio Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            const filterValue = btn.getAttribute('data-filter');
-            
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-    
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -79,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close mobile menu if open
             if (nav.classList.contains('nav-active')) {
                 nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
+                burger.classList.toggle('toggle');
                 navLinks.forEach(link => {
                     link.style.animation = '';
                 });
@@ -90,13 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission (you'll need a backend for actual processing)
     const contactForm = document.querySelector('.contact-form');
     
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // For demonstration only - normally you'd send to a server
-        alert('Thank you for your message! In a real website, this would be sent to our server.');
-        contactForm.reset();
-    });
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // For demonstration only - normally you'd send to a server
+            alert('Thank you for your message! In a real website, this would be sent to our server.');
+            contactForm.reset();
+        });
+    }
     
     // Scroll to top button
     const scrollBtn = document.createElement('button');
@@ -136,12 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // CTA Button Scroll
     const ctaButton = document.querySelector('.cta-button');
     
-    ctaButton.addEventListener('click', () => {
-        const servicesSection = document.querySelector('#services');
-        
-        window.scrollTo({
-            top: servicesSection.offsetTop - 70,
-            behavior: 'smooth'
+    if (ctaButton) {
+        ctaButton.addEventListener('click', () => {
+            const servicesSection = document.querySelector('#services');
+            
+            window.scrollTo({
+                top: servicesSection.offsetTop - 70,
+                behavior: 'smooth'
+            });
         });
-    });
+    }
 });

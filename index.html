@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Theme and language settings -->
-    <script src="translations.js" defer></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -24,7 +25,7 @@
         </ul>
         <div class="nav-controls">
             <div class="theme-toggle">
-                <img src="./icons/dark.svg" alt="Dark Mode" id="theme-toggle-icon" class="theme-icon">
+                <img src="icons/dark.svg" alt="Dark Mode" id="theme-toggle-icon" class="theme-icon">
             </div>
             <div class="language-selector">
                 <select id="language-select">
@@ -77,46 +78,109 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title">Our Work</h2>
-        <div class="portfolio-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="3d">3D Printing</button>
-            <button class="filter-btn" data-filter="laser">Laser Cutting</button>
-            <button class="filter-btn" data-filter="electronics">Electronics</button>
-        </div>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="3d">
-                <img src="/api/placeholder/400/300" alt="3D Printed Model">
-                <div class="portfolio-overlay">
-                    <h3>Product Prototype</h3>
-                    <p>3D Printed functional prototype</p>
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="laser">
-                <img src="/api/placeholder/400/300" alt="Laser Cut Project">
-                <div class="portfolio-overlay">
-                    <h3>Custom Sign</h3>
-                    <p>Laser cut acrylic signage</p>
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="electronics">
-                <img src="/api/placeholder/400/300" alt="Electronic Project">
-                <div class="portfolio-overlay">
-                    <h3>IoT Device</h3>
-                    <p>Custom IoT monitoring solution</p>
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="3d">
-                <img src="/api/placeholder/400/300" alt="3D Printed Art">
-                <div class="portfolio-overlay">
-                    <h3>Architectural Model</h3>
-                    <p>Detailed architectural visualization</p>
-                </div>
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio">
+    <h2 class="section-title" data-i18n="ourWork">Our Work</h2>
+    
+    <!-- FDM 3D Printing Category -->
+    <h3 class="category-title">FDM 3D Printing</h3>
+    <div class="portfolio-container">
+        <div class="portfolio-item" data-category="fdm">
+            <img src="images/fdm/f1.jpg" alt="FDM 3D Printed Model">
+            <div class="portfolio-overlay">
+                <h3>Industrial Prototype</h3>
+                <p>Functional mechanical prototype</p>
             </div>
         </div>
-    </section>
+        <div class="portfolio-item" data-category="fdm">
+            <img src="images/fdm/f2.jpg" alt="FDM 3D Printed Product">
+            <div class="portfolio-overlay">
+                <h3>Consumer Product</h3>
+                <p>Ready for production testing</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="fdm">
+            <img src="images/fdm/f3.jpg" alt="FDM 3D Printed Part">
+            <div class="portfolio-overlay">
+                <h3>Replacement Part</h3>
+                <p>Custom functional component</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="fdm">
+            <img src="images/fablab/13.jpg" alt="FDM 3D Printed Assembly">
+            <div class="portfolio-overlay">
+                <h3>Multi-Part Assembly</h3>
+                <p>Complex functional mechanism</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SLA 3D Printing Category -->
+    <h3 class="category-title">SLA Resin Printing</h3>
+    <div class="portfolio-container">
+        <div class="portfolio-item" data-category="sla">
+            <img src="images/sla/s1.webp" alt="SLA 3D Printed Model">
+            <div class="portfolio-overlay">
+                <h3>High Detail Prototype</h3>
+                <p>Ultra-precise resin printing</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="sla">
+            <img src="images/sla/s2.webp" alt="SLA 3D Printed Product">
+            <div class="portfolio-overlay">
+                <h3>Dental Application</h3>
+                <p>Medical-grade precision printing</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="sla">
+            <img src="images/sla/s3.webp" alt="SLA 3D Printed Part">
+            <div class="portfolio-overlay">
+                <h3>Jewelry Prototype</h3>
+                <p>Castable resin model</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="sla">
+            <img src="images/fablab/13.jpg" alt="SLA Art Piece">
+            <div class="portfolio-overlay">
+                <h3>Art Sculpture</h3>
+                <p>Translucent artistic creation</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Laser Cutting Category -->
+    <h3 class="category-title">Laser Cutting & Engraving</h3>
+    <div class="portfolio-container">
+        <div class="portfolio-item" data-category="laser">
+            <img src="images/fablab/13.jpg" alt="Laser Cut Project">
+            <div class="portfolio-overlay">
+                <h3>Custom Signage</h3>
+                <p>Acrylic business sign</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="laser">
+            <img src="images/fablab/13.jpg" alt="Laser Cut Product">
+            <div class="portfolio-overlay">
+                <h3>Wood Enclosure</h3>
+                <p>Precision engineered box</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="laser">
+            <img src="images/fablab/13.jpg" alt="Laser Cut Art">
+            <div class="portfolio-overlay">
+                <h3>Decorative Panel</h3>
+                <p>Custom architectural element</p>
+            </div>
+        </div>
+        <div class="portfolio-item" data-category="laser">
+            <img src="images/fablab/13.jpg" alt="Laser Engraving">
+            <div class="portfolio-overlay">
+                <h3>Custom Engraving</h3>
+                <p>Personalized metal items</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="about">
