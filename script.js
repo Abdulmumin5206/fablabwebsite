@@ -368,4 +368,6 @@ function initLanguageSelector() {
             selectSelected.classList.remove('active');
         }
     });
+
+    
 }

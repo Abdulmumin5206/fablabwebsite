@@ -1017,3 +1017,50 @@ footer {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+
+/* Fix for header navigation staying on one line */
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    flex-wrap: nowrap; /* Prevent wrapping to new line */
+    white-space: nowrap; /* Prevent text wrapping within links */
+}
+
+.nav-links a {
+    padding: 8px 10px; /* Slightly reduce padding */
+    font-size: 15px; /* Slightly reduce font size */
+}
+
+/* Fix for portfolio and equipment sections on smaller screens */
+@media screen and (max-width: 1366px) {
+    .portfolio-container {
+        grid-template-columns: repeat(3, 1fr); /* Change from 4 columns to 3 */
+    }
+    
+    .portfolio-item {
+        height: 320px; /* Reduce height for smaller screens */
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .portfolio-item {
+        height: 280px;
+    }
+}
+
+/* Ensure nav links don't overflow in Russian/Uzbek */
+@media screen and (max-width: 1200px) {
+    .nav-links {
+        width: 50%; /* Increase width slightly */
+    }
+}
+
+/* Better handling of language selector dropdown */
+.select-selected {
+    min-width: 120px; /* Ensure enough space for longer language names */
+}
