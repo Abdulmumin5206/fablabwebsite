@@ -4,11 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FabLab Services</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Order matters! Font awesome first, then our stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Theme and language settings -->
-    <script src="translations.js" defer></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Critical CSS fixes -->
+    <style>
+        /* Fixed portfolio overlay - use opacity for fade in/out */
+        .portfolio-overlay {
+            opacity: 0;
+            transform: none !important; /* Prevent transform animation */
+            transition: opacity 0.8s ease !important; /* Slow fade in/out */
+        }
+        .portfolio-overlay.show-overlay {
+            opacity: 1;
+        }
+        
+        /* Fixed language selector */
+        .select-items {
+            display: block !important;
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+        }
+        .select-items.select-show {
+            opacity: 1;
+            visibility: visible;
+            max-height: 200px;
+            padding: 5px 0;
+        }
+        
+        /* Fixed z-index for navigation controls */
+        .nav-controls {
+            z-index: 1100;
+        }
+        .custom-select {
+            z-index: 1200;
+        }
+        
+        /* Ensure dark mode works */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+    </style>
+    <!-- IMPORTANT: Load translations before main script -->
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -19,8 +62,8 @@
         <ul class="nav-links">
             <li><a href="#home" data-i18n="home">Home</a></li>
             <li><a href="#services" data-i18n="services">Services</a></li>
-            <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
             <li><a href="#equipment" data-i18n="equipment">Equipment</a></li>
+            <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
             <li><a href="#about" data-i18n="about">About</a></li>
             <li><a href="#contact" data-i18n="contact">Contact</a></li>
         </ul>
@@ -34,7 +77,7 @@
                         <span class="lang-label">English</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="select-items select-hide">
+                    <div class="select-items">
                         <div class="select-item" data-value="en">English</div>
                         <div class="select-item" data-value="ru">Русский</div>
                         <div class="select-item" data-value="uz">O'zbek</div>
@@ -97,273 +140,271 @@
         </div>
     </section>
 
-   <!-- Equipment Section -->
-<section id="equipment" class="equipment">
-    <h2 class="section-title">Our Equipment</h2>
-    
-    <h3 class="category-title">3D Printers</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/f1.jpg" alt="FDM 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>Raise3D Printer Pro3</h3>
-            </div>
-        </div>
+    <!-- Equipment Section -->
+    <section id="equipment" class="equipment">
+        <h2 class="section-title">Our Equipment</h2>
         
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/f2.jpg" alt="SLA 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>Prusa i3 MK3S+printer ORG PEI3</h3>
-                
+        <h3 class="category-title">3D Printers</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/f1.jpg" alt="FDM 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>Raise3D Printer Pro3</h3>
+                </div>
             </div>
-        </div>
-        
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/f3.jpg" alt="Industrial FDM Printer">
-            <div class="portfolio-overlay">
-                <h3>Prusa i3 MK3S+printer + MMU2S</h3>
-               
-            </div>
-        </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/f4.jpg" alt="DLP 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>3D Printer Skrinter</h3>
-                
-            </div>
-        </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/s1.jpg" alt="SLA 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>Formlabs Form 3</h3>
-                
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/s2.jpg" alt="SLA 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>PHROZEN Sonic MEGA 8K MSLA</h3>
             
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/f2.jpg" alt="SLA 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>Prusa i3 MK3S+printer ORG PEI3</h3>
+                    
+                </div>
             </div>
-        </div>
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/s3.jpg" alt="SLA 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>Original Prusa SL1S complete</h3>
-    
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/f3.jpg" alt="Industrial FDM Printer">
+                <div class="portfolio-overlay">
+                    <h3>Prusa i3 MK3S+printer + MMU2S</h3>
+                   
+                </div>
             </div>
-        </div>
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/s4.jpg" alt="SLA 3D Printer">
-            <div class="portfolio-overlay">
-                <h3>PHROZEN Sonic Mini 8K MSLA</h3>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/f4.jpg" alt="DLP 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>3D Printer Skrinter</h3>
+                    
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/s1.jpg" alt="SLA 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>Formlabs Form 3</h3>
+                    
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/s2.jpg" alt="SLA 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>PHROZEN Sonic MEGA 8K MSLA</h3>
                 
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/s3.jpg" alt="SLA 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>Original Prusa SL1S complete</h3>
+        
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/s4.jpg" alt="SLA 3D Printer">
+                <div class="portfolio-overlay">
+                    <h3>PHROZEN Sonic Mini 8K MSLA</h3>
+                    
+                </div>
             </div>
         </div>
+        
+        <h3 class="category-title">Laser & CNC Equipment</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/l1.jpg" alt="Laser Cutter">
+                <div class="portfolio-overlay">
+                    <h3>Photonim GS6040</h3>
+                    <p>Industrial CO2 laser cutter/engraver</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/c1.jpg" alt="CNC Machine">
+                <div class="portfolio-overlay">
+                    <h3>VOLTER-S</h3>
+                    <p>CNC Milling and engraving machine</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/c2.jpg" alt="Fiber Laser">
+                <div class="portfolio-overlay">
+                    <h3>Roland Mono fab SRM 20</h3>
+                    <p>Milling Machine</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/c3.jpg" alt="Desktop CNC">
+                <div class="portfolio-overlay">
+                    <h3>Roland MDX 50</h3>
+                    <p>Precision Benchtop CNC Milling Machine</p>
+                </div>
+            </div>
+        </div>
+        
+        <h3 class="category-title">Prototyping Tools</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/u1.jpg" alt="UV Printer">
+                <div class="portfolio-overlay">
+                    <h3>Roland VersaUV LEF2-200</h3>
+                    <p>UV flatbed printer for direct printing</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/u2.jpg" alt="Vinyl Cutter">
+                <div class="portfolio-overlay">
+                    <h3>Roland VersaSTUDIO BN20</h3>
+                    <p>Precision vinyl cutter</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/u3.jpg" alt="3D Scanner">
+                <div class="portfolio-overlay">
+                    <h3>3D SCANNER EINSCAN H</h3>
+                    <p>High-resolution 3D scanner</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="equipment">
+                <img src="images/equipment/u4.jpg" alt="Electronics Workstation">
+                <div class="portfolio-overlay">
+                    <h3>SYS-ACA-SC50P1 ACADEMIA 50</h3>
+                    <p>Scanner (optical, handheld with structured lighting technology)</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-    
-    <h3 class="category-title">Laser & CNC Equipment</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/l1.jpg" alt="Laser Cutter">
-            <div class="portfolio-overlay">
-                <h3>Photonim GS6040</h3>
-                <p>Industrial CO2 laser cutter/engraver</p>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title" data-i18n="ourWork">Our Work</h2>
+        
+        <!-- FDM 3D Printing Category -->
+        <h3 class="category-title">FDM 3D Printing</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="fdm">
+                <img src="images/fdm/f1.jpg" alt="FDM 3D Printed Model">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <img src="images/fdm/f2.jpg" alt="FDM 3D Printed Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <img src="images/fdm/f3.jpg" alt="FDM 3D Printed Part">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <img src="images/fdm/f4.avif" alt="FDM 3D Printed Assembly">
+                <div class="portfolio-overlay">
+                </div>
             </div>
         </div>
         
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/c1.jpg" alt="CNC Machine">
-            <div class="portfolio-overlay">
-                <h3>VOLTER-S</h3>
-                <p>CNC Milling and engraving machine</p>
+        <!-- SLA 3D Printing Category -->
+        <h3 class="category-title">SLA Resin Printing</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="sla">
+                <img src="images/sla/s1.webp" alt="SLA 3D Printed Model">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <img src="images/sla/s2.webp" alt="SLA 3D Printed Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <img src="images/sla/s3.webp" alt="SLA 3D Printed Part">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <img src="images/sla/s4.webp" alt="SLA Art Piece">
+                <div class="portfolio-overlay">
+                </div>
             </div>
         </div>
         
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/c2.jpg" alt="Fiber Laser">
-            <div class="portfolio-overlay">
-                <h3>Roland Mono fab SRM 20</h3>
-                <p>Milling Machine</p>
+        <!-- Laser Cutting Category -->
+        <h3 class="category-title">Laser Cutting & Engraving</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="laser">
+                <img src="images/lasercutting/l1.jpg" alt="Laser Cut Project">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <img src="images/lasercutting/l2.webp" alt="Laser Cut Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <img src="images/lasercutting/l3.webp" alt="Laser Cut Art">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <img src="images/lasercutting/l4.webp" alt="Laser Engraving">
+                <div class="portfolio-overlay">
+                </div>
             </div>
         </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/c3.jpg" alt="Desktop CNC">
-            <div class="portfolio-overlay">
-                <h3>Roland MDX 50</h3>
-                <p>Precision Benchtop CNC Milling Machine</p>
+        <!-- CNC -->
+        <h3 class="category-title">CNC</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="cnc">
+                <img src="images/cnc/c1.jpg" alt="CNC Machined Part">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <img src="images/cnc/c2.jpg" alt="CNC Machined Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <img src="images/cnc/c3.webp" alt="CNC Machined Art">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <img src="images/cnc/c4.jpg" alt="CNC Machined Part">
+                <div class="portfolio-overlay">
+                </div>
             </div>
         </div>
-    </div>
-    
-    <h3 class="category-title">Prototyping Tools</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/u1.jpg" alt="UV Printer">
-            <div class="portfolio-overlay">
-                <h3>Roland VersaUV LEF2-200</h3>
-                <p>UV flatbed printer for direct printing</p>
+        <!-- UV -->
+        <h3 class="category-title">UV Printing</h3>
+        <div class="portfolio-container">
+            <div class="portfolio-item" data-category="uv">
+                <img src="images/uv/u1.webp" alt="UV Printed Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <img src="images/uv/u2.jpg" alt="UV Printed Product">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <img src="images/uv/u3.webp" alt="UV Printed Art">
+                <div class="portfolio-overlay">
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <img src="images/uv/u4.webp" alt="UV Printed Product">
+                <div class="portfolio-overlay">
+                </div>
             </div>
         </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/u2.jpg" alt="Vinyl Cutter">
-            <div class="portfolio-overlay">
-                <h3>Roland VersaSTUDIO BN20</h3>
-                <p>Precision vinyl cutter</p>
-            </div>
-        </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/u3.jpg" alt="3D Scanner">
-            <div class="portfolio-overlay">
-                <h3>3D SCANNER EINSCAN H</h3>
-                <p>High-resolution 3D scanner</p>
-            </div>
-        </div>
-        
-        <div class="portfolio-item" data-category="equipment">
-            <img src="images/equipment/u4.jpg" alt="Electronics Workstation">
-            <div class="portfolio-overlay">
-                <h3>SYS-ACA-SC50P1 ACADEMIA 50</h3>
-                <p>Scanner (optical, handheld with structured lighting technology)</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio">
-    <h2 class="section-title" data-i18n="ourWork">Our Work</h2>
-    
-    <!-- FDM 3D Printing Category -->
-    <h3 class="category-title">FDM 3D Printing</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="fdm">
-            <img src="images/fdm/f1.jpg" alt="FDM 3D Printed Model">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="fdm">
-            <img src="images/fdm/f2.jpg" alt="FDM 3D Printed Product">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="fdm">
-            <img src="images/fdm/f3.jpg" alt="FDM 3D Printed Part">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="fdm">
-            <img src="images/fdm/f4.avif" alt="FDM 3D Printed Assembly">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-    </div>
-    
-    <!-- SLA 3D Printing Category -->
-    <h3 class="category-title">SLA Resin Printing</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="sla">
-            <img src="images/sla/s1.webp" alt="SLA 3D Printed Model">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="sla">
-            <img src="images/sla/s2.webp" alt="SLA 3D Printed Product">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="sla">
-            <img src="images/sla/s3.webp" alt="SLA 3D Printed Part">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="sla">
-            <img src="images/sla/s4.webp" alt="SLA Art Piece">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-    </div>
-    
-    <!-- Laser Cutting Category -->
-    <h3 class="category-title">Laser Cutting & Engraving</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/lasercutting/l1.jpg" alt="Laser Cut Project">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/lasercutting/l2.webp" alt="Laser Cut Product">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/lasercutting/l3.webp" alt="Laser Cut Art">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/lasercutting/l4.webp" alt="Laser Engraving">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-    </div>
-    <!-- CNC -->
-    <h3 class="category-title">CNC</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/cnc/c1.jpg" alt="Laser Cut Project">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/cnc/c2.jpg" alt="Laser Cut Product">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/cnc/c3.webp" alt="Laser Cut Art">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/cnc/c4.jpg" alt="Laser Engraving">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-    </div>
-    <!-- UV -->
-    <h3 class="category-title">UV Printing</h3>
-    <div class="portfolio-container">
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/uv/u1.webp" alt="Laser Cut Project">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/uv/u2.jpg" alt="Laser Cut Product">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/uv/u3.webp" alt="Laser Cut Art">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-        <div class="portfolio-item" data-category="laser">
-            <img src="images/uv/u4.webp" alt="Laser Engraving">
-            <div class="portfolio-overlay">
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -446,7 +487,5 @@
             <p>&copy; 2025 FabLab. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

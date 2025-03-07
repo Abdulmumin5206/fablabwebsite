@@ -121,15 +121,26 @@ body.dark-mode nav.scrolled {
 .nav-controls {
     display: flex;
     align-items: center;
+    position: relative; /* Important for z-index to work */
+    z-index: 1100;
 }
 
-/* Theme toggle styles */
+/* FIXED: Theme toggle styles */
 .theme-toggle {
     margin-right: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 1200; /* Ensure it's clickable */
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .theme-toggle i {
@@ -150,25 +161,13 @@ body.dark-mode nav.scrolled .theme-toggle i {
     transform: rotate(30deg);
 }
 
-.theme-toggle .fa-moon,
-.theme-toggle .fa-sun {
-    display: block;
-}
-
-body.dark-mode .theme-toggle .fa-moon {
-    display: none;
-}
-
-body:not(.dark-mode) .theme-toggle .fa-sun {
-    display: none;
-}
-
-/* Custom language selector */
+/* FIXED: Custom language selector */
 .custom-select {
     position: relative;
     min-width: 120px;
     cursor: pointer;
     user-select: none;
+    z-index: 1200; /* Ensure it's above other elements */
 }
 
 .select-selected {
@@ -213,20 +212,19 @@ nav.scrolled .select-selected {
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 99;
-    max-height: 0;
+    z-index: 1300; /* Higher than parent */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.select-items.select-hide {
     max-height: 0;
 }
 
 .select-items.select-show {
+    opacity: 1;
+    visibility: visible;
     max-height: 200px;
+    padding: 5px 0;
 }
 
 .select-item {
@@ -547,15 +545,15 @@ body.dark-mode .category-title:after {
     padding: 0 20px;
 }
 
-/* Update portfolio item dimensions */
+/* FIXED: Portfolio item hover effect */
 .portfolio-item {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px; /* Increased from 280px */
+    height: 400px;
     background-color: #fff;
+    transition: transform 1s ease, box-shadow 1s ease;
 }
 
 body.dark-mode .portfolio-item {
@@ -566,34 +564,7 @@ body.dark-mode .portfolio-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-/* Image transition container for equipment items */
-.image-transition-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.portfolio-item .main-image,
-.portfolio-item .hover-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.4s ease;
-}
-
-.portfolio-item .hover-image {
-    opacity: 0;
-}
-
-.portfolio-item:hover .hover-image {
-    opacity: 1;
+    transition: none; /* No transform on hover */
 }
 
 .portfolio-overlay {
@@ -603,9 +574,16 @@ body.dark-mode .portfolio-item {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 15px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    opacity: 0; /* Start with fully transparent */
+    transform: none; /* No transform */
+    transition: opacity 1s ease; /* Slow fade in/out */
     text-align: center;
+    z-index: 10;
+}
+
+
+.portfolio-overlay.show-overlay {
+    opacity: 1; /* Fade in to fully visible */
 }
 
 .portfolio-overlay h3 {
@@ -632,71 +610,9 @@ body.dark-mode .portfolio-overlay p {
     color: #ddd;
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    transform: translateY(0);
-}
-
 .portfolio-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.portfolio-item:hover img:not(.hover-image) {
-    transform: scale(1.05);
-}
-
-/* For equipment items specifically */
-#equipment .portfolio-item img {
-    opacity: 1;
-}
-
-.image-transition-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    transition: transform 0.3s ease-out;
-}
-
-.image-transition-container.hover {
-    transform: scale(1.05);
-}
-
-#equipment .portfolio-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    transition: opacity 0.4s ease-out, transform 0.5s ease-out;
-}
-
-#equipment .portfolio-item .hover-image {
-    opacity: 0;
-    z-index: 1;
-    filter: brightness(1.05);
-}
-
-#equipment .portfolio-item .hover-image.active {
-    opacity: 1;
-}
-
-#equipment .portfolio-item img.inactive {
-    opacity: 0;
-}
-
-#equipment .portfolio-overlay {
-    z-index: 2;
-}
-
-/* Standard image container for portfolio items */
-.image-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
 }
 
 /* About Section */
@@ -945,83 +861,6 @@ footer {
     font-size: 20px;
 }
 
-/* Gallery Modal */
-.gallery-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    overflow: hidden;
-}
-
-.modal-content {
-    position: relative;
-    width: 90%;
-    max-width: 1500px;
-    margin: 5% auto;
-    height: 80%;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 3000;
-}
-
-.gallery-images {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gallery-images img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display: none;
-    animation: fadeIn 0.5s;
-}
-
-.gallery-images img.active {
-    display: block;
-}
-
-.gallery-controls {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.prev-btn, .next-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-size: 24px;
-    border: none;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background-color: rgba(74, 144, 226, 0.7);
-}
-
 /* Media Queries */
 @media screen and (min-width: 1201px) {
     .portfolio-container {
@@ -1166,11 +1005,6 @@ footer {
     }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -1182,3 +1016,4 @@ footer {
 .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+

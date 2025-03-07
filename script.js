@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add background to nav when scrolling
     const navbar = document.querySelector('nav');
     
-    // Check scroll position on page load
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     }
@@ -17,55 +16,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Portfolio items hover
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    // MODIFIED: Different hover effects for equipment vs portfolio
+    // Equipment section - WITH hover effects and image swap
+    const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
     
-    portfolioItems.forEach(item => {
+    equipmentItems.forEach(item => {
+        // Setup image swap on hover
+        const img = item.querySelector('img');
+        if (img) {
+            // Create hover image path by adding "-hover" before extension
+            const src = img.getAttribute('src');
+            const dotIndex = src.lastIndexOf('.');
+            const hoverSrc = src.substring(0, dotIndex) + '-hover' + src.substring(dotIndex);
+            
+            // Store original and hover images
+            img.dataset.originalSrc = src;
+            img.dataset.hoverSrc = hoverSrc;
+        }
+        
         item.addEventListener('mouseenter', () => {
+            // Change image to hover version
+            const img = item.querySelector('img');
+            if (img && img.dataset.hoverSrc) {
+                img.src = img.dataset.hoverSrc;
+            }
+            
+            // Show overlay with fade
             const overlay = item.querySelector('.portfolio-overlay');
             if (overlay) {
-                overlay.style.transform = 'translateY(0)';
-            }
-            
-            // Add hover class to image container if it exists
-            const imageContainer = item.querySelector('.image-transition-container');
-            if (imageContainer) {
-                imageContainer.classList.add('hover');
-            }
-            
-            // Activate hover image if it exists
-            const hoverImage = item.querySelector('.hover-image');
-            const mainImage = item.querySelector('.main-image');
-            if (hoverImage && mainImage) {
-                hoverImage.classList.add('active');
-                mainImage.classList.add('inactive');
+                overlay.classList.add('show-overlay');
             }
         });
         
         item.addEventListener('mouseleave', () => {
+            // Change image back to original
+            const img = item.querySelector('img');
+            if (img && img.dataset.originalSrc) {
+                img.src = img.dataset.originalSrc;
+            }
+            
+            // Hide overlay
             const overlay = item.querySelector('.portfolio-overlay');
             if (overlay) {
-                overlay.style.transform = 'translateY(100%)';
-            }
-            
-            // Remove hover class from image container
-            const imageContainer = item.querySelector('.image-transition-container');
-            if (imageContainer) {
-                imageContainer.classList.remove('hover');
-            }
-            
-            // Deactivate hover image
-            const hoverImage = item.querySelector('.hover-image');
-            const mainImage = item.querySelector('.main-image');
-            if (hoverImage && mainImage) {
-                hoverImage.classList.remove('active');
-                mainImage.classList.remove('inactive');
+                overlay.classList.remove('show-overlay');
             }
         });
     });
     
-    // Equipment image hover effect
-    setupEquipmentHoverImages();
+    // Portfolio section - NO hover effects
+    const portfolioItems = document.querySelectorAll('#portfolio .portfolio-item');
+    
+    portfolioItems.forEach(item => {
+        // Disable hover effects by removing any event listeners
+        const overlay = item.querySelector('.portfolio-overlay');
+        if (overlay) {
+            overlay.style.display = 'none'; // Hide overlay completely
+        }
+    });
     
     // Mobile Navigation
     const burger = document.querySelector('.burger');
@@ -74,10 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (burger && nav && navLinks) {
         burger.addEventListener('click', () => {
-            // Toggle Nav
             nav.classList.toggle('nav-active');
             
-            // Animate Links
             navLinks.forEach((link, index) => {
                 if (link.style.animation) {
                     link.style.animation = '';
@@ -86,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            // Burger Animation
             burger.classList.toggle('toggle');
         });
     }
@@ -101,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 70, // Offset for fixed navbar
+                    top: targetElement.offsetTop - 70,
                     behavior: 'smooth'
                 });
                 
@@ -128,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const lang = localStorage.getItem('language') || 'en';
             let message = 'Thank you for your message! In a real website, this would be sent to our server.';
             
-            if (translations[lang] && translations[lang].formSubmitted) {
-                message = translations[lang].formSubmitted;
+            if (window.translations && window.translations[lang] && window.translations[lang].formSubmitted) {
+                message = window.translations[lang].formSubmitted;
             }
             
             alert(message);
@@ -159,16 +163,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize hero slideshow
     initHeroSlideshow();
     
-    // Initialize theme toggle
+    // FIXED: Initialize theme toggle
     initThemeToggle();
     
-    // Initialize custom language selector
-    initCustomLanguageSelector();
+    // FIXED: Initialize custom language selector
+    initLanguageSelector();
+    
+    // Add favicon to prevent 404 error
+    addFavicon();
 });
+
+// Function to add a simple favicon
+function addFavicon() {
+    if (!document.querySelector('link[rel="icon"]')) {
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🏭</text></svg>';
+        document.head.appendChild(favicon);
+    }
+}
 
 // Function to create scroll to top button
 function createScrollToTopButton() {
-    // Check if button already exists
     if (document.querySelector('.scroll-top-btn')) return;
     
     const scrollBtn = document.createElement('button');
@@ -205,15 +221,12 @@ function initHeroSlideshow() {
     
     // Function to show a specific slide
     const showSlide = (index) => {
-        // Remove active class from all slides and dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
         
-        // Add active class to current slide and dot
         slides[index].classList.add('active');
         dots[index].classList.add('active');
         
-        // Update current slide index
         currentSlide = index;
     };
     
@@ -225,13 +238,10 @@ function initHeroSlideshow() {
     
     // Start the slideshow
     if (slides.length > 1) {
-        // Set initial slide
         showSlide(0);
         
-        // Start automatic slideshow
         slideInterval = setInterval(nextSlide, 5000);
         
-        // Add click event to dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 clearInterval(slideInterval);
@@ -242,326 +252,120 @@ function initHeroSlideshow() {
     }
 }
 
-// Initialize theme toggle functionality
+// FIXED: Theme toggle functionality
 function initThemeToggle() {
-    console.log("Initializing theme toggle");
     const themeToggle = document.querySelector('.theme-toggle');
-    const themeMoonIcon = document.querySelector('.theme-toggle .fa-moon');
-    const themeSunIcon = document.querySelector('.theme-toggle .fa-sun');
+    const themeIcon = document.getElementById('theme-toggle-icon');
     
-    if (!themeToggle) return;
+    if (!themeToggle || !themeIcon) {
+        console.error("Theme toggle elements not found");
+        return;
+    }
     
-    // Set initial theme based on localStorage
+    // Apply saved theme or default to light
     const savedTheme = localStorage.getItem('theme') || 'light';
-    console.log("Saved theme:", savedTheme);
     
+    // Apply theme on load
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-    }
-    
-    // Create moon icon if it doesn't exist
-    if (!themeMoonIcon && !document.getElementById('theme-toggle-icon')) {
-        const moonIcon = document.createElement('i');
-        moonIcon.className = 'fas fa-moon';
-        themeToggle.appendChild(moonIcon);
-    }
-    
-    // Create sun icon if it doesn't exist
-    if (!themeSunIcon && !document.getElementById('theme-toggle-icon')) {
-        const sunIcon = document.createElement('i');
-        sunIcon.className = 'fas fa-sun';
-        themeToggle.appendChild(sunIcon);
-    }
-    
-    // Special case for single icon with ID
-    const singleThemeIcon = document.getElementById('theme-toggle-icon');
-    if (singleThemeIcon) {
-        // Update icon based on current theme
-        if (savedTheme === 'dark') {
-            singleThemeIcon.classList.remove('fa-moon');
-            singleThemeIcon.classList.add('fa-sun');
-        } else {
-            singleThemeIcon.classList.add('fa-moon');
-            singleThemeIcon.classList.remove('fa-sun');
-        }
+        themeIcon.className = 'fas fa-sun';
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.className = 'fas fa-moon';
     }
     
     // Toggle theme on click
-    themeToggle.addEventListener('click', () => {
-        console.log("Theme toggle clicked");
-        document.body.classList.toggle('dark-mode');
+    themeToggle.addEventListener('click', function() {
+        // Toggle dark mode class
+        const isDarkMode = document.body.classList.toggle('dark-mode');
         
-        const isDarkMode = document.body.classList.contains('dark-mode');
+        // Update icon
+        themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+        
+        // Save preference
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        
-        // Update single icon if it exists
-        if (singleThemeIcon) {
-            if (isDarkMode) {
-                singleThemeIcon.classList.remove('fa-moon');
-                singleThemeIcon.classList.add('fa-sun');
-            } else {
-                singleThemeIcon.classList.add('fa-moon');
-                singleThemeIcon.classList.remove('fa-sun');
-            }
-        }
     });
 }
 
-// Function to set up equipment hover images
-function setupEquipmentHoverImages() {
-    console.log("Setting up equipment hover images");
-    const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
-    
-    equipmentItems.forEach(item => {
-        // Skip if already processed or missing main components
-        if (item.querySelector('.image-transition-container')) return;
-        
-        const mainImage = item.querySelector('img');
-        if (!mainImage) return;
-        
-        const originalSrc = mainImage.src;
-        
-        // Extract the filename from the path
-        const lastSlash = originalSrc.lastIndexOf('/');
-        const basePath = originalSrc.substring(0, lastSlash + 1);
-        const fileName = originalSrc.substring(lastSlash + 1);
-        
-        // Create hover image path by adding "-hover" before the extension
-        const dotIndex = fileName.lastIndexOf('.');
-        const nameWithoutExt = fileName.substring(0, dotIndex);
-        const extension = fileName.substring(dotIndex);
-        const hoverFileName = nameWithoutExt + "-hover" + extension;
-        const hoverSrc = basePath + hoverFileName;
-        
-        console.log("Original image:", originalSrc);
-        console.log("Hover image:", hoverSrc);
-        
-        // Create container
-        const imageContainer = document.createElement('div');
-        imageContainer.className = 'image-transition-container';
-        
-        // Move original image
-        const originalParent = mainImage.parentNode;
-        originalParent.removeChild(mainImage);
-        mainImage.classList.add('main-image');
-        imageContainer.appendChild(mainImage);
-        
-        // Create hover image
-        const hoverImage = document.createElement('img');
-        hoverImage.src = hoverSrc;
-        hoverImage.alt = mainImage.alt;
-        hoverImage.className = 'hover-image';
-        imageContainer.appendChild(hoverImage);
-        
-        // Add container to item
-        originalParent.appendChild(imageContainer);
-    });
-}
-
-// Initialize custom language selector
-function initCustomLanguageSelector() {
-    console.log("Initializing custom language selector");
+// FIXED: Language selector functionality
+function initLanguageSelector() {
     const selectSelected = document.querySelector('.select-selected');
     const selectItems = document.querySelector('.select-items');
     const selectOptions = document.querySelectorAll('.select-item');
     
     if (!selectSelected || !selectItems || !selectOptions.length) {
-        console.warn("Language selector elements not found");
+        console.error("Language selector elements not found");
         return;
     }
     
-    // Get saved language from localStorage or default to 'en'
+    // Apply saved language or default to English
     const savedLanguage = localStorage.getItem('language') || 'en';
-    console.log("Saved language:", savedLanguage);
     
-    // Set initial selected option and update text
+    // Set initial display
     selectOptions.forEach(option => {
-        const optionValue = option.getAttribute('data-value');
-        if (optionValue === savedLanguage) {
+        const lang = option.getAttribute('data-value');
+        if (lang === savedLanguage) {
             const label = selectSelected.querySelector('.lang-label');
             if (label) {
                 label.textContent = option.textContent;
             }
             option.classList.add('selected');
+        } else {
+            option.classList.remove('selected');
         }
     });
     
-    // Update page language on load
-    if (typeof updatePageLanguage === 'function') {
-        updatePageLanguage(savedLanguage);
+    // Apply translations on load
+    if (typeof window.updatePageLanguage === 'function') {
+        window.updatePageLanguage(savedLanguage);
     } else {
         console.error("updatePageLanguage function not found");
     }
     
-    // Toggle dropdown on click
-    selectSelected.addEventListener('click', () => {
-        console.log("Language selector clicked");
-        selectSelected.classList.toggle('active');
-        selectItems.classList.toggle('select-hide');
+    // Toggle dropdown
+    selectSelected.addEventListener('click', function(e) {
+        e.stopPropagation();
         selectItems.classList.toggle('select-show');
+        selectItems.classList.toggle('select-hide');
+        selectSelected.classList.toggle('active');
     });
     
     // Handle option selection
     selectOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const value = option.getAttribute('data-value');
-            const text = option.textContent;
-            console.log("Language selected:", value, text);
+        option.addEventListener('click', function() {
+            const lang = this.getAttribute('data-value');
             
-            // Update selected text
+            // Update display
             const label = selectSelected.querySelector('.lang-label');
             if (label) {
-                label.textContent = text;
+                label.textContent = this.textContent;
             }
             
-            // Update selected option
+            // Update selection state
             selectOptions.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
+            this.classList.add('selected');
+            
+            // Save preference
+            localStorage.setItem('language', lang);
+            
+            // Apply translations
+            if (typeof window.updatePageLanguage === 'function') {
+                window.updatePageLanguage(lang);
+            }
             
             // Close dropdown
-            selectSelected.classList.remove('active');
             selectItems.classList.add('select-hide');
             selectItems.classList.remove('select-show');
-            
-            // Save selection to localStorage
-            localStorage.setItem('language', value);
-            
-            // Update page language
-            if (typeof updatePageLanguage === 'function') {
-                updatePageLanguage(value);
-            } else {
-                console.error("updatePageLanguage function not found");
-            }
+            selectSelected.classList.remove('active');
         });
     });
     
     // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', function(e) {
         if (!selectSelected.contains(e.target) && !selectItems.contains(e.target)) {
-            selectSelected.classList.remove('active');
             selectItems.classList.add('select-hide');
             selectItems.classList.remove('select-show');
+            selectSelected.classList.remove('active');
         }
     });
-}
-
-// Gallery Modal functionality
-function createGalleryModal() {
-    // Create modal if it doesn't exist
-    if (!document.querySelector('.gallery-modal')) {
-        const modal = document.createElement('div');
-        modal.className = 'gallery-modal';
-        
-        modal.innerHTML = `
-            <span class="close-modal">&times;</span>
-            <div class="modal-content">
-                <div class="gallery-images"></div>
-                <div class="gallery-controls">
-                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // Close modal event
-        const closeBtn = modal.querySelector('.close-modal');
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.style.display === 'block') {
-                modal.style.display = 'none';
-            }
-        });
-        
-        // Navigation buttons
-        const prevBtn = modal.querySelector('.prev-btn');
-        const nextBtn = modal.querySelector('.next-btn');
-        
-        prevBtn.addEventListener('click', () => {
-            navigateGallery(-1);
-        });
-        
-        nextBtn.addEventListener('click', () => {
-            navigateGallery(1);
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (modal.style.display === 'block') {
-                if (e.key === 'ArrowLeft') {
-                    navigateGallery(-1);
-                } else if (e.key === 'ArrowRight') {
-                    navigateGallery(1);
-                }
-            }
-        });
-    }
-}
-
-// Initialize portfolio gallery if needed
-function initPortfolioGallery() {
-    const portfolioItems = document.querySelectorAll('.portfolio-container .portfolio-item');
-    
-    // Create gallery modal
-    createGalleryModal();
-    
-    // Add click event to portfolio items
-    portfolioItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            openGalleryModal(item, index);
-        });
-    });
-}
-
-// Open gallery modal with selected image
-function openGalleryModal(item, index) {
-    const modal = document.querySelector('.gallery-modal');
-    const galleryImages = modal.querySelector('.gallery-images');
-    
-    // Clear existing images
-    galleryImages.innerHTML = '';
-    
-    // Find all images in the same category
-    const category = item.getAttribute('data-category');
-    const categoryItems = document.querySelectorAll(`.portfolio-item[data-category="${category}"]`);
-    
-    // Add images to modal
-    categoryItems.forEach((categoryItem, i) => {
-        const img = categoryItem.querySelector('img').cloneNode(true);
-        img.classList.toggle('active', i === index);
-        galleryImages.appendChild(img);
-    });
-    
-    // Store current index
-    modal.setAttribute('data-current-index', index);
-    modal.setAttribute('data-category', category);
-    
-    // Show modal
-    modal.style.display = 'block';
-}
-
-// Navigate through gallery images
-function navigateGallery(direction) {
-    const modal = document.querySelector('.gallery-modal');
-    const images = modal.querySelectorAll('.gallery-images img');
-    
-    let currentIndex = parseInt(modal.getAttribute('data-current-index'));
-    let newIndex = currentIndex + direction;
-    
-    // Loop around if at end
-    if (newIndex < 0) newIndex = images.length - 1;
-    if (newIndex >= images.length) newIndex = 0;
-    
-    // Update active image
-    images.forEach((img, i) => {
-        img.classList.toggle('active', i === newIndex);
-    });
-    
-    // Update current index
-    modal.setAttribute('data-current-index', newIndex);
 }

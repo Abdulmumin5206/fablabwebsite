@@ -2,15 +2,23 @@
 function updatePageLanguage(lang) {
     console.log("Updating page language to:", lang);
     
+    // If translations for this language don't exist, use English as fallback
+    if (!translations[lang]) {
+        console.warn(`Translations for ${lang} not found, using English as fallback`);
+        lang = 'en';
+    }
+    
     // Update elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             element.textContent = translations[lang][key];
+        } else {
+            console.warn(`Translation missing for key: ${key} in language: ${lang}`);
         }
     });
     
-    // Update placeholders and other specific elements
+    // Update specific elements
     updateSpecificElements(lang);
 }
 
@@ -45,11 +53,29 @@ function updateSpecificElements(lang) {
         
         // Equipment section
         const equipmentTitle = document.querySelector('#equipment .section-title');
-        if (equipmentTitle) equipmentTitle.textContent = translations[lang].equipment || "Our Equipment";
+        if (equipmentTitle) equipmentTitle.textContent = translations[lang].equipment;
+        
+        // Equipment category titles
+        const equipmentCategoryTitles = document.querySelectorAll('#equipment .category-title');
+        if (equipmentCategoryTitles.length >= 3) {
+            equipmentCategoryTitles[0].textContent = translations[lang].threeDPrinters;
+            equipmentCategoryTitles[1].textContent = translations[lang].laserCnc;
+            equipmentCategoryTitles[2].textContent = translations[lang].prototypeTools;
+        }
         
         // Portfolio section
         const portfolioTitle = document.querySelector('#portfolio .section-title');
         if (portfolioTitle) portfolioTitle.textContent = translations[lang].ourWork;
+        
+        // Portfolio category titles
+        const portfolioCategoryTitles = document.querySelectorAll('#portfolio .category-title');
+        if (portfolioCategoryTitles.length >= 5) {
+            portfolioCategoryTitles[0].textContent = translations[lang].fdmPrinting;
+            portfolioCategoryTitles[1].textContent = translations[lang].slaPrinting;
+            portfolioCategoryTitles[2].textContent = translations[lang].laserCutting;
+            portfolioCategoryTitles[3].textContent = translations[lang].cnc;
+            portfolioCategoryTitles[4].textContent = translations[lang].uvPrinting;
+        }
         
         // About section
         const aboutTitle = document.querySelector('#about .section-title');
@@ -86,13 +112,13 @@ function updateSpecificElements(lang) {
         
         // Select options in the form
         const selectElement = document.querySelector('.contact-form select');
-        if (selectElement && selectElement.options.length >= 6) {
-            selectElement.options[0].text = translations[lang].selectService;
-            selectElement.options[1].text = translations[lang].threeD;
-            selectElement.options[2].text = translations[lang].laser;
-            selectElement.options[3].text = translations[lang].electronics;
-            selectElement.options[4].text = translations[lang].cad;
-            selectElement.options[5].text = translations[lang].other;
+        if (selectElement) {
+            if (selectElement.options.length > 0) selectElement.options[0].text = translations[lang].selectService;
+            if (selectElement.options.length > 1) selectElement.options[1].text = translations[lang].threeD;
+            if (selectElement.options.length > 2) selectElement.options[2].text = translations[lang].laser;
+            if (selectElement.options.length > 3) selectElement.options[3].text = translations[lang].electronics;
+            if (selectElement.options.length > 4) selectElement.options[4].text = translations[lang].cad;
+            if (selectElement.options.length > 5) selectElement.options[5].text = translations[lang].other;
         }
         
         // Footer
@@ -103,7 +129,7 @@ function updateSpecificElements(lang) {
         if (footerBottom) footerBottom.textContent = `© 2025 FabLab. ${translations[lang].rights}`;
         
     } catch(e) {
-        console.error("Error updating language elements:", e);
+        console.error("Error updating language elements:", e, e.stack);
     }
 }
 
@@ -130,6 +156,14 @@ const translations = {
         cadDesc: "Professional CAD design services for your projects.",
         ourWork: "Our Work",
         all: "All",
+        threeDPrinters: "3D Printers",
+        laserCnc: "Laser & CNC Equipment",
+        prototypeTools: "Prototyping Tools",
+        fdmPrinting: "FDM 3D Printing",
+        slaPrinting: "SLA Resin Printing",
+        laserCutting: "Laser Cutting & Engraving",
+        cnc: "CNC",
+        uvPrinting: "UV Printing",
         productPrototype: "Product Prototype",
         threeDPrintedPrototype: "3D Printed functional prototype",
         customSign: "Custom Sign",
@@ -175,6 +209,14 @@ const translations = {
         cadDesc: "Профессиональные услуги CAD-дизайна для ваших проектов.",
         ourWork: "Наши работы",
         all: "Все",
+        threeDPrinters: "3D-принтеры",
+        laserCnc: "Лазерное и ЧПУ оборудование",
+        prototypeTools: "Инструменты для прототипирования",
+        fdmPrinting: "FDM 3D-печать",
+        slaPrinting: "SLA печать смолой",
+        laserCutting: "Лазерная резка и гравировка",
+        cnc: "ЧПУ обработка",
+        uvPrinting: "УФ-печать",
         productPrototype: "Прототип продукта",
         threeDPrintedPrototype: "3D-печатный функциональный прототип",
         customSign: "Индивидуальная вывеска",
@@ -220,6 +262,14 @@ const translations = {
         cadDesc: "Loyihalaringiz uchun professional CAD dizayn xizmatlari.",
         ourWork: "Bizning ishlar",
         all: "Barcha",
+        threeDPrinters: "3D printerlar",
+        laserCnc: "Lazer va CNC uskunalar",
+        prototypeTools: "Prototiplash asboblari",
+        fdmPrinting: "FDM 3D bosma",
+        slaPrinting: "SLA smola bosma",
+        laserCutting: "Lazer kesish va gravirovka",
+        cnc: "CNC",
+        uvPrinting: "UV bosma",
         productPrototype: "Mahsulot prototipi",
         threeDPrintedPrototype: "3D bosib chiqarilgan funksional prototip",
         customSign: "Maxsus belgi",
