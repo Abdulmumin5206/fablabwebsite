@@ -29,11 +29,17 @@
                 <i class="fas fa-moon" id="theme-toggle-icon"></i>
             </div>
             <div class="language-selector">
-                <select id="language-select">
-                    <option value="en">English</option>
-                    <option value="ru">Русский</option>
-                    <option value="uz">O'zbek</option>
-                </select>
+                <div class="custom-select">
+                    <div class="select-selected">
+                        <span class="lang-label">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="select-items select-hide">
+                        <div class="select-item" data-value="en">English</div>
+                        <div class="select-item" data-value="ru">Русский</div>
+                        <div class="select-item" data-value="uz">O'zbek</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="burger">
@@ -45,10 +51,22 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide1.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide2.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide3.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide4.jpg');"></div>
+        </div>
         <div class="hero-content">
             <h1 data-i18n="welcome">Welcome to Our FabLab</h1>
             <p data-i18n="slogan">Where innovation meets fabrication</p>
             <button class="cta-button" data-i18n="exploreServices">Explore Our Services</button>
+        </div>
+        <div class="slideshow-navigation">
+            <span class="nav-dot active" data-slide="0"></span>
+            <span class="nav-dot" data-slide="1"></span>
+            <span class="nav-dot" data-slide="2"></span>
+            <span class="nav-dot" data-slide="3"></span>
         </div>
     </section>
 

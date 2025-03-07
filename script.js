@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Document loaded");
+    
     // Add background to nav when scrolling
     const navbar = document.querySelector('nav');
     
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Equipment image hover effect - handle case where hover-images might not exist yet
+    // Equipment image hover effect
     setupEquipmentHoverImages();
     
     // Mobile Navigation
@@ -154,12 +156,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Theme Toggle
+    // Initialize hero slideshow
+    initHeroSlideshow();
+    
+    // Initialize theme toggle
     initThemeToggle();
+    
+    // Initialize custom language selector
+    initCustomLanguageSelector();
 });
 
 // Function to create scroll to top button
 function createScrollToTopButton() {
+    // Check if button already exists
+    if (document.querySelector('.scroll-top-btn')) return;
+    
     const scrollBtn = document.createElement('button');
     scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     scrollBtn.className = 'scroll-top-btn';
@@ -182,43 +193,123 @@ function createScrollToTopButton() {
     });
 }
 
+// Initialize hero slideshow
+function initHeroSlideshow() {
+    const slides = document.querySelectorAll('.hero .slide');
+    const dots = document.querySelectorAll('.nav-dot');
+    
+    if (!slides.length) return;
+    
+    let currentSlide = 0;
+    let slideInterval;
+    
+    // Function to show a specific slide
+    const showSlide = (index) => {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        // Update current slide index
+        currentSlide = index;
+    };
+    
+    // Function to show the next slide
+    const nextSlide = () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    };
+    
+    // Start the slideshow
+    if (slides.length > 1) {
+        // Set initial slide
+        showSlide(0);
+        
+        // Start automatic slideshow
+        slideInterval = setInterval(nextSlide, 5000);
+        
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                showSlide(index);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        });
+    }
+}
+
 // Initialize theme toggle functionality
 function initThemeToggle() {
+    console.log("Initializing theme toggle");
     const themeToggle = document.querySelector('.theme-toggle');
+    const themeMoonIcon = document.querySelector('.theme-toggle .fa-moon');
+    const themeSunIcon = document.querySelector('.theme-toggle .fa-sun');
     
     if (!themeToggle) return;
     
     // Set initial theme based on localStorage
     const savedTheme = localStorage.getItem('theme') || 'light';
+    console.log("Saved theme:", savedTheme);
     
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
     }
     
-    // Create both icons if they don't exist
-    if (!document.querySelector('.theme-toggle .fa-sun')) {
-        const sunIcon = document.createElement('i');
-        sunIcon.className = 'fas fa-sun';
-        themeToggle.appendChild(sunIcon);
-    }
-    
-    if (!document.querySelector('.theme-toggle .fa-moon')) {
+    // Create moon icon if it doesn't exist
+    if (!themeMoonIcon && !document.getElementById('theme-toggle-icon')) {
         const moonIcon = document.createElement('i');
         moonIcon.className = 'fas fa-moon';
         themeToggle.appendChild(moonIcon);
     }
     
+    // Create sun icon if it doesn't exist
+    if (!themeSunIcon && !document.getElementById('theme-toggle-icon')) {
+        const sunIcon = document.createElement('i');
+        sunIcon.className = 'fas fa-sun';
+        themeToggle.appendChild(sunIcon);
+    }
+    
+    // Special case for single icon with ID
+    const singleThemeIcon = document.getElementById('theme-toggle-icon');
+    if (singleThemeIcon) {
+        // Update icon based on current theme
+        if (savedTheme === 'dark') {
+            singleThemeIcon.classList.remove('fa-moon');
+            singleThemeIcon.classList.add('fa-sun');
+        } else {
+            singleThemeIcon.classList.add('fa-moon');
+            singleThemeIcon.classList.remove('fa-sun');
+        }
+    }
+    
     // Toggle theme on click
     themeToggle.addEventListener('click', () => {
+        console.log("Theme toggle clicked");
         document.body.classList.toggle('dark-mode');
         
         const isDarkMode = document.body.classList.contains('dark-mode');
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        
+        // Update single icon if it exists
+        if (singleThemeIcon) {
+            if (isDarkMode) {
+                singleThemeIcon.classList.remove('fa-moon');
+                singleThemeIcon.classList.add('fa-sun');
+            } else {
+                singleThemeIcon.classList.add('fa-moon');
+                singleThemeIcon.classList.remove('fa-sun');
+            }
+        }
     });
 }
 
 // Function to set up equipment hover images
 function setupEquipmentHoverImages() {
+    console.log("Setting up equipment hover images");
     const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
     
     equipmentItems.forEach(item => {
@@ -229,7 +320,21 @@ function setupEquipmentHoverImages() {
         if (!mainImage) return;
         
         const originalSrc = mainImage.src;
-        const hoverSrc = originalSrc.replace('.jpg', '-hover.jpg').replace('.webp', '-hover.webp');
+        
+        // Extract the filename from the path
+        const lastSlash = originalSrc.lastIndexOf('/');
+        const basePath = originalSrc.substring(0, lastSlash + 1);
+        const fileName = originalSrc.substring(lastSlash + 1);
+        
+        // Create hover image path by adding "-hover" before the extension
+        const dotIndex = fileName.lastIndexOf('.');
+        const nameWithoutExt = fileName.substring(0, dotIndex);
+        const extension = fileName.substring(dotIndex);
+        const hoverFileName = nameWithoutExt + "-hover" + extension;
+        const hoverSrc = basePath + hoverFileName;
+        
+        console.log("Original image:", originalSrc);
+        console.log("Hover image:", hoverSrc);
         
         // Create container
         const imageContainer = document.createElement('div');
@@ -250,6 +355,93 @@ function setupEquipmentHoverImages() {
         
         // Add container to item
         originalParent.appendChild(imageContainer);
+    });
+}
+
+// Initialize custom language selector
+function initCustomLanguageSelector() {
+    console.log("Initializing custom language selector");
+    const selectSelected = document.querySelector('.select-selected');
+    const selectItems = document.querySelector('.select-items');
+    const selectOptions = document.querySelectorAll('.select-item');
+    
+    if (!selectSelected || !selectItems || !selectOptions.length) {
+        console.warn("Language selector elements not found");
+        return;
+    }
+    
+    // Get saved language from localStorage or default to 'en'
+    const savedLanguage = localStorage.getItem('language') || 'en';
+    console.log("Saved language:", savedLanguage);
+    
+    // Set initial selected option and update text
+    selectOptions.forEach(option => {
+        const optionValue = option.getAttribute('data-value');
+        if (optionValue === savedLanguage) {
+            const label = selectSelected.querySelector('.lang-label');
+            if (label) {
+                label.textContent = option.textContent;
+            }
+            option.classList.add('selected');
+        }
+    });
+    
+    // Update page language on load
+    if (typeof updatePageLanguage === 'function') {
+        updatePageLanguage(savedLanguage);
+    } else {
+        console.error("updatePageLanguage function not found");
+    }
+    
+    // Toggle dropdown on click
+    selectSelected.addEventListener('click', () => {
+        console.log("Language selector clicked");
+        selectSelected.classList.toggle('active');
+        selectItems.classList.toggle('select-hide');
+        selectItems.classList.toggle('select-show');
+    });
+    
+    // Handle option selection
+    selectOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const value = option.getAttribute('data-value');
+            const text = option.textContent;
+            console.log("Language selected:", value, text);
+            
+            // Update selected text
+            const label = selectSelected.querySelector('.lang-label');
+            if (label) {
+                label.textContent = text;
+            }
+            
+            // Update selected option
+            selectOptions.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            
+            // Close dropdown
+            selectSelected.classList.remove('active');
+            selectItems.classList.add('select-hide');
+            selectItems.classList.remove('select-show');
+            
+            // Save selection to localStorage
+            localStorage.setItem('language', value);
+            
+            // Update page language
+            if (typeof updatePageLanguage === 'function') {
+                updatePageLanguage(value);
+            } else {
+                console.error("updatePageLanguage function not found");
+            }
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!selectSelected.contains(e.target) && !selectItems.contains(e.target)) {
+            selectSelected.classList.remove('active');
+            selectItems.classList.add('select-hide');
+            selectItems.classList.remove('select-show');
+        }
     });
 }
 
