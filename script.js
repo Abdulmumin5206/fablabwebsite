@@ -16,64 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // MODIFIED: Different hover effects for equipment vs portfolio
-    // Equipment section - WITH hover effects and image swap
-    const equipmentItems = document.querySelectorAll('#equipment .portfolio-item');
-    
-    equipmentItems.forEach(item => {
-        // Setup image swap on hover
-        const img = item.querySelector('img');
-        if (img) {
-            // Create hover image path by adding "-hover" before extension
-            const src = img.getAttribute('src');
-            const dotIndex = src.lastIndexOf('.');
-            const hoverSrc = src.substring(0, dotIndex) + '-hover' + src.substring(dotIndex);
-            
-            // Store original and hover images
-            img.dataset.originalSrc = src;
-            img.dataset.hoverSrc = hoverSrc;
-        }
-        
-        item.addEventListener('mouseenter', () => {
-            // Change image to hover version
-            const img = item.querySelector('img');
-            if (img && img.dataset.hoverSrc) {
-                img.src = img.dataset.hoverSrc;
-            }
-            
-            // Show overlay with fade
-            const overlay = item.querySelector('.portfolio-overlay');
-            if (overlay) {
-                overlay.classList.add('show-overlay');
-            }
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            // Change image back to original
-            const img = item.querySelector('img');
-            if (img && img.dataset.originalSrc) {
-                img.src = img.dataset.originalSrc;
-            }
-            
-            // Hide overlay
-            const overlay = item.querySelector('.portfolio-overlay');
-            if (overlay) {
-                overlay.classList.remove('show-overlay');
-            }
-        });
-    });
-    
-    // Portfolio section - NO hover effects
-    const portfolioItems = document.querySelectorAll('#portfolio .portfolio-item');
-    
-    portfolioItems.forEach(item => {
-        // Disable hover effects by removing any event listeners
-        const overlay = item.querySelector('.portfolio-overlay');
-        if (overlay) {
-            overlay.style.display = 'none'; // Hide overlay completely
-        }
-    });
-    
     // Mobile Navigation
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
@@ -163,11 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize hero slideshow
     initHeroSlideshow();
     
-    // FIXED: Initialize theme toggle
+    // Initialize theme toggle
     initThemeToggle();
     
-    // FIXED: Initialize custom language selector
+    // Initialize custom language selector
     initLanguageSelector();
+    
+    // Equipment filtering functionality
+    initEquipmentFilter();
+    
+    // Portfolio enhancements
+    enhancePortfolio();
     
     // Add favicon to prevent 404 error
     addFavicon();
@@ -252,7 +200,7 @@ function initHeroSlideshow() {
     }
 }
 
-// FIXED: Theme toggle functionality
+// Theme toggle functionality
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.getElementById('theme-toggle-icon');
@@ -287,7 +235,7 @@ function initThemeToggle() {
     });
 }
 
-// FIXED: Language selector functionality
+// Language selector functionality
 function initLanguageSelector() {
     const selectSelected = document.querySelector('.select-selected');
     const selectItems = document.querySelector('.select-items');
@@ -368,6 +316,89 @@ function initLanguageSelector() {
             selectSelected.classList.remove('active');
         }
     });
+}
 
+// Equipment filtering functionality
+function initEquipmentFilter() {
+    const equipmentTabs = document.querySelectorAll('.equipment-tab');
+    const equipmentItems = document.querySelectorAll('.equipment-item');
     
+    if (!equipmentTabs.length || !equipmentItems.length) return;
+    
+    // Initialize with "all" selected
+    equipmentTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            equipmentTabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Get selected category
+            const category = tab.getAttribute('data-category');
+            
+            // Filter equipment items
+            equipmentItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Enhance portfolio section
+function enhancePortfolio() {
+    // Get all portfolio items
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    // Define titles for each category
+    const titles = {
+        'fdm': [
+            '3D Printed Mechanical Parts',
+            'Custom Prototype Assembly',
+            'Educational Model Kit',
+            'Industrial Component Replica'
+        ],
+        'sla': [
+            'High-Detail Figurine',
+            'Dental Model Prototype',
+            'Jewelry Design Sample',
+            'Complex Mechanical Assembly'
+        ],
+        'laser': [
+            'Decorative Panel Design',
+            'Custom Signage Solution',
+            'Architectural Model Component',
+            'Precision-Cut Product Parts'
+        ],
+        'cnc': [
+            'Machined Aluminum Component',
+            'Wood Carved Decorative Panel',
+            'Custom Fixture Assembly',
+            'Precision Manufacturing Sample'
+        ],
+        'uv': [
+            'UV Printed Acrylic Display',
+            'Glass Surface Customization',
+            'Wood Product Personalization',
+            'Electronic Enclosure Printing'
+        ]
+    };
+    
+    // Assign titles to portfolio items based on category
+    portfolioItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (category && titles[category]) {
+            // Find index within its category
+            const categoryItems = Array.from(document.querySelectorAll(`.portfolio-item[data-category="${category}"]`));
+            const index = categoryItems.indexOf(item);
+            
+            if (index >= 0 && index < titles[category].length) {
+                item.setAttribute('data-title', titles[category][index]);
+            }
+        }
+    });
 }

@@ -54,6 +54,7 @@
     <!-- IMPORTANT: Load translations before main script -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
+    <script src="equipment.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -101,6 +102,7 @@
             <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide2.jpg');"></div>
             <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide3.jpg');"></div>
             <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide4.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/fablab/slide5.jpg');"></div>
         </div>
         <div class="hero-content">
             <h1 data-i18n="welcome">Welcome to Our FabLab</h1>
@@ -112,173 +114,371 @@
             <span class="nav-dot" data-slide="1"></span>
             <span class="nav-dot" data-slide="2"></span>
             <span class="nav-dot" data-slide="3"></span>
+            <span class="nav-dot" data-slide="4"></span>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
-        <div class="services-container">
-            <div class="service-card">
+  <!-- Updated Services Section -->
+<section id="services" class="services">
+    <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
+    <div class="services-container">
+        <a href="#equipment" class="service-card" data-service="3d-printing">
+            <div class="service-icon">
                 <i class="fas fa-print"></i>
-                <h3 data-i18n="threeD">3D Printing</h3>
-                <p data-i18n="threeDDesc">High-quality 3D printing services for prototypes and final products.</p>
             </div>
-            <div class="service-card">
+            <h3 data-i18n="threeD">3D Printing</h3>
+            <p data-i18n="threeDDesc">High-quality 3D printing services for prototypes and final products.</p>
+        </a>
+        <a href="#equipment" class="service-card" data-service="prototyping">
+            <div class="service-icon">
                 <i class="fas fa-cut"></i>
-                <h3 data-i18n="laser">Laser Cutting</h3>
-                <p data-i18n="laserDesc">Precision laser cutting for various materials and projects.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-microchip"></i>
-                <h3 data-i18n="electronics">Electronics</h3>
-                <p data-i18n="electronicsDesc">Circuit design and electronic prototyping solutions.</p>
+            <h3 data-i18n="laser">Prototyping</h3>
+            <p data-i18n="laserDesc">Precision prototyping using laser cutting and CNC machining.</p>
+        </a>
+        <a href="#equipment" class="service-card" data-service="uv-printing">
+            <div class="service-icon">
+                <i class="fas fa-palette"></i>
             </div>
-            <div class="service-card">
+            <h3 data-i18n="uv">UV Printing</h3>
+            <p data-i18n="uvDesc">High-resolution UV printing on various materials and surfaces.</p>
+        </a>
+        <a href="#equipment" class="service-card" data-service="3d-modeling">
+            <div class="service-icon">
                 <i class="fas fa-drafting-compass"></i>
-                <h3 data-i18n="cad">CAD Design</h3>
-                <p data-i18n="cadDesc">Professional CAD design services for your projects.</p>
             </div>
-        </div>
-    </section>
+            <h3 data-i18n="cad">3D Modeling</h3>
+            <p data-i18n="cadDesc">Professional 3D modeling and CAD design services.</p>
+        </a>
+    </div>
+</section>
 
     <!-- Equipment Section -->
-    <section id="equipment" class="equipment">
+    <!-- Redesigned Equipment Section -->
+<section id="equipment" class="equipment">
+    <div class="container">
         <h2 class="section-title">Our Equipment</h2>
         
-        <h3 class="category-title">3D Printers</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/f1.jpg" alt="FDM 3D Printer">
-                <div class="portfolio-overlay">
-                    <h3>Raise3D Printer Pro3</h3>
+        <div class="equipment-nav">
+            <button class="equipment-tab active" data-category="all">All Equipment</button>
+            <button class="equipment-tab" data-category="3d-printers">3D Printers</button>
+            <button class="equipment-tab" data-category="laser-cnc">Laser & CNC</button>
+            <button class="equipment-tab" data-category="prototype">Prototyping</button>
+        </div>
+        
+        <div class="equipment-grid">
+            <!-- 3D Printers Category -->
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/f1.jpg" alt="Raise3D Printer Pro3">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">FDM</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="raise3d">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>Raise3D Pro3</h3>
+                    <p class="equipment-specs">Build Volume: 300 × 300 × 300 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/f2.jpg" alt="SLA 3D Printer">
-                <div class="portfolio-overlay">
-                    <h3>Prusa i3 MK3S+printer ORG PEI3</h3>
-                    
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/f2.jpg" alt="Prusa i3 MK3S+">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">FDM</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="prusa">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>Prusa i3 MK3S+</h3>
+                    <p class="equipment-specs">Build Volume: 250 × 210 × 210 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/f3.jpg" alt="Industrial FDM Printer">
-                <div class="portfolio-overlay">
-                    <h3>Prusa i3 MK3S+printer + MMU2S</h3>
-                   
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/f3.jpg" alt="Prusa MMU2S">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">FDM</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="prusa-mmu">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>Prusa i3 MK3S+ MMU2S</h3>
+                    <p class="equipment-specs">Multi-Material: Up to 5 colors</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/f4.jpg" alt="DLP 3D Printer">
-                <div class="portfolio-overlay">
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/f4.jpg" alt="Skrinter">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">FDM</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="skrinter">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
                     <h3>3D Printer Skrinter</h3>
-                    
+                    <p class="equipment-specs">Build Volume: 220 × 220 × 250 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/s1.jpg" alt="SLA 3D Printer">
-                <div class="portfolio-overlay">
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/s1.jpg" alt="Form 3">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">SLA</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="form3">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
                     <h3>Formlabs Form 3</h3>
-                    
+                    <p class="equipment-specs">Resolution: 25-300 microns</p>
                 </div>
             </div>
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/s2.jpg" alt="SLA 3D Printer">
-                <div class="portfolio-overlay">
-                    <h3>PHROZEN Sonic MEGA 8K MSLA</h3>
-                
+            
+            <div class="equipment-item" data-category="3d-printers">
+                <div class="equipment-image">
+                    <img src="images/equipment/s2.jpg" alt="Phrozen Mega 8K">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">MSLA</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="phrozen-mega">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>PHROZEN Sonic MEGA 8K</h3>
+                    <p class="equipment-specs">Resolution: 8K (7680 × 4320)</p>
                 </div>
             </div>
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/s3.jpg" alt="SLA 3D Printer">
-                <div class="portfolio-overlay">
-                    <h3>Original Prusa SL1S complete</h3>
-        
+            
+            <!-- Laser & CNC Category -->
+            <div class="equipment-item" data-category="laser-cnc">
+                <div class="equipment-image">
+                    <img src="images/equipment/l1.jpg" alt="Photonim Laser">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">CO₂ Laser</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="photonim">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/s4.jpg" alt="SLA 3D Printer">
-                <div class="portfolio-overlay">
-                    <h3>PHROZEN Sonic Mini 8K MSLA</h3>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <h3 class="category-title">Laser & CNC Equipment</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/l1.jpg" alt="Laser Cutter">
-                <div class="portfolio-overlay">
+                <div class="equipment-info">
                     <h3>Photonim GS6040</h3>
-                    <p>Industrial CO2 laser cutter/engraver</p>
+                    <p class="equipment-specs">Working Area: 600 × 400 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/c1.jpg" alt="CNC Machine">
-                <div class="portfolio-overlay">
+            <div class="equipment-item" data-category="laser-cnc">
+                <div class="equipment-image">
+                    <img src="images/equipment/c1.jpg" alt="VOLTER-S">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">CNC</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="volter">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
                     <h3>VOLTER-S</h3>
-                    <p>CNC Milling and engraving machine</p>
+                    <p class="equipment-specs">Working Area: 500 × 400 × 200 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/c2.jpg" alt="Fiber Laser">
-                <div class="portfolio-overlay">
-                    <h3>Roland Mono fab SRM 20</h3>
-                    <p>Milling Machine</p>
+            <div class="equipment-item" data-category="laser-cnc">
+                <div class="equipment-image">
+                    <img src="images/equipment/c2.svg" alt="Roland SRM-20">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">CNC</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="srm20">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>Roland Mono fab SRM-20</h3>
+                    <p class="equipment-specs">Working Area: 203 × 152 × 60 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/c3.jpg" alt="Desktop CNC">
-                <div class="portfolio-overlay">
-                    <h3>Roland MDX 50</h3>
-                    <p>Precision Benchtop CNC Milling Machine</p>
+            <!-- Prototyping Tools Category -->
+            <div class="equipment-item" data-category="prototype">
+                <div class="equipment-image">
+                    <img src="images/equipment/u1.jpg" alt="UV Printer">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">UV Printing</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="versauv">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <h3 class="category-title">Prototyping Tools</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/u1.jpg" alt="UV Printer">
-                <div class="portfolio-overlay">
+                <div class="equipment-info">
                     <h3>Roland VersaUV LEF2-200</h3>
-                    <p>UV flatbed printer for direct printing</p>
+                    <p class="equipment-specs">Print Area: 508 × 330 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/u2.jpg" alt="Vinyl Cutter">
-                <div class="portfolio-overlay">
-                    <h3>Roland VersaSTUDIO BN20</h3>
-                    <p>Precision vinyl cutter</p>
+            <div class="equipment-item" data-category="prototype">
+                <div class="equipment-image">
+                    <img src="images/equipment/u2.jpg" alt="Vinyl Cutter">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">Vinyl Printer</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="bn20">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-info">
+                    <h3>Roland VersaSTUDIO BN-20</h3>
+                    <p class="equipment-specs">Width: Up to 480 mm</p>
                 </div>
             </div>
             
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/u3.jpg" alt="3D Scanner">
-                <div class="portfolio-overlay">
-                    <h3>3D SCANNER EINSCAN H</h3>
-                    <p>High-resolution 3D scanner</p>
+            <div class="equipment-item" data-category="prototype">
+                <div class="equipment-image">
+                    <img src="images/equipment/u3.jpg" alt="3D Scanner">
+                    <div class="equipment-overlay">
+                        <div class="overlay-content">
+                            <span class="equipment-type">3D Scanner</span>
+                            <div class="equipment-actions">
+                                <button class="action-btn view-details" data-equipment="einscan">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn view-gallery">
+                                    <i class="fas fa-images"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="portfolio-item" data-category="equipment">
-                <img src="images/equipment/u4.jpg" alt="Electronics Workstation">
-                <div class="portfolio-overlay">
-                    <h3>SYS-ACA-SC50P1 ACADEMIA 50</h3>
-                    <p>Scanner (optical, handheld with structured lighting technology)</p>
+                <div class="equipment-info">
+                    <h3>EINSCAN H</h3>
+                    <p class="equipment-specs">Accuracy: Up to 0.05 mm</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    
+    <!-- Equipment Details Modal -->
+    <div class="equipment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Equipment Details</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-image" src="" alt="Equipment">
+                </div>
+                <div class="modal-details">
+                    <div class="specs-table">
+                        <div class="spec-group">
+                            <h4>Technical Specifications</h4>
+                            <table id="specs-table">
+                                <!-- Populated by JavaScript -->
+                            </table>
+                        </div>
+                        <div class="spec-group">
+                            <h4>Capabilities</h4>
+                            <ul id="capabilities-list">
+                                <!-- Populated by JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
