@@ -2128,7 +2128,7 @@ body.dark-mode .scroll-top-btn:hover {
 
 /* Fixes for Safari browser */
 @media not all and (min-resolution:.001dpcm) {
-    @media {
+     
         .select-items {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -2136,6 +2136,20 @@ body.dark-mode .scroll-top-btn:hover {
         .portfolio-item {
             will-change: transform;
         }
+    }
+
+
+
+@media screen and (max-width: 768px) {
+    .portfolio-nav {
+        flex-wrap: wrap;
+        white-space: normal;
+        overflow-x: visible;
+        justify-content: center;
+    }
+    
+    .portfolio-tab {
+        margin-bottom: 8px;
     }
 }
 
