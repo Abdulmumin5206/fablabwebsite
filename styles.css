@@ -2198,3 +2198,35 @@ body.dark-mode .scroll-top-btn:hover {
         text-shadow: none !important;
     }
 }
+
+
+/* Language-specific styles */
+[lang="ru"] .hero-content h1,
+html[lang="ru"] .hero-content h1,
+body[lang="ru"] .hero-content h1,
+.ru .hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+@media screen and (max-width: 768px) {
+    body:has([data-value="ru"].selected) .hero-content h1,
+    html[lang="ru"] .hero-content h1,
+    .hero-content h1[lang="ru"] {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    body:has([data-value="ru"].selected) .hero-content h1,
+    html[lang="ru"] .hero-content h1,
+    .hero-content h1[lang="ru"] {
+        font-size: 1.5rem;
+    }
+}
+    
+    /* Fix mobile menu */
+    .nav-links.nav-active {
+        transform: translateX(0%);
+        z-index: 999;
+    }

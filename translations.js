@@ -223,23 +223,31 @@ function updateDynamicContent(lang) {
             }
         });
         
-        // Translate equipment specs
-        document.querySelectorAll('.equipment-specs').forEach(spec => {
-            const originalText = spec.textContent.trim();
-            let label = "";
-            let value = "";
-            
-            if (originalText.includes(':')) {
-                [label, value] = originalText.split(':');
-                label = label.trim();
-                value = value.trim();
-                
-                const specKey = `spec_${label.toLowerCase().replace(/\s+/g, '_')}`;
-                if (tr[specKey]) {
-                    spec.textContent = `${tr[specKey]}: ${value}`;
-                }
-            }
-        });
+       // Inside translateDynamicContent function, replace the equipment specs translation part with:
+// Translate equipment specs
+document.querySelectorAll('.equipment-specs').forEach(spec => {
+    const originalText = spec.textContent.trim();
+    let label = "";
+    let value = "";
+    
+    if (originalText.includes(':')) {
+        [label, value] = originalText.split(':');
+        label = label.trim();
+        value = value.trim();
+        
+        // Handle special case for Multi-Material
+        let specKey = "";
+        if (label === "Multi-Material") {
+            specKey = "spec_multi_material";
+        } else {
+            specKey = `spec_${label.toLowerCase().replace(/\s+/g, '_')}`;
+        }
+        
+        if (tr[specKey]) {
+            spec.textContent = `${tr[specKey]}: ${value}`;
+        }
+    }
+});
         
         // Translate portfolio item titles
         document.querySelectorAll('.portfolio-item h3').forEach(title => {
@@ -330,6 +338,7 @@ const translations = {
         footerDesc: "The Center for Youth Initiatives is a hub for innovation, collaboration, and creativity. We provide access to digital fabrication tools and workshops to empower the next generation of creators."
     },
     ru: {
+        
         home: "Главная",
         services: "Услуги",
         portfolio: "Портфолио",
@@ -408,6 +417,7 @@ const translations = {
         spec_print_area: "Область печати",
         spec_width: "Ширина",
         spec_accuracy: "Точность",
+
         
         // Portfolio item titles - exact matches with English reference
         portfolio_exact_premium_uv_printing_for_customized_gifts_branding_en: "Premium UV Printing for Customized Gifts & Branding",

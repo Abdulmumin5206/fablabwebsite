@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close mobile menu if open
                 if (navLinks && navLinks.classList.contains('nav-active')) {
                     navLinks.classList.remove('nav-active');
-                    burger.classList.remove('toggle');
+                    if (burger) burger.classList.remove('toggle');
                     document.querySelectorAll('.nav-links li').forEach(link => {
                         link.style.animation = '';
                     });
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Form Submission
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.querySelector('#contactForm');
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -286,7 +286,6 @@ function initLanguageSelector() {
     selectSelected.addEventListener('click', function (e) {
         e.stopPropagation();
         selectItems.classList.toggle('select-show');
-        selectItems.classList.toggle('select-hide');
         selectSelected.classList.toggle('active');
     });
 
@@ -312,7 +311,6 @@ function initLanguageSelector() {
                 localStorage.setItem('language', lang);
 
                 // Close dropdown
-                selectItems.classList.add('select-hide');
                 selectItems.classList.remove('select-show');
                 selectSelected.classList.remove('active');
 
@@ -320,7 +318,6 @@ function initLanguageSelector() {
                 window.location.reload();
             } else {
                 // Just close the dropdown if same language selected
-                selectItems.classList.add('select-hide');
                 selectItems.classList.remove('select-show');
                 selectSelected.classList.remove('active');
             }
@@ -330,7 +327,6 @@ function initLanguageSelector() {
     // Close dropdown when clicking outside
     document.addEventListener('click', function (e) {
         if (!selectSelected.contains(e.target) && !selectItems.contains(e.target)) {
-            selectItems.classList.add('select-hide');
             selectItems.classList.remove('select-show');
             selectSelected.classList.remove('active');
         }
