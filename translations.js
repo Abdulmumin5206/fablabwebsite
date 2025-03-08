@@ -180,7 +180,7 @@ function updateSpecificElements(lang) {
         const footerBottom = document.querySelector('.footer-bottom p');
         
         if (footerLogo) footerLogo.textContent = translations[lang].footerDesc;
-        if (footerBottom) footerBottom.textContent = `© 2024 Center for Youth Initiatives FabLab. ${translations[lang].rights}`;
+        if (footerBottom) footerBottom.textContent = `© 2025 Center for Youth Initiatives FabLab. ${translations[lang].rights}`;
         
         // Footer quick links title
         const quickLinksTitle = document.querySelector('.footer-links h3');
@@ -337,9 +337,9 @@ const translations = {
         about: "О нас",
         contact: "Контакты",
         welcome: "FabLab Центра Молодежных Инициатив(ЦМИ)превратит ваши фантазии в готовый продукт",
-        slogan: "Где инновации встречаются с производством",
-        exploreServices: "ЦМИ предлагает услуги по изготовлению деталей и механизмов повышенной сложности",
+        slogan: "ЦМИ предлагает услуги по изготовлению деталей и механизмов повышенной сложности",
         ourServices: "Наши услуги",
+        exploreServices: "Исследуйте наши услуги",
         threeD: "3D-печать",
         threeDDesc: "Высококачественные услуги 3D-печати для прототипов и готовых изделий.",
         laser: "Прототипирование",
