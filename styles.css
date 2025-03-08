@@ -416,7 +416,7 @@ nav.scrolled .select-selected {
 }
 
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: 3rem;  /* Change this value */
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

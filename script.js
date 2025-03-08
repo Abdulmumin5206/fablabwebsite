@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add favicon to prevent 404 error
     addFavicon();
+    
+    // Translate equipment and portfolio items
+    translateDynamicContent();
 });
 
 // Function to add a simple favicon
@@ -200,7 +203,7 @@ function initHeroSlideshow() {
     }
 }
 
-// Theme toggle functionality
+// Theme toggle functionality with page reload
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.getElementById('theme-toggle-icon');
@@ -232,10 +235,13 @@ function initThemeToggle() {
         
         // Save preference
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        
+        // Reload the page
+        window.location.reload();
     });
 }
 
-// Language selector functionality
+// Language selector functionality with page reload
 function initLanguageSelector() {
     const selectSelected = document.querySelector('.select-selected');
     const selectItems = document.querySelector('.select-items');
@@ -282,29 +288,36 @@ function initLanguageSelector() {
     selectOptions.forEach(option => {
         option.addEventListener('click', function() {
             const lang = this.getAttribute('data-value');
+            const currentLang = localStorage.getItem('language') || 'en';
             
-            // Update display
-            const label = selectSelected.querySelector('.lang-label');
-            if (label) {
-                label.textContent = this.textContent;
+            // Only reload if language actually changed
+            if (lang !== currentLang) {
+                // Update display
+                const label = selectSelected.querySelector('.lang-label');
+                if (label) {
+                    label.textContent = this.textContent;
+                }
+                
+                // Update selection state
+                selectOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Save preference
+                localStorage.setItem('language', lang);
+                
+                // Close dropdown
+                selectItems.classList.add('select-hide');
+                selectItems.classList.remove('select-show');
+                selectSelected.classList.remove('active');
+                
+                // Reload the page to apply new language
+                window.location.reload();
+            } else {
+                // Just close the dropdown if same language selected
+                selectItems.classList.add('select-hide');
+                selectItems.classList.remove('select-show');
+                selectSelected.classList.remove('active');
             }
-            
-            // Update selection state
-            selectOptions.forEach(opt => opt.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            // Save preference
-            localStorage.setItem('language', lang);
-            
-            // Apply translations
-            if (typeof window.updatePageLanguage === 'function') {
-                window.updatePageLanguage(lang);
-            }
-            
-            // Close dropdown
-            selectItems.classList.add('select-hide');
-            selectItems.classList.remove('select-show');
-            selectSelected.classList.remove('active');
         });
     });
     
@@ -399,6 +412,50 @@ function enhancePortfolio() {
             if (index >= 0 && index < titles[category].length) {
                 item.setAttribute('data-title', titles[category][index]);
             }
+        }
+    });
+}
+
+// Function to translate equipment specs and portfolio item descriptions
+function translateDynamicContent() {
+    const currentLang = localStorage.getItem('language') || 'en';
+    if (currentLang === 'en') return; // No need to translate if English
+    
+    if (!window.translations || !window.translations[currentLang]) {
+        console.warn(`Translations for ${currentLang} not found for dynamic content`);
+        return;
+    }
+    
+    // Get the translations for the current language
+    const tr = window.translations[currentLang];
+    
+    // Translate equipment headings and specifications
+    document.querySelectorAll('.equipment-info h3').forEach(heading => {
+        const key = `equipment_${heading.textContent.trim().replace(/\s+/g, '_').toLowerCase()}`;
+        if (tr[key]) {
+            heading.textContent = tr[key];
+        }
+    });
+    
+    // Translate equipment specs
+    document.querySelectorAll('.equipment-specs').forEach(spec => {
+        const originalText = spec.textContent.trim();
+        const specKey = `spec_${originalText.split(':')[0].trim().replace(/\s+/g, '_').toLowerCase()}`;
+        
+        if (tr[specKey]) {
+            // Keep the measurement values, just translate the label
+            const valueText = originalText.includes(':') ? ': ' + originalText.split(':')[1].trim() : '';
+            spec.textContent = tr[specKey] + valueText;
+        }
+    });
+    
+    // Translate portfolio item titles
+    document.querySelectorAll('.portfolio-item h3').forEach(title => {
+        const originalText = title.textContent.trim();
+        const titleKey = `portfolio_${originalText.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`;
+        
+        if (tr[titleKey]) {
+            title.textContent = tr[titleKey];
         }
     });
 }
