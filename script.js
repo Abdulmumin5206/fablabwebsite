@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add background to nav when scrolling
     const navbar = document.querySelector('nav');
     
+    // Check scroll position immediately on page load
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     }
@@ -21,18 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
     
-    if (burger && nav && navLinks) {
+    // Fix: Check if elements exist before adding event listeners
+    if (burger) {
         burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
+            // Toggle nav
+            if (nav) {
+                nav.classList.toggle('nav-active');
+            }
             
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
+            // Animate links
+            if (navLinks.length > 0) {
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+            }
             
+            // Toggle burger animation
             burger.classList.toggle('toggle');
         });
     }
@@ -54,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close mobile menu if open
                 if (nav && nav.classList.contains('nav-active')) {
                     nav.classList.remove('nav-active');
-                    burger.classList.remove('toggle');
+                    if (burger) {
+                        burger.classList.remove('toggle');
+                    }
                     navLinks.forEach(link => {
                         link.style.animation = '';
                     });
