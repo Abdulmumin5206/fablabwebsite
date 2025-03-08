@@ -204,21 +204,37 @@ nav.scrolled .nav-links a {
     color: #333;
 }
 
+/* Burger Menu Styles */
 .burger {
-    display: none;
+    display: none; /* Hidden by default on desktop */
     cursor: pointer;
+    z-index: 1000; /* Ensure it's above other elements */
 }
 
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: white; /* Default color for lines */
     margin: 5px;
     transition: all 0.3s ease;
 }
 
+/* Change burger color when navbar is scrolled */
 nav.scrolled .burger div {
-    background-color: #333;
+    background-color: #333; /* Darker color for scrolled state */
+}
+
+/* Burger Animation - Transform into "X" */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Navigation Controls (Theme Toggle & Language Selector) */
@@ -1099,12 +1115,13 @@ body.dark-mode .portfolio-item h3 {
     }
 }
 
-* Responsive Adjustments */
+/* Responsive Adjustments */
 @media screen and (max-width: 992px) {
     .contact-container {
         grid-template-columns: 1fr;
     }
 }
+    
 
 @media screen and (max-width: 768px) {
     .footer-container {
