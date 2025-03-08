@@ -55,6 +55,7 @@
     <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="equipment.js"></script>
+    <script src="portfolio.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -480,133 +481,154 @@
     </div>
 </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+<!-- Portfolio Section Redesign -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
         <h2 class="section-title" data-i18n="ourWork">Our Work</h2>
         
-        <!-- FDM 3D Printing Category -->
-        <h3 class="category-title">FDM 3D Printing</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="fdm">
-                <img src="images/fdm/f1.jpg" alt="FDM 3D Printed Model">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="fdm">
-                <img src="images/fdm/f2.jpg" alt="FDM 3D Printed Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="fdm">
-                <img src="images/fdm/f3.jpg" alt="FDM 3D Printed Part">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="fdm">
-                <img src="images/fdm/f4.avif" alt="FDM 3D Printed Assembly">
-                <div class="portfolio-overlay">
-                </div>
+        <div class="portfolio-nav-container">
+            <div class="portfolio-nav">
+                <button class="portfolio-tab active" data-category="all">All Projects</button>
+                <button class="portfolio-tab" data-category="fdm">FDM Printing</button>
+                <button class="portfolio-tab" data-category="sla">SLA Resin</button>
+                <button class="portfolio-tab" data-category="laser">Laser Cutting</button>
+                <button class="portfolio-tab" data-category="cnc">CNC Machining</button>
+                <button class="portfolio-tab" data-category="uv">UV Printing</button>
             </div>
         </div>
         
-        <!-- SLA 3D Printing Category -->
-        <h3 class="category-title">SLA Resin Printing</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="sla">
-                <img src="images/sla/s1.webp" alt="SLA 3D Printed Model">
-                <div class="portfolio-overlay">
+        <div class="portfolio-grid">
+            <!-- FDM Projects -->
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="images/fdm/f1.png" alt="FDM 3D Printed Model">
                 </div>
+                <h3>3D Printed Mechanical Parts</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="images/fdm/f2.avif" alt="FDM 3D Printed Product">
+                </div>
+                <h3>Innovative Manufacturing for Custom Parts</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="images/fdm/f3.png" alt="FDM 3D Printed Part">
+                </div>
+                <h3>From Concept to Reality: High-Precision 3D Printing</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="images/fdm/f4.png" alt="FDM 3D Printed Part">
+                </div>
+                <h3>Custom 3D-Printed Solutions for Engineering, Art, and Industry, Education</h3>
+            </div>
+            
+            <!-- SLA Projects -->
+            <div class="portfolio-item" data-category="sla">
+                <div class="portfolio-image">
+                    <img src="images/sla/s1.webp" alt="SLA 3D Printed Model">
+                </div>
+                <h3>Jewelry Design Sample</h3>
             </div>
             <div class="portfolio-item" data-category="sla">
-                <img src="images/sla/s2.webp" alt="SLA 3D Printed Product">
-                <div class="portfolio-overlay">
+                <div class="portfolio-image">
+                    <img src="images/sla/s2.png" alt="SLA 3D Printed Product">
                 </div>
+                <h3>High-Precision SLA 3D Printing for Industrial Applications</h3>
             </div>
             <div class="portfolio-item" data-category="sla">
-                <img src="images/sla/s3.webp" alt="SLA 3D Printed Part">
-                <div class="portfolio-overlay">
+                <div class="portfolio-image">
+                    <img src="images/sla/s3.webp" alt="SLA 3D Printed Part">
                 </div>
+                <h3>Bringing Ideas to Life with SLA Additive Manufacturing</h3>
             </div>
             <div class="portfolio-item" data-category="sla">
-                <img src="images/sla/s4.webp" alt="SLA Art Piece">
-                <div class="portfolio-overlay">
+                <div class="portfolio-image">
+                    <img src="images/sla/s4.png" alt="SLA 3D Printed Part">
                 </div>
+                <h3>Cultural Heritage Meets Innovation: 3D-Printed Amir Temur Statue</h3>
+            </div>
+            <!-- Laser Cutting Projects -->
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="images/lasercutting/l1.jpg" alt="Laser Cut Project">
+                </div>
+                <h3>Decorative Panel Design</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="images/lasercutting/l2.webp" alt="Laser Cut Product">
+                </div>
+                <h3>CElegant & Stylish Laser-Cut Wooden Watch</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="images/lasercutting/l3.webp" alt="Laser Cut Art">
+                </div>
+                <h3>Personalized Wooden Gift Sets – Perfect for Any Occasion</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="images/lasercutting/l4.webp" alt="Laser Cut Art">
+                </div>
+                <h3>Architectural Model Component</h3>
+            </div>
+            
+            <!-- CNC Projects -->
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="images/cnc/c1.jpg" alt="CNC Machined Part">
+                </div>
+                <h3>Minimalist CNC Wooden Organizer for Office & Home</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="images/cnc/c2.jpg" alt="CNC Machined Product">
+                </div>
+                <h3>Wood Carved Decorative Panel</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="images/cnc/c3.jpg" alt="CNC Machined Art">
+                </div>
+                <h3>Precision CNC-Crafted Heart-Shaped Wooden Box</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="images/cnc/c4.jpg" alt="CNC Machined Art">
+                </div>
+                <h3>Precision CNC Wood Carving & Engraving Services</h3>
+            </div>
+            
+            <!-- UV Printing Projects -->
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="images/uv/u1.webp" alt="UV Printed Product">
+                </div>
+                <h3>Vibrant & Durable UV-Printed Designs on Accessories</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="images/uv/u2.jpg" alt="UV Printed Product">
+                </div>
+                <h3>UV Printing Technology for Stunning & Long-Lasting Designs</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="images/uv/u3.webp" alt="UV Printed Art">
+                </div>
+                <h3>Premium UV Printing for Customized Gifts & Branding</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="images/uv/u4.webp" alt="UV Printed Art">
+                </div>
+                <h3>High-Quality Sticker Printing for Branding & Promotion</h3>
             </div>
         </div>
-        
-        <!-- Laser Cutting Category -->
-        <h3 class="category-title">Laser Cutting & Engraving</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="laser">
-                <img src="images/lasercutting/l1.jpg" alt="Laser Cut Project">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="laser">
-                <img src="images/lasercutting/l2.webp" alt="Laser Cut Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="laser">
-                <img src="images/lasercutting/l3.webp" alt="Laser Cut Art">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="laser">
-                <img src="images/lasercutting/l4.webp" alt="Laser Engraving">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-        </div>
-        <!-- CNC -->
-        <h3 class="category-title">CNC</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="cnc">
-                <img src="images/cnc/c1.jpg" alt="CNC Machined Part">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="cnc">
-                <img src="images/cnc/c2.jpg" alt="CNC Machined Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="cnc">
-                <img src="images/cnc/c3.webp" alt="CNC Machined Art">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="cnc">
-                <img src="images/cnc/c4.jpg" alt="CNC Machined Part">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-        </div>
-        <!-- UV -->
-        <h3 class="category-title">UV Printing</h3>
-        <div class="portfolio-container">
-            <div class="portfolio-item" data-category="uv">
-                <img src="images/uv/u1.webp" alt="UV Printed Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="uv">
-                <img src="images/uv/u2.jpg" alt="UV Printed Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="uv">
-                <img src="images/uv/u3.webp" alt="UV Printed Art">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="uv">
-                <img src="images/uv/u4.webp" alt="UV Printed Product">
-                <div class="portfolio-overlay">
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="about">
