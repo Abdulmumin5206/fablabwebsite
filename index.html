@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FabLab Services</title>
+    <title>FabLab Services - 3D Printing, Laser Cutting, CNC Machining & Design Services</title>
+    
+    <!-- SEO meta tags -->
+    <meta name="description" content="Professional 3D printing, laser cutting, CNC machining, spare parts design & manufacturing, UV printing services at the Center for Youth Initiatives FabLab in Tashkent.">
+    <meta name="keywords" content="3D printing, FDM printing, SLA printing, laser cutting, CNC machines, spare parts, parts manufacturing, equipment repair, parts design, mold design, stamp mold, UV printing, CAD, additive manufacturing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/">
     
     <!-- Order matters! Font awesome first, then our stylesheet -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏭</text></svg>" type="image/svg+xml">
@@ -50,12 +56,90 @@
             background-color: #1a1a1a;
             color: #f5f5f5;
         }
+        
+        /* Hide SEO rich content */
+        .seo-rich-content {
+            display: none;
+            visibility: hidden;
+        }
     </style>
-    <!-- IMPORTANT: Load translations before main script -->
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Center for Youth Initiatives FabLab",
+      "url": "https://abdulmumin5206.github.io/fablabwebsite/",
+      "description": "Professional digital fabrication services including 3D printing, laser cutting, CNC machining, and design services.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Tashkent, Mirzo-Ulugbek dist. Olmachi 17",
+        "addressLocality": "Tashkent",
+        "postalCode": "100007",
+        "addressCountry": "Uzbekistan"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+998 77 088 39 77",
+        "contactType": "customer service",
+        "email": "Info@cfyi.uz"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "FabLab Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Printing Services",
+              "description": "High-quality FDM and SLA 3D printing services for prototypes and finished products."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Laser Cutting Services",
+              "description": "Precision laser cutting for various materials."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "CNC Machining",
+              "description": "High-precision CNC machining for custom parts manufacturing."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UV Printing",
+              "description": "High-resolution UV printing on various materials and surfaces."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Design Services",
+              "description": "Professional 3D modeling and CAD design services."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- IMPORTANT: Load translations and scripts -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="equipment.js"></script>
     <script src="portfolio.js"></script>
+    <script src="seo.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -119,40 +203,53 @@
         </div>
     </section>
 
-  <!-- Updated Services Section -->
-<section id="services" class="services">
-    <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
-    <div class="services-container">
-        <a href="#equipment" class="service-card" data-service="3d-printing">
-            <div class="service-icon">
-                <i class="fas fa-print"></i>
-            </div>
-            <h3 data-i18n="threeD">3D Printing</h3>
-            <p data-i18n="threeDDesc">High-quality 3D printing services for prototypes and final products.</p>
-        </a>
-        <a href="#equipment" class="service-card" data-service="prototyping">
-            <div class="service-icon">
-                <i class="fas fa-cut"></i>
-            </div>
-            <h3 data-i18n="laser">Prototyping</h3>
-            <p data-i18n="laserDesc">Precision prototyping using laser cutting and CNC machining.</p>
-        </a>
-        <a href="#equipment" class="service-card" data-service="uv-printing">
-            <div class="service-icon">
-                <i class="fas fa-palette"></i>
-            </div>
-            <h3 data-i18n="uv">UV Printing</h3>
-            <p data-i18n="uvDesc">High-resolution UV printing on various materials and surfaces.</p>
-        </a>
-        <a href="#equipment" class="service-card" data-service="3d-modeling">
-            <div class="service-icon">
-                <i class="fas fa-drafting-compass"></i>
-            </div>
-            <h3 data-i18n="cad">3D Modeling</h3>
-            <p data-i18n="cadDesc">Professional 3D modeling and CAD design services.</p>
-        </a>
-    </div>
-</section>
+    <!-- Updated Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
+        
+        <!-- SEO-friendly intro paragraph -->
+        <div class="services-intro">
+            <p class="seo-intro" data-i18n="servicesIntro">
+                Our FabLab offers a comprehensive range of digital fabrication services including 3D printing (FDM & SLA), laser cutting, CNC machining, and UV printing. We specialize in custom parts manufacturing, equipment repair, and parts design for various industries.
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <a href="#equipment" class="service-card" data-service="3d-printing">
+                <div class="service-icon">
+                    <i class="fas fa-print" aria-label="3D Printing service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="threeD">3D Printing</h3>
+                <p data-i18n="threeDDesc">High-quality FDM and SLA 3D printing services for prototypes, spare parts manufacturing, and final products.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="prototyping">
+                <div class="service-icon">
+                    <i class="fas fa-cut" aria-label="Laser Cutting & Prototyping service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="laser">Prototyping</h3>
+                <p data-i18n="laserDesc">Precision prototyping using laser cutting and CNC machining for custom parts manufacturing.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="uv-printing">
+                <div class="service-icon">
+                    <i class="fas fa-palette" aria-label="UV Printing service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="uv">UV Printing</h3>
+                <p data-i18n="uvDesc">High-resolution UV printing on various materials and surfaces for branding and customization.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="3d-modeling">
+                <div class="service-icon">
+                    <i class="fas fa-drafting-compass" aria-label="3D Modeling & CAD service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="cad">3D Modeling</h3>
+                <p data-i18n="cadDesc">Professional 3D modeling and CAD design services for parts design and engineering solutions.</p>
+            </a>
+        </div>
+        
+        <!-- Rich SEO content (hidden but indexed by search engines) -->
+        <div class="seo-rich-content" aria-hidden="true">
+            <!-- This content will be populated by seo.js -->
+        </div>
+    </section>
 
     
 <!-- Portfolio Section Redesign -->
