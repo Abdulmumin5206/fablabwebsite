@@ -27,21 +27,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add background to nav when scrolling
-    const navbar = document.querySelector('nav');
+  // Navigation background kaydırma ile eklensin
+const navbar = document.querySelector('nav');
 
-    if (navbar) {
+if (navbar) {
+    // Sayfa ilk yüklendiğinde
+    navbar.classList.remove('scrolled'); // Başlangıçta scrolled class'ını kaldır
+    
+    // Scroll olayını dinle
+    window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
+    });
+}
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    }
+// Sayfa yüklendikten sonra geçiş efektlerini etkinleştir
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
 
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

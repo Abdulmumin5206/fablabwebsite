@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabLab Services - 3D Printing, Laser Cutting, CNC Machining & Design Services</title>
+    
+    <!-- SEO meta tags -->
+    <meta name="description" content="Professional 3D printing, laser cutting, CNC machining, spare parts design & manufacturing, UV printing services at the Center for Youth Initiatives FabLab in Tashkent.">
+    <meta name="keywords" content="3D printing, FDM printing, SLA printing, laser cutting, CNC machines, spare parts, parts manufacturing, equipment repair, parts design, mold design, stamp mold, UV printing, CAD, additive manufacturing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/en/">
+    
+    <!-- Order matters! Font awesome first, then our stylesheet -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏭</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+
+   <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEG7X24KJH"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FEG7X24KJH');
+    </script>
+     
+    <style>
+        /* Fixed portfolio overlay - use opacity for fade in/out */
+        .portfolio-overlay {
+            opacity: 0;
+            transform: none !important; /* Prevent transform animation */
+            transition: opacity 0.8s ease !important; /* Slow fade in/out */
+        }
+        .portfolio-overlay.show-overlay {
+            opacity: 1;
+        }
+        
+        /* Fixed language selector */
+        .select-items {
+            display: block !important;
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
+        }
+        .select-items.select-show {
+            opacity: 1;
+            visibility: visible;
+            max-height: 200px;
+            padding: 5px 0;
+        }
+        
+        /* Fixed z-index for navigation controls */
+        .nav-controls {
+            z-index: 1100;
+        }
+        .custom-select {
+            z-index: 1200;
+        }
+        
+        /* Ensure dark mode works */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        
+        /* Hide SEO rich content */
+        .seo-rich-content {
+            display: none;
+            visibility: hidden;
+        }
+    </style>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Center for Youth Initiatives FabLab",
+      "url": "https://abdulmumin5206.github.io/fablabwebsite/en/",
+      "description": "Professional digital fabrication services including 3D printing, laser cutting, CNC machining, and design services.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Tashkent, Mirzo-Ulugbek dist. Olmachi 17",
+        "addressLocality": "Tashkent",
+        "postalCode": "100007",
+        "addressCountry": "Uzbekistan"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+998 77 088 39 77",
+        "contactType": "customer service",
+        "email": "Info@cfyi.uz"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "FabLab Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Printing Services",
+              "description": "High-quality FDM and SLA 3D printing services for prototypes and finished products."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Laser Cutting Services",
+              "description": "Precision laser cutting for various materials."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "CNC Machining",
+              "description": "High-precision CNC machining for custom parts manufacturing."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UV Printing",
+              "description": "High-resolution UV printing on various materials and surfaces."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D Design Services",
+              "description": "Professional 3D modeling and CAD design services."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Language links -->
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/en/" hreflang="en" />
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru" />
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz" />
+    
+    <!-- IMPORTANT: Load translations and scripts -->
+    <script src="../translations.js"></script>
+    <script src="../script.js"></script>
+    <script src="../equipment.js"></script>
+    <script src="../portfolio.js"></script>
+    <script src="../seo.js"></script>
+    <script src="../router.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <h1>FabLab</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" data-i18n="home">Home</a></li>
+            <li><a href="#services" data-i18n="services">Services</a></li>
+            <li><a href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
+            <li><a href="#equipment" data-i18n="equipment">Equipment</a></li>
+            <li><a href="#about" data-i18n="about">About</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact</a></li>
+        </ul>
+        <div class="nav-controls">
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-toggle-icon"></i>
+            </div>
+            <div class="language-selector">
+                <div class="custom-select">
+                    <div class="select-selected">
+                        <span class="lang-label">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="select-items">
+                        <div class="select-item" data-value="en">English</div>
+                        <div class="select-item" data-value="ru">Русский</div>
+                        <div class="select-item" data-value="uz">O'zbek</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/fablab/slide1.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/fablab/slide2.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/fablab/slide3.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/fablab/slide4.jpg');"></div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/fablab/slide5.jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <h1 data-i18n="welcome">The Youth Initiatives Center's (CYI) FabLab will turn your fantasies into a finished product</h1>
+            <p data-i18n="slogan">CMI offers services for the production of highly complex parts and mechanisms.</p>
+            <button class="cta-button" data-i18n="exploreServices">Explore Our Services</button>
+        </div>
+        <div class="slideshow-navigation">
+            <span class="nav-dot active" data-slide="0"></span>
+            <span class="nav-dot" data-slide="1"></span>
+            <span class="nav-dot" data-slide="2"></span>
+            <span class="nav-dot" data-slide="3"></span>
+            <span class="nav-dot" data-slide="4"></span>
+        </div>
+    </section>
+
+    <!-- Updated Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title" data-i18n="ourServices">Our Services</h2>
+        
+        <!-- SEO-friendly intro paragraph -->
+        <div class="services-intro">
+            <p class="seo-intro" data-i18n="servicesIntro">
+            </p>
+        </div>
+        
+        <div class="services-container">
+            <a href="#equipment" class="service-card" data-service="3d-printing">
+                <div class="service-icon">
+                    <i class="fas fa-print" aria-label="3D Printing service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="threeD">3D Printing</h3>
+                <p data-i18n="threeDDesc">High-quality FDM and SLA 3D printing services for prototypes, spare parts manufacturing, and final products.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="prototyping">
+                <div class="service-icon">
+                    <i class="fas fa-cut" aria-label="Laser Cutting & Prototyping service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="laser">Prototyping</h3>
+                <p data-i18n="laserDesc">Precision prototyping using laser cutting and CNC machining for custom parts manufacturing.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="uv-printing">
+                <div class="service-icon">
+                    <i class="fas fa-palette" aria-label="UV Printing service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="uv">UV Printing</h3>
+                <p data-i18n="uvDesc">High-resolution UV printing on various materials and surfaces for branding and customization.</p>
+            </a>
+            <a href="#equipment" class="service-card" data-service="3d-modeling">
+                <div class="service-icon">
+                    <i class="fas fa-drafting-compass" aria-label="3D Modeling & CAD service at FabLab Center for Youth Initiatives"></i>
+                </div>
+                <h3 data-i18n="cad">3D Modeling</h3>
+                <p data-i18n="cadDesc">Professional 3D modeling and CAD design services for parts design and engineering solutions.</p>
+            </a>
+        </div>
+        
+        <!-- Rich SEO content (hidden but indexed by search engines) -->
+        <div class="seo-rich-content" aria-hidden="true">
+            <!-- This content will be populated by seo.js -->
+        </div>
+    </section>
+
+    
+<!-- Portfolio Section Redesign -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 class="section-title" data-i18n="ourWork">Our Work</h2>
+        
+        <div class="portfolio-nav-container">
+            <div class="portfolio-nav">
+                <button class="portfolio-tab active" data-category="all">All Projects</button>
+                <button class="portfolio-tab" data-category="fdm">FDM Printing</button>
+                <button class="portfolio-tab" data-category="sla">SLA Resin</button>
+                <button class="portfolio-tab" data-category="laser">Laser Cutting</button>
+                <button class="portfolio-tab" data-category="cnc">CNC Machining</button>
+                <button class="portfolio-tab" data-category="uv">UV Printing</button>
+            </div>
+        </div>
+        
+        <div class="portfolio-grid">
+            <!-- FDM Projects -->
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="../images/fdm/f1.png" alt="FDM 3D Printed Model">
+                </div>
+                <h3>3D Printed Mechanical Parts</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="../images/fdm/f2.avif" alt="FDM 3D Printed Product">
+                </div>
+                <h3>Innovative Manufacturing for Custom Parts</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="../images/fdm/f3.png" alt="FDM 3D Printed Part">
+                </div>
+                <h3>From Concept to Reality: High-Precision 3D Printing</h3>
+            </div>
+            <div class="portfolio-item" data-category="fdm">
+                <div class="portfolio-image">
+                    <img src="../images/fdm/f4.png" alt="FDM 3D Printed Part">
+                </div>
+                <h3>Custom 3D-Printed Solutions for Engineering, Art, and Industry, Education</h3>
+            </div>
+            
+            <!-- SLA Projects -->
+            <div class="portfolio-item" data-category="sla">
+                <div class="portfolio-image">
+                    <img src="../images/sla/s1.webp" alt="SLA 3D Printed Model">
+                </div>
+                <h3>Jewelry Design Sample</h3>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <div class="portfolio-image">
+                    <img src="../images/sla/s2.png" alt="SLA 3D Printed Product">
+                </div>
+                <h3>High-Precision SLA 3D Printing for Industrial Applications</h3>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <div class="portfolio-image">
+                    <img src="../images/sla/s3.webp" alt="SLA 3D Printed Part">
+                </div>
+                <h3>Bringing Ideas to Life with SLA Additive Manufacturing</h3>
+            </div>
+            <div class="portfolio-item" data-category="sla">
+                <div class="portfolio-image">
+                    <img src="../images/sla/s4.png" alt="SLA 3D Printed Part">
+                </div>
+                <h3>Cultural Heritage Meets Innovation: 3D-Printed Amir Temur Statue</h3>
+            </div>
+            <!-- Laser Cutting Projects -->
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="../images/lasercutting/l1.jpg" alt="Laser Cut Project">
+                </div>
+                <h3>Decorative Panel Design</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="../images/lasercutting/l2.webp" alt="Laser Cut Product">
+                </div>
+                <h3>CElegant & Stylish Laser-Cut Wooden Watch</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="../images/lasercutting/l3.webp" alt="Laser Cut Art">
+                </div>
+                <h3>Personalized Wooden Gift Sets – Perfect for Any Occasion</h3>
+            </div>
+            <div class="portfolio-item" data-category="laser">
+                <div class="portfolio-image">
+                    <img src="../images/lasercutting/l4.webp" alt="Laser Cut Art">
+                </div>
+                <h3>Architectural Model Component</h3>
+            </div>
+            
+            <!-- CNC Projects -->
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="../images/cnc/c1.jpg" alt="CNC Machined Part">
+                </div>
+                <h3>Minimalist CNC Wooden Organizer for Office & Home</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="../images/cnc/c2.jpg" alt="CNC Machined Product">
+                </div>
+                <h3>Wood Carved Decorative Panel</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="../images/cnc/c3.jpg" alt="CNC Machined Art">
+                </div>
+                <h3>Precision CNC-Crafted Heart-Shaped Wooden Box</h3>
+            </div>
+            <div class="portfolio-item" data-category="cnc">
+                <div class="portfolio-image">
+                    <img src="../images/cnc/c4.jpg" alt="CNC Machined Art">
+                </div>
+                <h3>Precision CNC Wood Carving & Engraving Services</h3>
+            </div>
+            
+            <!-- UV Printing Projects -->
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="../images/uv/u1.webp" alt="UV Printed Product">
+                </div>
+                <h3>Vibrant & Durable UV-Printed Designs on Accessories</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="../images/uv/u2.jpg" alt="UV Printed Product">
+                </div>
+                <h3>UV Printing Technology for Stunning & Long-Lasting Designs</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="../images/uv/u3.webp" alt="UV Printed Art">
+                </div>
+                <h3>Premium UV Printing for Customized Gifts & Branding</h3>
+            </div>
+            <div class="portfolio-item" data-category="uv">
+                <div class="portfolio-image">
+                    <img src="../images/uv/u4.webp" alt="UV Printed Art">
+                </div>
+                <h3>High-Quality Sticker Printing for Branding & Promotion</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Equipment Section -->
+    <!-- Redesigned Equipment Section -->
+    <section id="equipment" class="equipment">
+        <div class="container">
+            <h2 class="section-title">Our Equipment</h2>
+            
+            <div class="equipment-nav">
+                <button class="equipment-tab active" data-category="all">All Equipment</button>
+                <button class="equipment-tab" data-category="3d-printers">3D Printers</button>
+                <button class="equipment-tab" data-category="laser-cnc">Laser & CNC</button>
+                <button class="equipment-tab" data-category="prototype">Prototyping</button>
+            </div>
+            
+            <div class="equipment-grid">
+                <!-- 3D Printers Category -->
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/f1.jpg" alt="Raise3D Printer Pro3">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">FDM</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="raise3d">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Raise3D Pro3</h3>
+                        <p class="equipment-specs">Build Volume: 300 × 300 × 300 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/f2.jpg" alt="Prusa i3 MK3S+">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">FDM</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="prusa">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Prusa i3 MK3S+</h3>
+                        <p class="equipment-specs">Build Volume: 250 × 210 × 210 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/f3.jpg" alt="Prusa MMU2S">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">FDM</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="prusa-mmu">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Prusa i3 MK3S+ MMU2S</h3>
+                        <p class="equipment-specs">Multi-Material: Up to 5 colors</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/f4.jpg" alt="Skrinter">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">FDM</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="skrinter">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>3D Printer Skrinter</h3>
+                        <p class="equipment-specs">Build Volume: 220 × 220 × 250 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/s1.jpg" alt="Form 3">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">SLA</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="form3">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Formlabs Form 3</h3>
+                        <p class="equipment-specs">Resolution: 25-300 microns</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="3d-printers">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/s2.jpg" alt="Phrozen Mega 8K">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">MSLA</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="phrozen-mega">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>PHROZEN Sonic MEGA 8K</h3>
+                        <p class="equipment-specs">Resolution: 8K (7680 × 4320)</p>
+                    </div>
+                </div>
+                
+                <!-- Laser & CNC Category -->
+                <div class="equipment-item" data-category="laser-cnc">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/l1.jpg" alt="Photonim Laser">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">CO₂ Laser</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="photonim">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Photonim GS6040</h3>
+                        <p class="equipment-specs">Working Area: 600 × 400 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="laser-cnc">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/c1.jpg" alt="VOLTER-S">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">CNC</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="volter">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>VOLTER-S</h3>
+                        <p class="equipment-specs">Working Area: 500 × 400 × 200 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="laser-cnc">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/c2.svg" alt="Roland SRM-20">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">CNC</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="srm20">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Roland Mono fab SRM-20</h3>
+                        <p class="equipment-specs">Working Area: 203 × 152 × 60 mm</p>
+                    </div>
+                </div>
+                
+                <!-- Prototyping Tools Category -->
+                <div class="equipment-item" data-category="prototype">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/u1.jpg" alt="UV Printer">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">UV Printing</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="versauv">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Roland VersaUV LEF2-200</h3>
+                        <p class="equipment-specs">Print Area: 508 × 330 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="prototype">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/u2.jpg" alt="Vinyl Cutter">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">Vinyl Printer</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="bn20">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Roland VersaSTUDIO BN-20</h3>
+                        <p class="equipment-specs">Width: Up to 480 mm</p>
+                    </div>
+                </div>
+                
+                <div class="equipment-item" data-category="prototype">
+                    <div class="equipment-image">
+                        <img src="../images/equipment/u3.jpg" alt="3D Scanner">
+                        <div class="equipment-overlay">
+                            <div class="overlay-content">
+                                <span class="equipment-type">3D Scanner</span>
+                                <div class="equipment-actions">
+                                    <button class="action-btn view-details" data-equipment="einscan">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="action-btn view-gallery">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>EINSCAN H</h3>
+                        <p class="equipment-specs">Accuracy: Up to 0.05 mm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Equipment Details Modal -->
+        <div class="equipment-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Equipment Details</h3>
+                    <button class="close-modal"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-image">
+                        <img id="modal-image" src="" alt="Equipment">
+                    </div>
+                    <div class="modal-details">
+                        <div class="specs-table">
+                            <div class="spec-group">
+                                <h4>Technical Specifications</h4>
+                                <table id="specs-table">
+                                    <!-- Populated by JavaScript -->
+                                </table>
+                            </div>
+                            <div class="spec-group">
+                                <h4>Capabilities</h4>
+                                <ul id="capabilities-list">
+                                    <!-- Populated by JavaScript -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Our FabLab is equipped with state-of-the-art fabrication tools and staffed by experienced makers. We provide services to individuals, startups, and established businesses looking to prototype, create, and innovate.</p>
+                <p>With years of experience in digital fabrication, our team can help bring your ideas to life.</p>
+            </div>
+           <div class="team-container">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Team Member">
+                    <h3></h3>
+                    <p>Fablab Engineer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Contact Section with SVG Icons -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Equipment Rental">Equipment Rental</option>
+                            <option value="Workshop Registration">Workshop Registration</option>
+                            <option value="Partnership">Partnership Opportunities</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section with SVG Icons -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <h2>FabLab CFYI</h2>
+            <p>The Center for Youth Initiatives is a hub for innovation, collaboration, and creativity. We provide access to digital fabrication tools and workshops to empower the next generation of creators.</p>
+            
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="footer-social-icons">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/fablab.cfyi?igsh=YjByeG8zOXl1dzll" target="_blank" class="footer-social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/company/center-for-youth-initiatives" target="_blank" class="footer-social-link" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@CenterforYouthInitiatives" target="_blank" class="footer-social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/centerforyouthinitiatives" target="_blank" class="footer-social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- Telegram -->
+                    <a href="#" target="_blank" class="footer-social-link" aria-label="Telegram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#equipment">Equipment</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h3>Contact Info</h3>
+            <ul>
+                <li>+998 77 088 39 77</li>
+                <li>Info@cfyi.uz</li>
+                <li>Tashkent, Mirzo-Ulugbek dist. Olmachi 17 100007</li>
+                <li>Monday - Friday: 9am - 6pm</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 Center for Youth Initiatives FabLab. All Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
