@@ -1,280 +1,266 @@
-/**
- * FabLab SEO Implementation for GitHub Pages
- */
-document.addEventListener('DOMContentLoaded', () => {
-    updateMetaTags();
-    updateAltText();
-    addRichContent();
-    
-    // Listen for language changes
-    const languageItems = document.querySelectorAll('.select-item');
-    languageItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Wait for language change to complete
-            setTimeout(() => {
-                updateMetaTags();
-                updateAltText();
-                addRichContent();
-            }, 200);
-        });
-    });
-});
-
-/**
- * Updates meta tags based on current language
- */
-function updateMetaTags() {
+// Add this function to your seo.js file
+function addFAQSchema() {
     const lang = localStorage.getItem('language') || 'en';
     
-    // Set HTML lang attribute
-    document.documentElement.setAttribute('lang', lang);
+    // Remove existing FAQ schema
+    const existingSchema = document.querySelector('script[data-schema="faq"]');
+    if (existingSchema) {
+      existingSchema.remove();
+    }
     
-    // Update title based on language
+    // Create FAQ questions based on language
+    let faqQuestions = [];
+    
     if (lang === 'en') {
-        document.title = "FabLab Services - 3D Printing, Laser Cutting, CNC Machining & Design Services";
+      faqQuestions = [
+        {
+          "@type": "Question",
+          "name": "What 3D printing services do you offer in Tashkent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer both FDM (Fused Deposition Modeling) and SLA (Stereolithography) 3D printing services in Tashkent. Our equipment includes Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3, and PHROZEN Sonic MEGA 8K printers, allowing us to work with a wide range of materials including PLA, PETG, ABS, TPU, and photopolymer resins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide laser cutting services in Uzbekistan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide professional laser cutting services in Uzbekistan using our Photonim GS6040 CO₂ laser cutter. We can cut and engrave various materials including wood, acrylic, fabric, paper, and thin metals with high precision. Our working area is 600 × 400 mm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help with custom parts design in Tashkent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Our professional design team in Tashkent provides comprehensive 3D modeling and CAD design services. We can help with everything from reverse engineering existing parts to creating new custom designs from scratch. We specialize in design for additive manufacturing (DfAM) to ensure your parts are optimized for production."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the turnaround time for 3D printing projects in your Tashkent facility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Turnaround times vary depending on project complexity, size, and our current workload. Simple FDM prints can often be completed within 24-48 hours, while more complex SLA prints might take 2-4 days. For large or rush orders, please contact us directly to discuss timeline requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is your digital fabrication lab located in Uzbekistan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our FabLab is located in Tashkent, Mirzo-Ulugbek district, Olmachi 17, 100007, Uzbekistan. We serve clients from all over Uzbekistan and Central Asia with our digital fabrication services."
+          }
+        }
+      ];
     } else if (lang === 'ru') {
-        document.title = "Услуги FabLab - 3D печать, лазерная резка, ЧПУ обработка и услуги проектирования";
+      faqQuestions = [
+        {
+          "@type": "Question",
+          "name": "Какие услуги 3D-печати вы предлагаете в Ташкенте?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Мы предлагаем услуги 3D-печати как по технологии FDM (моделирование методом наплавления), так и SLA (стереолитография) в Ташкенте. Наше оборудование включает принтеры Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3 и PHROZEN Sonic MEGA 8K, что позволяет нам работать с широким спектром материалов, включая PLA, PETG, ABS, TPU и фотополимерные смолы."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Предоставляете ли вы услуги лазерной резки в Узбекистане?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, мы предоставляем профессиональные услуги лазерной резки в Узбекистане с использованием нашего CO₂ лазерного резака Photonim GS6040. Мы можем резать и гравировать различные материалы, включая дерево, акрил, ткань, бумагу и тонкие металлы с высокой точностью. Наша рабочая область составляет 600 × 400 мм."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можете ли вы помочь с проектированием деталей на заказ в Ташкенте?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Абсолютно! Наша профессиональная команда дизайнеров в Ташкенте предоставляет комплексные услуги 3D-моделирования и проектирования CAD. Мы можем помочь с обратным инжинирингом существующих деталей и созданием новых индивидуальных проектов с нуля. Мы специализируемся на проектировании для аддитивного производства (DfAM), чтобы гарантировать оптимизацию ваших деталей для производства."
+          }
+        }
+      ];
     } else if (lang === 'uz') {
-        document.title = "FabLab xizmatlari - 3D bosma, lazer kesish, CNC ishlov berish va dizayn xizmatlari";
+      faqQuestions = [
+        {
+          "@type": "Question",
+          "name": "Toshkentda qanday 3D bosma xizmatlarini taklif qilasiz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toshkentda ham FDM (Fused Deposition Modeling) ham SLA (Stereolithography) 3D bosma xizmatlarini taklif qilamiz. Bizning uskunalarimiz Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3 va PHROZEN Sonic MEGA 8K printerlarini o'z ichiga oladi, bu bizga PLA, PETG, ABS, TPU va fotopolimer smolalar kabi materiallarning keng doirasi bilan ishlash imkonini beradi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O'zbekistonda lazer kesish xizmatlarini taqdim etasizmi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ha, biz O'zbekistonda Photonim GS6040 CO₂ lazer kesuvchimizdan foydalangan holda professional lazer kesish xizmatlarini taqdim etamiz. Biz yog'och, akril, mato, qog'oz va yupqa metallar kabi turli materiallarni yuqori aniqlik bilan kesish va o'yib naqsh solishimiz mumkin. Bizning ish maydonimiz 600 × 400 mm."
+          }
+        }
+      ];
     }
     
-    // Update meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        if (lang === 'en') {
-            metaDescription.setAttribute('content', 'Professional 3D printing, laser cutting, CNC machining, spare parts design & manufacturing, UV printing services at the Center for Youth Initiatives FabLab in Tashkent.');
-        } else if (lang === 'ru') {
-            metaDescription.setAttribute('content', 'Профессиональные услуги 3D печати, лазерной резки, ЧПУ обработки, проектирования и изготовления запасных частей, УФ печати в Центре Молодежных Инициатив FabLab в Ташкенте.');
-        } else if (lang === 'uz') {
-            metaDescription.setAttribute('content', 'Toshkentdagi Yoshlar Tashabbuslari Markazi FabLab\'ida professional 3D bosma, lazer kesish, CNC ishlov berish, ehtiyot qismlarni loyihalash va ishlab chiqarish, UV bosma xizmatlari.');
-        }
+    // Create FAQ schema
+    const faqSchema = document.createElement('script');
+    faqSchema.type = 'application/ld+json';
+    faqSchema.setAttribute('data-schema', 'faq');
+    faqSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqQuestions
+    });
+    
+    // Add to head
+    document.head.appendChild(faqSchema);
+  }
+  
+  // Add breadcrumb schema
+  function addBreadcrumbSchema() {
+    const lang = localStorage.getItem('language') || 'en';
+    const path = window.location.pathname;
+    
+    // Only add breadcrumbs for deeper pages
+    if (path.split('/').length <= 3) return;
+    
+    const existingSchema = document.querySelector('script[data-schema="breadcrumb"]');
+    if (existingSchema) {
+      existingSchema.remove();
     }
     
-    // Update meta keywords
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) {
-        if (lang === 'en') {
-            metaKeywords.setAttribute('content', '3D printing, FDM printing, SLA printing, laser cutting, CNC machines, spare parts, parts manufacturing, equipment repair, parts design, mold design, stamp mold, UV printing, CAD, additive manufacturing');
-        } else if (lang === 'ru') {
-            metaKeywords.setAttribute('content', '3D печать, FDM печать, SLA печать, лазерная резка, станки ЧПУ, запасные части, изготовление деталей, ремонт оборудования, проектирование деталей, пресс форма, штамп форма, УФ печать, САПР, аддитивное производство');
-        } else if (lang === 'uz') {
-            metaKeywords.setAttribute('content', '3D bosma, FDM bosma, SLA bosma, lazer kesish, CNC dastgohlar, ehtiyot qismlar, detallarni ishlab chiqarish, uskunalarni tamirlash, detallarni loyihalash, press qolip, shtamp qolip, UV bosma, CAD, additiv ishlab chiqarish');
-        }
-    }
-
-    // Update canonical
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) {
-        canonicalLink.setAttribute('href', 'https://abdulmumin5206.github.io/fablabwebsite/');
-    }
-
-    // Update hreflang links
-    const hreflangLink = document.querySelector('link[rel="alternate"][hreflang]');
-    if (hreflangLink) {
-        hreflangLink.setAttribute('href', 'https://abdulmumin5206.github.io/fablabwebsite/');
-    }
-}
-
-/**
- * Updates image alt text with SEO-friendly descriptions
- */
-function updateAltText() {
+    // Determine breadcrumb items based on path
+    const breadcrumbItems = [];
+    const basePath = 'https://abdulmumin5206.github.io/fablabwebsite';
+    
+    // Always add home
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      "position": 1,
+      "name": lang === 'en' ? "Home" : (lang === 'ru' ? "Главная" : "Bosh sahifa"),
+      "item": `${basePath}/${lang}/`
+    });
+    
+    // Add additional path segments
+    const segments = path.split('/').filter(s => s && s !== 'fablabwebsite' && s !== lang);
+    
+    segments.forEach((segment, index) => {
+      let name = '';
+      
+      // Map segment to readable name
+      if (segment === 'services') {
+        name = lang === 'en' ? "Services" : (lang === 'ru' ? "Услуги" : "Xizmatlar");
+      } else if (segment === '3d-printing') {
+        name = lang === 'en' ? "3D Printing" : (lang === 'ru' ? "3D Печать" : "3D Bosma");
+      } else if (segment === 'laser-cutting') {
+        name = lang === 'en' ? "Laser Cutting" : (lang === 'ru' ? "Лазерная резка" : "Lazer Kesish");
+      } else {
+        name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+      }
+      
+      breadcrumbItems.push({
+        "@type": "ListItem",
+        "position": index + 2,
+        "name": name,
+        "item": `${basePath}/${lang}/${segments.slice(0, index + 1).join('/')}/`
+      });
+    });
+    
+    // Create breadcrumb schema
+    const breadcrumbSchema = document.createElement('script');
+    breadcrumbSchema.type = 'application/ld+json';
+    breadcrumbSchema.setAttribute('data-schema', 'breadcrumb');
+    breadcrumbSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbItems
+    });
+    
+    // Add to head
+    document.head.appendChild(breadcrumbSchema);
+  }
+  
+  // Add LocalBusiness schema with geo coordinates
+  function addLocalBusinessSchema() {
     const lang = localStorage.getItem('language') || 'en';
     
-    // Equipment images
-    const equipmentImages = document.querySelectorAll('.equipment-item img');
-    equipmentImages.forEach(img => {
-        const parentItem = img.closest('.equipment-item');
-        if (!parentItem) return;
-        
-        const title = parentItem.querySelector('h3')?.textContent;
-        const type = parentItem.querySelector('.equipment-type')?.textContent;
-        
-        if (title) {
-            if (lang === 'en') {
-                img.alt = `${title} - Professional ${type || ''} equipment at Center for Youth Initiatives FabLab Tashkent`;
-            } else if (lang === 'ru') {
-                img.alt = `${title} - Профессиональное ${type || ''} оборудование в Центре Молодежных Инициатив FabLab Ташкент`;
-            } else if (lang === 'uz') {
-                img.alt = `${title} - Toshkentdagi Yoshlar Tashabbuslari Markazi FabLab'da professional ${type || ''} uskunasi`;
-            }
-        }
-    });
-    
-    // Portfolio images
-    const portfolioImages = document.querySelectorAll('.portfolio-item img');
-    portfolioImages.forEach(img => {
-        const parentItem = img.closest('.portfolio-item');
-        if (!parentItem) return;
-        
-        const title = parentItem.querySelector('h3')?.textContent;
-        const category = parentItem.getAttribute('data-category');
-        
-        if (title && category) {
-            let altText = '';
-            
-            if (lang === 'en') {
-                if (category === 'fdm') {
-                    altText = `FDM 3D printed ${title} - Custom parts manufacturing at FabLab Tashkent`;
-                } else if (category === 'sla') {
-                    altText = `SLA resin 3D printed ${title} - High-precision parts at FabLab Tashkent`;
-                } else if (category === 'laser') {
-                    altText = `Laser cut ${title} - Precision laser cutting services at FabLab Tashkent`;
-                } else if (category === 'cnc') {
-                    altText = `CNC machined ${title} - Custom CNC manufacturing at FabLab Tashkent`;
-                } else if (category === 'uv') {
-                    altText = `UV printed ${title} - High-resolution UV printing at FabLab Tashkent`;
-                }
-            } else if (lang === 'ru') {
-                if (category === 'fdm') {
-                    altText = `${title} напечатанный на FDM 3D принтере - Изготовление деталей на заказ в FabLab Ташкент`;
-                } else if (category === 'sla') {
-                    altText = `${title} напечатанный на SLA 3D принтере - Высокоточные детали в FabLab Ташкент`;
-                } else if (category === 'laser') {
-                    altText = `${title} вырезанный лазером - Услуги точной лазерной резки в FabLab Ташкент`;
-                } else if (category === 'cnc') {
-                    altText = `${title} изготовленный на ЧПУ - Индивидуальное производство на ЧПУ в FabLab Ташкент`;
-                } else if (category === 'uv') {
-                    altText = `${title} с УФ-печатью - Высокоточная УФ-печать в FabLab Ташкент`;
-                }
-            } else if (lang === 'uz') {
-                if (category === 'fdm') {
-                    altText = `FDM 3D printerda bosilgan ${title} - Toshkent FabLab'da maxsus detallarni ishlab chiqarish`;
-                } else if (category === 'sla') {
-                    altText = `SLA smola 3D printerda bosilgan ${title} - Toshkent FabLab'da yuqori aniqlikdagi detallar`;
-                } else if (category === 'laser') {
-                    altText = `Lazer bilan kesilgan ${title} - Toshkent FabLab'da aniq lazer kesish xizmatlari`;
-                } else if (category === 'cnc') {
-                    altText = `CNC'da ishlov berilgan ${title} - Toshkent FabLab'da maxsus CNC ishlab chiqarish`;
-                } else if (category === 'uv') {
-                    altText = `UV bosma ${title} - Toshkent FabLab'da yuqori aniqlikdagi UV bosma`;
-                }
-            }
-            
-            if (altText) {
-                img.alt = altText;
-            }
-        }
-    });
-    
-    // Service icons
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        const icon = card.querySelector('.service-icon i');
-        if (!icon) return;
-        
-        const title = card.querySelector('h3')?.textContent;
-        
-        if (title) {
-            if (lang === 'en') {
-                icon.setAttribute('aria-label', `${title} service at FabLab Center for Youth Initiatives`);
-            } else if (lang === 'ru') {
-                icon.setAttribute('aria-label', `Услуга ${title} в FabLab Центра Молодежных Инициатив`);
-            } else if (lang === 'uz') {
-                icon.setAttribute('aria-label', `Yoshlar Tashabbuslari Markazi FabLab'da ${title} xizmati`);
-            }
-        }
-    });
-}
-
-/**
- * Adds rich SEO content to the page
- */
-function addRichContent() {
-    const lang = localStorage.getItem('language') || 'en';
-    const servicesSection = document.getElementById('services');
-    
-    if (!servicesSection) return;
-    
-    // Remove existing rich content
-    const existingContent = document.querySelector('.seo-rich-content');
-    if (existingContent) {
-        existingContent.remove();
+    const existingSchema = document.querySelector('script[data-schema="business"]');
+    if (existingSchema) {
+      existingSchema.remove();
     }
     
-    // Create new rich content div
-    const richContentDiv = document.createElement('div');
-    richContentDiv.className = 'seo-rich-content';
-    richContentDiv.setAttribute('aria-hidden', 'true');
-    richContentDiv.style.display = 'none';
-    
-    // Add rich keyword content based on language
+    // Business description based on language
+    let description = '';
     if (lang === 'en') {
-        richContentDiv.innerHTML = `
-            <div class="seo-service">
-                <h2>3D Printing Services in Tashkent</h2>
-                <p>Our FabLab offers high-quality FDM and SLA 3D printing services for prototypes, custom parts, and final products. We use professional-grade equipment including Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3, and PHROZEN Sonic MEGA 8K printers to ensure exceptional quality for all your manufacturing needs.</p>
-                <h3>Spare Parts Manufacturing</h3>
-                <p>Need replacement parts? Our 3D printing services can create exact replicas of broken or worn-out components. We specialize in reverse engineering and parts design for equipment repair and maintenance.</p>
-            </div>
-            <div class="seo-service">
-                <h2>Laser Cutting & CNC Machining</h2>
-                <p>Precision laser cutting and CNC machining services for parts manufacturing and prototyping. Our Photonim GS6040 CO₂ laser cutter and VOLTER-S CNC machines allow us to create accurate parts from various materials including wood, acrylic, and metal.</p>
-                <h3>Mold Design and Manufacturing</h3>
-                <p>We offer professional mold design and stamp mold fabrication services using our advanced CNC machines. Perfect for production runs and custom manufacturing projects.</p>
-            </div>
-            <div class="seo-service">
-                <h2>CAD Design & Parts Engineering</h2>
-                <p>Professional 3D modeling and parts design services for manufacturing, prototyping, and repair. We help create custom parts, replacement components, and molds for various applications using industry-standard CAD software.</p>
-                <h3>Additive Manufacturing Solutions</h3>
-                <p>Leverage the power of additive manufacturing for your projects. Our services include consulting on design for additive manufacturing (DfAM) to optimize your parts for 3D printing production.</p>
-            </div>
-            <div class="seo-service">
-                <h2>UV Printing Services</h2>
-                <p>High-resolution UV printing on various materials and surfaces using our Roland VersaUV LEF2-200 printer. Perfect for branding, customized products, and promotional materials.</p>
-            </div>
-        `;
+      description = "Professional digital fabrication services including 3D printing, laser cutting, CNC machining, and design services in Tashkent, Uzbekistan.";
     } else if (lang === 'ru') {
-        richContentDiv.innerHTML = `
-            <div class="seo-service">
-                <h2>Услуги 3D печати в Ташкенте</h2>
-                <p>Наш FabLab предлагает высококачественные услуги FDM и SLA 3D печати для прототипов, индивидуальных деталей и готовых изделий. Мы используем профессиональное оборудование, включая принтеры Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3 и PHROZEN Sonic MEGA 8K, чтобы обеспечить исключительное качество для всех ваших производственных потребностей.</p>
-                <h3>Изготовление запасных частей</h3>
-                <p>Нужны запасные части? Наши услуги 3D-печати могут создать точные копии сломанных или изношенных компонентов. Мы специализируемся на обратном инжиниринге и проектировании деталей для ремонта и обслуживания оборудования.</p>
-            </div>
-            <div class="seo-service">
-                <h2>Лазерная резка и ЧПУ обработка</h2>
-                <p>Точные услуги лазерной резки и ЧПУ обработки для изготовления деталей и прототипирования. Наши станки Photonim GS6040 CO₂ и VOLTER-S ЧПУ позволяют создавать точные детали из различных материалов, включая дерево, акрил и металл.</p>
-                <h3>Проектирование и изготовление форм</h3>
-                <p>Мы предлагаем профессиональные услуги по проектированию пресс-форм и изготовлению штамп-форм с использованием наших современных станков ЧПУ. Идеально подходит для производственных партий и индивидуальных производственных проектов.</p>
-            </div>
-            <div class="seo-service">
-                <h2>САПР проектирование и инженерия деталей</h2>
-                <p>Профессиональные услуги 3D моделирования и проектирования деталей для производства, прототипирования и ремонта. Мы помогаем создавать индивидуальные детали, запасные компоненты и пресс-формы для различных применений с использованием отраслевого стандартного программного обеспечения САПР.</p>
-                <h3>Решения для аддитивного производства</h3>
-                <p>Используйте возможности аддитивного производства для ваших проектов. Наши услуги включают консультации по проектированию для аддитивного производства (DfAM), чтобы оптимизировать ваши детали для производства методом 3D-печати.</p>
-            </div>
-            <div class="seo-service">
-                <h2>Услуги УФ-печати</h2>
-                <p>Высокоточная УФ-печать на различных материалах и поверхностях с использованием нашего принтера Roland VersaUV LEF2-200. Идеально подходит для брендинга, индивидуальных продуктов и рекламных материалов.</p>
-            </div>
-        `;
+      description = "Профессиональные услуги цифрового производства, включая 3D-печать, лазерную резку, ЧПУ-обработку и услуги проектирования в Ташкенте, Узбекистан.";
     } else if (lang === 'uz') {
-        richContentDiv.innerHTML = `
-            <div class="seo-service">
-                <h2>Toshkentda 3D bosma xizmatlari</h2>
-                <p>Bizning FabLab prototiplar, maxsus detallar va tayyor mahsulotlar uchun yuqori sifatli FDM va SLA 3D bosma xizmatlarini taklif etadi. Barcha ishlab chiqarish ehtiyojlaringiz uchun ajoyib sifatni ta'minlash uchun Raise3D Pro3, Prusa i3 MK3S+, Formlabs Form 3 va PHROZEN Sonic MEGA 8K printerlar kabi professional darajadagi uskunalardan foydalanamiz.</p>
-                <h3>Ehtiyot qismlarni ishlab chiqarish</h3>
-                <p>Ehtiyot qismlarga muhtojmisiz? Bizning 3D bosma xizmatlarimiz singan yoki eskirgan komponentlarning aniq nusxalarini yaratishi mumkin. Biz uskunalarni ta'mirlash va texnik xizmat ko'rsatish uchun teskari muhandislik va detallarni loyihalashga ixtisoslashganmiz.</p>
-            </div>
-            <div class="seo-service">
-                <h2>Lazer kesish va CNC ishlov berish</h2>
-                <p>Detallarni ishlab chiqarish va prototiplash uchun aniq lazer kesish va CNC ishlov berish xizmatlari. Bizning Photonim GS6040 CO₂ lazer kesuvchi va VOLTER-S CNC mashinalarimiz yog'och, akril va metall kabi turli materiallardan aniq detallarni yaratish imkonini beradi.</p>
-                <h3>Qolip dizayni va ishlab chiqarish</h3>
-                <p>Biz zamonaviy CNC mashinalarimizdan foydalangan holda professional press qolip dizayni va shtamp qolip ishlab chiqarish xizmatlarini taklif etamiz. Ishlab chiqarish partiyalari va maxsus ishlab chiqarish loyihalari uchun ideal.</p>
-            </div>
-            <div class="seo-service">
-                <h2>CAD dizayn va detallarni muhandislik qilish</h2>
-                <p>Ishlab chiqarish, prototiplash va ta'mirlash uchun professional 3D modellashtirish va detal loyihalash xizmatlari. Biz sanoat standartidagi CAD dasturiy ta'minotidan foydalangan holda turli xil ilovalar uchun maxsus detallar, o'rindosh komponentlar va qoliplar yaratishga yordam beramiz.</p>
-                <h3>Additiv ishlab chiqarish yechimlari</h3>
-                <p>Loyihalaringiz uchun additiv ishlab chiqarish imkoniyatlaridan foydalaning. Bizning xizmatlarimiz 3D bosma ishlab chiqarish uchun detallaringizni optimallashtirish uchun additiv ishlab chiqarish uchun dizayn (DfAM) bo'yicha maslahatlarni o'z ichiga oladi.</p>
-            </div>
-            <div class="seo-service">
-                <h2>UV bosma xizmatlari</h2>
-                <p>Roland VersaUV LEF2-200 printerimizdan foydalangan holda turli xil materiallar va yuzalarga yuqori aniqlikdagi UV bosma. Brending, maxsus mahsulotlar va reklama materiallari uchun ideal.</p>
-            </div>
-        `;
+      description = "Toshkent, O'zbekistonda professional raqamli ishlab chiqarish xizmatlari, jumladan 3D bosma, lazer kesish, CNC ishlov berish va dizayn xizmatlari.";
     }
     
-    servicesSection.appendChild(richContentDiv);
-}
+    // Create business schema
+    const businessSchema = document.createElement('script');
+    businessSchema.type = 'application/ld+json';
+    businessSchema.setAttribute('data-schema', 'business');
+    businessSchema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FabLab Center for Youth Initiatives",
+      "image": "https://abdulmumin5206.github.io/fablabwebsite/images/logo.png",
+      "description": description,
+      "url": "https://abdulmumin5206.github.io/fablabwebsite/",
+      "telephone": "+998770883977",
+      "email": "Info@cfyi.uz",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Olmachi 17",
+        "addressLocality": "Tashkent",
+        "addressRegion": "Mirzo-Ulugbek District",
+        "postalCode": "100007",
+        "addressCountry": "UZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.3366,
+        "longitude": 69.2949
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.instagram.com/fablab.cfyi/",
+        "https://www.linkedin.com/company/center-for-youth-initiatives",
+        "https://www.youtube.com/@CenterforYouthInitiatives",
+        "https://www.facebook.com/centerforyouthinitiatives"
+      ]
+    });
+    
+    // Add to head
+    document.head.appendChild(businessSchema);
+  }
+  
+  // Add all schemas
+  function addAllSchemas() {
+    addFAQSchema();
+    addBreadcrumbSchema();
+    addLocalBusinessSchema();
+  }
+  
+  // Update addRichContent function to include schema
+  function addRichContent() {
+    // Your existing code...
+    
+    // Then add this at the end of the function
+    addAllSchemas();
+  }

@@ -1,5 +1,17 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
 # Sitemap location
 Sitemap: https://abdulmumin5206.github.io/fablabwebsite/sitemap.xml
