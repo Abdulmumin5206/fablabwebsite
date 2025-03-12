@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-        // Get browser language
-        let userLang = navigator.language || navigator.userLanguage;
-        userLang = userLang.split('-')[0];
-        
-        // Check if language is supported (en, ru, uz)
-        const supportedLangs = ['en', 'ru', 'uz'];
-        if (!supportedLangs.includes(userLang)) {
-            userLang = 'en'; // Default to English
-        }
-        
-        // Get current path and hostname for proper redirection
-        const path = window.location.pathname;
-        const hostname = window.location.hostname;
-        let basePath = '';
-        
-        // Handle GitHub Pages path structure
-        if (hostname.includes('github.io')) {
-            basePath = '/fablabwebsite';
-            
-        }
-        
-        // Redirect to language version
-        window.location.href = `${basePath}/${userLang}/`;
-    </script>
+   <meta charset="UTF-8">
+   <title>Redirecting...</title>
+   <script>
+       // Get browser language
+       let userLang = navigator.language || navigator.userLanguage;
+       userLang = userLang.split('-')[0];
+       
+       // Check if language is supported (en, ru, uz)
+       const supportedLangs = ['en', 'ru', 'uz'];
+       if (!supportedLangs.includes(userLang)) {
+           userLang = 'en'; // Default to English
+       }
+       
+       // Set path for GitHub Pages - hardcoded repository name
+       const basePath = '/fablabwebsite';
+       
+       // Redirect to language version
+       window.location.href = `${basePath}/${userLang}/`;
+   </script>
 </head>
 <body>
-    <p>Redirecting...</p>
+   <p>Redirecting...</p>
 </body>
 </html>
