@@ -1,153 +1,119 @@
 <!DOCTYPE html>
 <html lang="ru">
+    <!-- Russian Version (ru/index.html) -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FabLab Ташкент | Услуги 3D печати, лазерной резки и ЧПУ обработки в Узбекистане</title>
-
-    <!-- SEO meta tags -->
-    <meta name="description" content="Профессиональные услуги 3D печати, лазерной резки, ЧПУ обработки, УФ-печати и инженерных решений в Ташкенте. Создавайте кастомные детали, прототипы, инженерные конструкции и конечные изделия с FabLab CFYI – ведущей цифровой фабрикацией в Узбекистане.">
-    <meta name="keywords" content="3D печать, FDM печать, SLA печать, лазерная резка, станки ЧПУ, запасные части, изготовление деталей, ремонт оборудования, проектирование деталей, пресс форма, штамп форма, УФ печать, САПР, аддитивное производство">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/ru/">
     
-    <!-- Order matters! Font awesome first, then our stylesheet -->
+    <!-- Improved SEO meta tags with focused keywords -->
+    <meta name="description" content="Ведущая цифровая производственная лаборатория Ташкента, предлагающая профессиональные услуги 3D-печати, лазерной резки, ЧПУ-обработки и индивидуального прототипирования. Качественные производственные решения в Узбекистане с быстрым сроком выполнения.">
+    <meta name="keywords" content="3D печать Ташкент, цифровое производство Узбекистан, услуги лазерной резки, ЧПУ обработка Ташкент, быстрое прототипирование, изготовление нестандартных деталей, услуги промышленного дизайна">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/ru/">
+    <link rel="alternate" hreflang="ru" href="https://abdulmumin5206.github.io/fablabwebsite/ru/">
+    <link rel="alternate" hreflang="en" href="https://abdulmumin5206.github.io/fablabwebsite/en/">
+    <link rel="alternate" hreflang="uz" href="https://abdulmumin5206.github.io/fablabwebsite/uz/">
+    <link rel="alternate" hreflang="x-default" href="https://abdulmumin5206.github.io/fablabwebsite/">
+    
+    <!-- Enhanced Open Graph Tags for better social sharing -->
+    <meta property="og:title" content="FabLab Ташкент | Услуги цифрового производства и 3D печати">
+    <meta property="og:description" content="Ведущая лаборатория цифрового производства Ташкента, предлагающая профессиональные услуги 3D-печати, лазерной резки, ЧПУ-обработки и прототипирования. Качественные производственные решения в Узбекистане.">
+    <meta property="og:image" content="https://abdulmumin5206.github.io/fablabwebsite/images/fablab/og-image.jpg">
+    <meta property="og:url" content="https://abdulmumin5206.github.io/fablabwebsite/ru/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="FabLab Ташкент">
+    
+    <!-- Twitter Card Tags with improved descriptions -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FabLab Ташкент | Цифровое производство и 3D печать">
+    <meta name="twitter:description" content="Профессиональные услуги 3D-печати, лазерной резки, ЧПУ-обработки и прототипирования в Ташкенте. Превращаем ваши идеи в реальность с ведущей лабораторией цифрового производства Узбекистана.">
+    <meta name="twitter:image" content="https://abdulmumin5206.github.io/fablabwebsite/images/fablab/og-image.jpg">
+    
+    <!-- Favicon and Stylesheets -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏭</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEG7X24KJH"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FEG7X24KJH');
-    </script>
     
-    <!-- Critical CSS fixes -->
-    <style>
-        /* Same styles as in the English version */
-        .portfolio-overlay {
-            opacity: 0;
-            transform: none !important;
-            transition: opacity 0.8s ease !important;
-        }
-        .portfolio-overlay.show-overlay {
-            opacity: 1;
-        }
-        
-        .select-items {
-            display: block !important;
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
-        }
-        .select-items.select-show {
-            opacity: 1;
-            visibility: visible;
-            max-height: 200px;
-            padding: 5px 0;
-        }
-        
-        .nav-controls {
-            z-index: 1100;
-        }
-        .custom-select {
-            z-index: 1200;
-        }
-        
-        body.dark-mode {
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        
-        .seo-rich-content {
-            display: none;
-            visibility: hidden;
-        }
-    </style>
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="preload" href="../images/fablab/slide1.jpg" as="image">
     
-    <!-- Schema.org structured data -->
+    <!-- Structured data for Local Business -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FabLab Ташкент",
+      "description": "Профессиональные услуги 3D-печати, лазерной резки, ЧПУ-обработки, УФ-печати и инженерных решений в Ташкенте, Узбекистан.",
+      "image": "https://abdulmumin5206.github.io/fablabwebsite/images/fablab/logo.jpg",
+      "url": "https://abdulmumin5206.github.io/fablabwebsite/ru/",
+      "telephone": "+998 77 088 39 77",
+      "email": "info@cfyi.uz",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Мирзо-Улугбекский р-н, Олмачи 17",
+        "addressLocality": "Ташкент",
+        "postalCode": "100007",
+        "addressCountry": "UZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.3274,
+        "longitude": 69.3338
+      },
+      "openingHoursSpecification": [
         {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "@id": "https://abdulmumin5206.github.io/fablabwebsite/en/",
-          "name": "FabLab CFYI",
-          "url": "https://abdulmumin5206.github.io/fablabwebsite/en/",
-          "description": "Professional 3D printing, laser cutting, CNC machining, UV printing, and engineering services in Tashkent.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Tashkent, Mirzo-Ulugbek dist. Olmachi 17",
-            "addressLocality": "Tashkent",
-            "postalCode": "100007",
-            "addressCountry": "Uzbekistan"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+998 77 088 39 77",
-            "contactType": "customer service",
-            "email": "Info@cfyi.uz"
-          },
-          "sameAs": [
-            "https://www.instagram.com/fablab.cfyi",
-            "https://www.linkedin.com/company/center-for-youth-initiatives",
-            "https://www.youtube.com/@CenterforYouthInitiatives",
-            "https://www.facebook.com/centerforyouthinitiatives"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "FabLab Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "3D Printing Services",
-                  "description": "High-quality FDM and SLA 3D printing services for prototypes, spare parts, and final products."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Laser Cutting Services",
-                  "description": "Precision laser cutting for various materials including acrylic, wood, and metal."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "CNC Machining",
-                  "description": "High-precision CNC machining for custom parts manufacturing and engineering solutions."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "UV Printing",
-                  "description": "High-resolution UV printing on various materials and surfaces for branding and customization."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Engineering & CAD Design",
-                  "description": "Professional 3D modeling, CAD design, and engineering services for prototypes and industrial applications."
-                }
-              }
-            ]
-          }
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
         }
-        </script>
-        
+      ],
+      "sameAs": [
+        "https://www.instagram.com/fablab.cfyi",
+        "https://www.linkedin.com/company/center-for-youth-initiatives",
+        "https://www.youtube.com/@CenterforYouthInitiatives",
+        "https://www.facebook.com/centerforyouthinitiatives"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги цифрового производства",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Услуги 3D-печати",
+              "description": "Профессиональные услуги FDM и SLA 3D-печати в Ташкенте"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Лазерная резка и гравировка",
+              "description": "Услуги прецизионной лазерной резки в Узбекистане"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "ЧПУ обработка",
+              "description": "Высокоточные услуги ЧПУ обработки в Ташкенте"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+    
     
     <!-- IMPORTANT: Load translations and scripts -->
     <script src="../translations.js"></script>
@@ -162,14 +128,8 @@
     <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru" />
     <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz" />
     <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/" hreflang="x-default" />
-</head>
-<body>
-
-    <div class="language-switcher">
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/en/" hreflang="en">English</a> |
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru">Русский</a> |
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz">O'zbek</a>
-    </div>
+    </head>
+    <body>
     
     <!-- Navigation -->
     <nav>

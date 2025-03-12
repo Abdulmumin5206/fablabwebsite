@@ -1,159 +1,121 @@
-<!DOCTYPE html>
-<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FabLab Toshkent | O'zbekistonda 3D printer, lazer kesish va CNC xizmatlari</title>
+    <title>FabLab Toshkent | O'zbekistonda 3D bosib chiqarish, lazer kesish va CNC xizmatlari</title>
     
-    <!-- SEO meta tags -->
-    <meta name="description" content="Toshkentda 3D bosib chiqarish, lazerli kesish, CNC ishlov berish, UV bosib chiqarish va muhandislik xizmatlari. FabLab CFYI bilan maxsus ehtiyot qismlar, prototiplar, muhandislik yechimlari va mahsulotlar yarating.">
-    <meta name="keywords" content="3D bosma, FDM bosma, SLA bosma, lazer kesish, CNC dastgohlar, ehtiyot qismlar, detallarni ishlab chiqarish, uskunalarni tamirlash, detallarni loyihalash, press qolip, shtamp qolip, UV bosma, CAD, additiv ishlab chiqarish">
-    <meta name="robots" content="index, follow">
+    <!-- Improved SEO meta tags with focused keywords -->
+    <meta name="description" content="Toshkentdagi eng ilg'or raqamli ishlab chiqarish laboratoriyasi professional 3D bosib chiqarish, lazer kesish, CNC ishlov berish va buyurtmaga asoslangan prototiplash xizmatlarini taqdim etadi. O'zbekistonda yuqori sifatli ishlab chiqarish yechimlari va tez xizmat ko'rsatish.">
+    <meta name="keywords" content="Toshkentda 3D bosib chiqarish, O'zbekistonda raqamli ishlab chiqarish, lazer kesish xizmatlari, Toshkentda CNC ishlov berish, tez prototiplash, maxsus detallar ishlab chiqarish, sanoat dizayn xizmatlari">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/uz/">
+    <link rel="alternate" hreflang="uz" href="https://abdulmumin5206.github.io/fablabwebsite/uz/">
+    <link rel="alternate" hreflang="en" href="https://abdulmumin5206.github.io/fablabwebsite/en/">
+    <link rel="alternate" hreflang="ru" href="https://abdulmumin5206.github.io/fablabwebsite/ru/">
+    <link rel="alternate" hreflang="x-default" href="https://abdulmumin5206.github.io/fablabwebsite/">
     
-    <!-- Order matters! Font awesome first, then our stylesheet -->
+    <!-- Enhanced Open Graph Tags for better social sharing -->
+    <meta property="og:title" content="FabLab Toshkent | Raqamli ishlab chiqarish va 3D bosib chiqarish xizmatlari">
+    <meta property="og:description" content="Toshkentdagi eng ilg'or raqamli ishlab chiqarish laboratoriyasi professional 3D bosib chiqarish, lazer kesish, CNC ishlov berish va prototiplash xizmatlarini taqdim etadi. O'zbekistonda yuqori sifatli ishlab chiqarish yechimlari.">
+    <meta property="og:image" content="https://abdulmumin5206.github.io/fablabwebsite/images/fablab/og-image.jpg">
+    <meta property="og:url" content="https://abdulmumin5206.github.io/fablabwebsite/uz/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="uz_UZ">
+    <meta property="og:site_name" content="FabLab Toshkent">
+    
+    <!-- Twitter Card Tags with improved descriptions -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FabLab Toshkent | Raqamli ishlab chiqarish va 3D bosib chiqarish">
+    <meta name="twitter:description" content="Toshkentda professional 3D bosib chiqarish, lazer kesish, CNC ishlov berish va prototiplash xizmatlari. O'zbekistonning yetakchi raqamli ishlab chiqarish laboratoriyasi bilan g'oyalaringizni amalda qo'llash.">
+    <meta name="twitter:image" content="https://abdulmumin5206.github.io/fablabwebsite/images/fablab/og-image.jpg">
+    
+    <!-- Favicon and Stylesheets -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏭</text></svg>" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../styles.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FEG7X24KJH"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-FEG7X24KJH');
-    </script>
     
-       <!-- Language links -->
-       <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/en/" hreflang="en" />
-       <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru" />
-       <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz" />
-       <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/" hreflang="x-default" />
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="preload" href="../images/fablab/slide1.jpg" as="image">
     
-    <!-- Critical CSS fixes -->
-    <style>
-        /* Same style definitions as in the other language versions */
-        .portfolio-overlay {
-            opacity: 0;
-            transform: none !important;
-            transition: opacity 0.8s ease !important;
-        }
-        .portfolio-overlay.show-overlay {
-            opacity: 1;
-        }
-        
-        .select-items {
-            display: block !important;
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.3s ease;
-        }
-        .select-items.select-show {
-            opacity: 1;
-            visibility: visible;
-            max-height: 200px;
-            padding: 5px 0;
-        }
-        
-        .nav-controls {
-            z-index: 1100;
-        }
-        .custom-select {
-            z-index: 1200;
-        }
-        
-        body.dark-mode {
-            background-color: #1a1a1a;
-            color: #f5f5f5;
-        }
-        
-        .seo-rich-content {
-            display: none;
-            visibility: hidden;
-        }
-    </style>
-    
-    <!-- Schema.org structured data -->
+    <!-- Structured data for Local Business -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FabLab Toshkent",
+      "description": "Toshkentda professional 3D bosib chiqarish, lazer kesish, CNC ishlov berish, UV bosib chiqarish va muhandislik xizmatlari, O'zbekiston.",
+      "image": "https://abdulmumin5206.github.io/fablabwebsite/images/fablab/logo.jpg",
+      "url": "https://abdulmumin5206.github.io/fablabwebsite/uz/",
+      "telephone": "+998 77 088 39 77",
+      "email": "info@cfyi.uz",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mirzo-Ulugbek tumani, Olmachi 17",
+        "addressLocality": "Toshkent",
+        "postalCode": "100007",
+        "addressCountry": "UZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.3274,
+        "longitude": 69.3338
+      },
+      "openingHoursSpecification": [
         {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "@id": "https://abdulmumin5206.github.io/fablabwebsite/en/",
-          "name": "FabLab CFYI",
-          "url": "https://abdulmumin5206.github.io/fablabwebsite/en/",
-          "description": "Professional 3D printing, laser cutting, CNC machining, UV printing, and engineering services in Tashkent.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Tashkent, Mirzo-Ulugbek dist. Olmachi 17",
-            "addressLocality": "Tashkent",
-            "postalCode": "100007",
-            "addressCountry": "UZ"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+998 77 088 39 77",
-            "contactType": "customer service",
-            "email": "Info@cfyi.uz"
-          },
-          "sameAs": [
-            "https://www.instagram.com/fablab.cfyi",
-            "https://www.linkedin.com/company/center-for-youth-initiatives",
-            "https://www.youtube.com/@CenterforYouthInitiatives",
-            "https://www.facebook.com/centerforyouthinitiatives"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "FabLab Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "3D Printing Services",
-                  "description": "High-quality FDM and SLA 3D printing services for prototypes, spare parts, and final products."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Laser Cutting Services",
-                  "description": "Precision laser cutting for various materials including acrylic, wood, and metal."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "CNC Machining",
-                  "description": "High-precision CNC machining for custom parts manufacturing and engineering solutions."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "UV Printing",
-                  "description": "High-resolution UV printing on various materials and surfaces for branding and customization."
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Engineering & CAD Design",
-                  "description": "Professional 3D modeling, CAD design, and engineering services for prototypes and industrial applications."
-                }
-              }
-            ]
-          }
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
         }
-        </script>
+      ],
+      "sameAs": [
+        "https://www.instagram.com/fablab.cfyi",
+        "https://www.linkedin.com/company/center-for-youth-initiatives",
+        "https://www.youtube.com/@CenterforYouthInitiatives",
+        "https://www.facebook.com/centerforyouthinitiatives"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Raqamli ishlab chiqarish xizmatlari",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "3D bosib chiqarish xizmatlari",
+              "description": "Toshkentda professional FDM va SLA 3D bosib chiqarish xizmatlari"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Lazer kesish va o'ymakorlash",
+              "description": "O'zbekistonda aniq lazer kesish xizmatlari"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "CNC ishlov berish",
+              "description": "Toshkentda yuqori aniqlikdagi CNC ishlov berish xizmatlari"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
         
+    <!-- Language links -->
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/en/" hreflang="en" />
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru" />
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz" />
+    <link rel="alternate" href="https://abdulmumin5206.github.io/fablabwebsite/" hreflang="x-default" />
     
     <!-- IMPORTANT: Load translations and scripts -->
     <script src="../translations.js"></script>
@@ -164,12 +126,6 @@
     <script src="../router.js"></script>
 </head>
 <body>
-
-    <div class="language-switcher">
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/en/" hreflang="en">English</a> |
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/ru/" hreflang="ru">Русский</a> |
-        <a href="https://abdulmumin5206.github.io/fablabwebsite/uz/" hreflang="uz">O'zbek</a>
-    </div>
     
 
     <!-- Navigation -->
