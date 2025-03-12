@@ -283,6 +283,7 @@ const translations = {
     en: {
         home: "Home",
         services: "Services",
+        servicesIntro: "Our FabLab offers a comprehensive range of digital fabrication services including 3D printing (FDM & SLA), laser cutting, CNC machining, and UV printing. We specialize in custom parts manufacturing, equipment repair, and parts design for various industries.",
         portfolio: "Portfolio",
         equipment: "Equipment",
         about: "About",
@@ -341,6 +342,7 @@ const translations = {
         
         home: "Главная",
         services: "Услуги",
+        servicesIntro: "Наш FabLab предлагает полный спектр услуг цифрового производства, включая 3D-печать (FDM и SLA), лазерную резку, ЧПУ-обработку и УФ-печать. Мы специализируемся на изготовлении деталей на заказ, ремонте оборудования и проектировании деталей для различных отраслей.",
         portfolio: "Портфолио",
         equipment: "Оборудование",
         about: "О нас",
@@ -490,6 +492,7 @@ const translations = {
     uz: {
         home: "Bosh sahifa",
         services: "Xizmatlar",
+        servicesIntro: "Bizning FabLab 3D bosma (FDM va SLA), lazer kesish, CNC ishlov berish va UV bosma kabi raqamli ishlab chiqarish xizmatlarining keng doirasini taklif etadi. Biz turli sanoat sohalari uchun maxsus detallarni ishlab chiqarish, uskunalarni ta'mirlash va detallarni loyihalashda ixtisoslashganmiz.",
         portfolio: "Portfolio",
         equipment: "Uskunalar",
         about: "Biz haqimizda",
