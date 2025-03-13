@@ -1,0 +1,84 @@
+/* 
+ * FabLab - Sections Styles
+ * Contents:
+ * 1. Hero Section
+ * 2. Services Section
+ * 3. Portfolio Section
+ * 4. Equipment Section
+ * 5. About Section
+ * 6. Contact Section
+ */
+
+/* =====================
+   1. Hero Section
+   ===================== */
+   .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+}
+
+/* =====================
+   2. Services Section
+   ===================== */
+.services-intro strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* =====================
+   3. Portfolio Section
+   ===================== */
+.portfolio-placeholder {
+    width: 100%;
+    height: 0;
+}
+
+/* =====================
+   4. Equipment Section
+   ===================== */
+/* Equipment section styling already covered in components.css */
+
+/* =====================
+   5. About Section
+   ===================== */
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* =====================
+   6. Contact Section
+   ===================== */
+/* Contact section styling already covered in layout.css and components.css */
+
+@media screen and (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .about-text p {
+    color: var(--text-muted-light);
+}

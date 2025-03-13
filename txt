@@ -1,0 +1,12 @@
+I'll create a 5-file structure that balances organization with maintainability:
+
+base.css - Fundamentals: resets, variables, typography, global elements
+layout.css - Structural components: containers, grids, sections, navigation, footer
+components.css - Reusable UI elements: cards, buttons, forms, modals, tabs
+sections.css - Page-specific sections: hero, services, portfolio, equipment, about, contact
+theme.css - Visual modifiers: dark mode, media queries, utilities, animations
+This structure follows professional principles while keeping files to a manageable number. It separates concerns, makes debugging easier, and allows for better caching strategies.
+
+
+
+

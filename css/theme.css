@@ -1,0 +1,79 @@
+/* 
+ * FabLab - Theme Styles
+ * Contents:
+ * 1. Media Queries
+ * 2. Browser Compatibility
+ * 3. Dark Mode Overrides
+ */
+
+/* =====================
+   1. Media Queries
+   ===================== */
+/* These were moved to layout.css for better organization */
+
+/* =====================
+   2. Browser Compatibility
+   ===================== */
+/* Fix for Firefox browser */
+@-moz-document url-prefix() {
+    .select-items {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+    
+    body.dark-mode .select-items {
+        background-color: rgba(42, 42, 42, 0.95);
+    }
+}
+
+/* IE 10+ specific styles */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .portfolio-item {
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .service-card {
+        height: 350px;
+    }
+    
+    .hero-content {
+        padding-top: 30vh;
+    }
+}
+
+/* Fixes for Safari browser */
+@media not all and (min-resolution:.001dpcm) {
+    .select-items {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .portfolio-item {
+        will-change: transform;
+    }
+}
+
+/* Print styles (additional ones) */
+@media print {
+    nav, 
+    .slideshow-navigation,
+    .nav-dot,
+    footer {
+        display: none !important;
+    }
+
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .portfolio-item,
+    .service-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* =====================
+   3. Dark Mode Overrides
+   ===================== */
+/* These were moved to their respective component files for better organization */

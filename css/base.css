@@ -1,0 +1,295 @@
+/* 
+ * FabLab - Base Styles
+ * Contents:
+ * 1. CSS Variables
+ * 2. Reset & Normalization
+ * 3. Typography
+ * 4. Global Elements
+ */
+
+/* =====================
+   1. CSS Variables
+   ===================== */
+   :root {
+    /* Colors */
+    --primary: #4a90e2;
+    --primary-dark: #357abd;
+    --primary-light: #64b5f6;
+    --text-dark: #333;
+    --text-light: #f5f5f5;
+    --text-muted: #666;
+    --text-muted-light: #bbb;
+    --bg-light: #fff;
+    --bg-light-alt: #f9f9f9;
+    --bg-light-alt2: #f5f5f5;
+    --bg-dark: #1a1a1a;
+    --bg-dark-alt: #242424;
+    --bg-dark-alt2: #222222;
+    --border-light: #ddd;
+    --border-dark: #444;
+    
+    /* Spacing */
+    --space-xs: 5px;
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 40px;
+    --space-xxl: 80px;
+    
+    /* Shadows */
+    --shadow-sm: 0 3px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.12);
+    
+    /* Transitions */
+    --transition-fast: all 0.2s ease;
+    --transition-normal: all 0.3s ease;
+    --transition-slow: all 0.4s ease;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-round: 30px;
+    --radius-circle: 50%;
+}
+
+/* =====================
+   2. Reset & Normalization
+   ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* Account for fixed navbar */
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body:not(.loaded) {
+    transition: none; /* Disable transitions before page load */
+}
+
+body.theme-transition {
+    opacity: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-normal);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =====================
+   3. Typography 
+   ===================== */
+.section-title {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    font-size: 2.5rem;
+    color: var(--text-dark);
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 10px auto;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 50px 0 25px;
+    text-align: center;
+    position: relative;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--space-md);
+}
+
+.category-title:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary);
+    margin: 10px auto;
+}
+
+/* =====================
+   4. Global Elements
+   ===================== */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+section {
+    padding: var(--space-xxl) 0;
+}
+
+.cta-button {
+    padding: 15px 35px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-round);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    font-weight: bold;
+    box-shadow: var(--shadow-sm);
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-circle);
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-md);
+}
+
+.scroll-top-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.scroll-top-btn i {
+    font-size: 20px;
+}
+
+/* Dark mode adjustments for base elements */
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+body.dark-mode .section-title {
+    color: var(--text-light);
+}
+
+body.dark-mode .scroll-top-btn {
+    background-color: var(--primary-dark);
+}
+
+body.dark-mode .scroll-top-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* Language-specific adjustments */
+[lang="ru"] .hero-content h1,
+[lang="uz"] .hero-content h1,
+[lang="en"] .hero-content h1,
+[data-i18n="welcome"] {
+    font-size: 2.6rem;
+    line-height: 1.3;
+}
+
+@media screen and (max-width: 992px) {
+    [lang="ru"] .hero-content h1,
+    [lang="uz"] .hero-content h1,
+    [lang="en"] .hero-content h1,
+    [data-i18n="welcome"] {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    [lang="ru"] .hero-content h1,
+    [lang="uz"] .hero-content h1,
+    [lang="en"] .hero-content h1,
+    [data-i18n="welcome"] {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    [lang="ru"] .hero-content h1,
+    [lang="uz"] .hero-content h1,
+    [lang="en"] .hero-content h1,
+    [data-i18n="welcome"] {
+        font-size: 1.6rem;
+    }
+    
+    [lang="ru"] .hero-content p,
+    [lang="uz"] .hero-content p,
+    [lang="en"] .hero-content p,
+    [data-i18n="slogan"] {
+        font-size: 0.95rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .cta-button,
+    .scroll-top-btn {
+        display: none !important;
+    }
+    
+    body {
+        background-color: white !important;
+    }
+    
+    section {
+        page-break-inside: avoid;
+        padding: 20px 0;
+    }
+}
