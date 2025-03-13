@@ -216,6 +216,8 @@ function initHeroSlideshow() {
 }
 
 // Theme toggle functionality with page reload
+// Theme toggle functionality with fade-out to hide flickering
+// Theme toggle functionality with immediate page reload
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.getElementById('theme-toggle-icon');
@@ -237,22 +239,20 @@ function initThemeToggle() {
         themeIcon.className = 'fas fa-moon';
     }
 
-    // Toggle theme on click
-    themeToggle.addEventListener('click', function () {
-        // Toggle dark mode class
-        const isDarkMode = document.body.classList.toggle('dark-mode');
-
-        // Update icon
-        themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
-
-        // Save preference
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-
-        // Reload the page
+    // Toggle theme on click with immediate reload
+    themeToggle.addEventListener('click', function (e) {
+        // Prevent default behavior
+        e.preventDefault();
+        
+        // Toggle the theme preference in localStorage without changing DOM
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        
+        // Reload the page immediately to apply the new theme
         window.location.reload();
     });
 }
-
 // Language selector functionality with page reload
 function initLanguageSelector() {
     const selectSelected = document.querySelector('.select-selected');

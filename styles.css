@@ -36,6 +36,7 @@ body {
     color: #333;
     background-color: #fff;
     transition: background-color 0.3s ease, color 0.3s ease;
+    
 }
 
 section {
@@ -2287,4 +2288,10 @@ body[lang="ru"] .hero-content h1,
         height: auto; /* Maintain aspect ratio */
         max-height: 60px; /* Prevent it from being too tall */
         display: block;
+    }
+    body {
+        transition: opacity 0.4s ease;
+    }
+    body.theme-transition {
+        opacity: 0;
     }
