@@ -10,7 +10,7 @@
 /* =====================
    1. Navigation
    ===================== */
-   nav {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -475,6 +475,99 @@ body.dark-mode .nav-links,
 body.dark-mode .nav-links li,
 body.dark-mode .nav-links a {
     background-color: transparent !important;
+}
+
+/* Mobile Header Styles */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 10px 15px;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+    
+    body.dark-mode nav {
+        background-color: rgba(26, 26, 26, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo img {
+        max-height: 40px;
+        width: auto;
+    }
+    
+    .logo h1 {
+        font-size: 16px;
+        margin-left: 8px;
+    }
+    
+    .nav-controls {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .theme-toggle {
+        margin-right: 0;
+    }
+    
+    .select-selected {
+        padding: 6px 10px;
+        min-width: 100px;
+        font-size: 14px;
+        border-radius: var(--radius-round);
+    }
+    
+    .burger {
+        margin-left: 15px;
+    }
+    
+    /* Always use contrasting colors regardless of scroll state */
+    body:not(.dark-mode) .burger div {
+        background-color: var(--text-dark);
+    }
+    
+    body:not(.dark-mode) .theme-toggle i {
+        color: var(--text-dark);
+    }
+    
+    body:not(.dark-mode) .logo h1 {
+        color: var(--text-dark);
+    }
+    
+    body:not(.dark-mode) .select-selected {
+        border-color: rgba(0, 0, 0, 0.15);
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    body.dark-mode .burger div {
+        background-color: var(--text-light);
+    }
+    
+    body.dark-mode .theme-toggle i {
+        color: var(--text-light);
+    }
+    
+    body.dark-mode .logo h1 {
+        color: var(--text-light);
+    }
+    
+    body.dark-mode .select-selected {
+        border-color: rgba(255, 255, 255, 0.1);
+        background-color: var(--bg-dark-alt);
+        color: var(--text-light);
+    }
 }
 
 body.dark-mode .logo h1 {
