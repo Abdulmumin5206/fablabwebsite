@@ -36,7 +36,6 @@ nav.scrolled {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 22px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .logo img {
@@ -70,7 +69,6 @@ nav.scrolled .logo h1 {
     font-size: 15px;
     padding: 8px 10px;
     transition: var(--transition-normal);
-    
 }
 
 .nav-links a:hover {
@@ -147,7 +145,6 @@ nav.scrolled .burger div {
     font-size: 18px;
     color: white;
     transition: transform 0.3s ease, color 0.3s ease;
-    
 }
 
 nav.scrolled .theme-toggle i {
@@ -180,7 +177,6 @@ nav.scrolled .theme-toggle i {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     min-width: 120px;
-   
 }
 
 nav.scrolled .select-selected {
