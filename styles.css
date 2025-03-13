@@ -143,6 +143,56 @@ section {
 /* =====================
    4. Navigation
    ===================== */
+
+   @media screen and (max-width: 768px) {
+    .nav-links {
+        background-color: white; /* Açıldığında arka plan beyaz */
+    }
+
+    .nav-links a {
+        color: black !important; /* Menü içindeki linkler siyah */
+    }
+
+    body.dark-mode .nav-links {
+        background-color: #1a1a1a; /* Karanlık modda arka plan koyu */
+    }
+
+    body.dark-mode .nav-links a {
+        color: white !important;
+    }
+   }
+
+   @media screen and (max-width: 768px) {
+    .theme-toggle i {
+        color: black !important; /* Light mode ikonu siyah */
+    }
+
+    body.dark-mode .theme-toggle i {
+        color: white !important; /* Karanlık modda beyaz kalmasını sağla */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .burger {
+        display: none !important; /* Desktop'ta burger menüyü gizle */
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static !important;
+        transform: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .nav-links a {
+        color: white !important;
+    }
+}
+
+
+
+
    nav {
     display: flex;
     justify-content: space-between;
@@ -2303,4 +2353,5 @@ body[lang="ru"] .hero-content h1,
     body.dark-mode nav.scrolled .nav-links a:hover {
         color: #64b5f6;
         transform: translateY(-3px) scale(1.05);
+       
     }
