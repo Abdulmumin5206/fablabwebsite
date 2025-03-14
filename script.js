@@ -413,3 +413,243 @@ function enhancePortfolio() {
         }
     });
 }
+
+// Modern FAQ and Contact Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize FAQ Accordion
+    initFAQ();
+    
+    // Initialize File Upload
+    initFileUpload();
+    
+    // Update Navigation
+    updateNavigation();
+    
+    // Initialize Form Animations
+    initFormAnimations();
+});
+
+// FAQ Accordion
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    // Animate FAQ items on load
+    setTimeout(() => {
+        faqItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 50);
+            }, index * 100);
+        });
+    }, 300);
+    
+    // Add click event to each FAQ header
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+        
+        header.addEventListener('click', () => {
+            // Check if this item is already active
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+            
+            // If clicked item wasn't active, make it active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+    
+    // Open first FAQ item by default
+    if (faqItems.length > 0) {
+        setTimeout(() => {
+            faqItems[0].classList.add('active');
+        }, 800);
+    }
+}
+
+// Advanced File Upload
+function initFileUpload() {
+    const dropArea = document.getElementById('drop-area');
+    const fileInput = document.getElementById('file-upload');
+    const fileList = document.getElementById('file-list');
+    
+    if (!dropArea || !fileInput || !fileList) return;
+    
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+    
+    // Handle dropped files
+    dropArea.addEventListener('drop', handleDrop, false);
+    
+    // Handle files from input
+    fileInput.addEventListener('change', handleFiles, false);
+    
+    // Handle click on drop area
+    dropArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+    
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+    
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles({ target: { files } });
+    }
+    
+    function handleFiles(e) {
+        const files = e.target.files;
+        if (files.length > 5) {
+            alert('Please select no more than 5 files');
+            return;
+        }
+        
+        fileList.innerHTML = '';
+        
+        [...files].forEach(file => {
+            // Validate file type
+            const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+            if (!validTypes.includes(file.type)) {
+                alert(`File type not allowed: ${file.name}`);
+                return;
+            }
+            
+            // File size validation (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert(`File too large: ${file.name}`);
+                return;
+            }
+            
+            // Create file item element
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            
+            // File icon based on type
+            let fileIcon = 'fa-file';
+            if (file.type === 'application/pdf') fileIcon = 'fa-file-pdf';
+            if (file.type.startsWith('image/')) fileIcon = 'fa-file-image';
+            
+            // Format file size
+            const fileSize = formatFileSize(file.size);
+            
+            fileItem.innerHTML = `
+                <div class="file-item-name">
+                    <i class="fas ${fileIcon}"></i>
+                    ${file.name}
+                </div>
+                <div class="file-item-size">${fileSize}</div>
+                <div class="remove-file" data-name="${file.name}">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+            
+            fileList.appendChild(fileItem);
+        });
+        
+        // Add event listeners to remove buttons
+        document.querySelectorAll('.remove-file').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.file-item').remove();
+            });
+        });
+    }
+    
+    function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + ' bytes';
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+        else return (bytes / 1048576).toFixed(1) + ' MB';
+    }
+}
+
+// Initialize Form Animations
+function initFormAnimations() {
+    // Add floating label effect for inputs that are pre-filled
+    const inputs = document.querySelectorAll('.input-group input, .input-group select, .input-group textarea');
+    
+    inputs.forEach(input => {
+        // Check if input has value on load
+        if (input.value.trim() !== '') {
+            input.classList.add('has-value');
+        }
+        
+        // Add event listeners for focus and blur
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('focused');
+            if (input.value.trim() !== '') {
+                input.classList.add('has-value');
+            } else {
+                input.classList.remove('has-value');
+            }
+        });
+        
+        // For select elements
+        if (input.tagName.toLowerCase() === 'select') {
+            input.addEventListener('change', () => {
+                if (input.value !== '') {
+                    input.classList.add('has-value');
+                }
+            });
+        }
+    });
+}
+
+// Update navigation menu to include FAQ-Contact
+function updateNavigation() {
+    const navLinks = document.querySelector('.nav-links');
+    const contactLink = document.querySelector('.nav-links li a[href="#contact"]');
+    
+    if (navLinks && contactLink) {
+        const contactListItem = contactLink.parentElement;
+        const faqContactLink = document.createElement('a');
+        
+        faqContactLink.href = '#faq-contact';
+        faqContactLink.setAttribute('data-i18n', 'faqContact');
+        faqContactLink.setAttribute('itemprop', 'url');
+        faqContactLink.setAttribute('title', 'FAQ & Contact');
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.setAttribute('itemprop', 'name');
+        nameSpan.textContent = 'FAQ & Contact';
+        
+        faqContactLink.appendChild(nameSpan);
+        contactListItem.innerHTML = '';
+        contactListItem.appendChild(faqContactLink);
+    }
+}

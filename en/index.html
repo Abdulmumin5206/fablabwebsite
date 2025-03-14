@@ -10,12 +10,12 @@
     gtag('js', new Date());
 
     gtag('config', 'G-966EQ59369');
-    </script>
+</script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FabLab Tashkent | Digital Fabrication & 3D Printing Services in Uzbekistan</title>
-    
+
     <!-- SEO Optimization -->
     <meta name="description" content="FabLab Tashkent offers professional 3D printing, laser cutting, CNC machining, and prototyping in Uzbekistan. Transform your ideas into reality.">
     <meta name="keywords" content="3D printing Tashkent, digital fabrication Uzbekistan, laser cutting services, CNC machining, rapid prototyping, custom parts manufacturing">
@@ -740,48 +740,157 @@
         </div>
     </section>
 
-   <!-- Contact Section with SVG Icons -->
-<section id="contact" class="contact">
+<!-- Modern FAQ and Contact Section -->
+<section id="faq-contact" class="faq-contact">
+    <div class="section-background">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
+    
     <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <h3>Send us a Message</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+        <div class="section-header">
+            <h2 class="main-title">How Can We Help You?</h2>
+            <p class="subtitle">Get answers to common questions or send us a message</p>
+        </div>
+        
+        <div class="faq-contact-wrapper">
+            <!-- Contact Form (Left) -->
+            <div class="contact-panel">
+                <div class="form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Full Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email Address</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="tel" id="phone" name="phone">
+                                <label for="phone">Phone Number</label>
+                            </div>
+                            <div class="input-group">
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Equipment Rental">Equipment Rental</option>
+                                    <option value="Workshop Registration">Workshop Registration</option>
+                                    <option value="Partnership">Partnership Opportunities</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <label for="subject">Subject</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group textarea-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        
+                        <div class="file-upload-container">
+                            <div class="file-upload-area" id="drop-area">
+                                <input type="file" id="file-upload" name="files" multiple class="file-input">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag files here or <span class="browse-text">browse</span></p>
+                                    <p class="upload-info">Max 5 files (PDF, JPG, PNG)</p>
+                                </div>
+                            </div>
+                            <div id="file-list" class="file-list"></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- FAQ Accordion (Right) -->
+            <div class="faq-panel">
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>What types of manufacturing services does CFYA Innovation Center offer?</h3>
+                            <div class="icon-container">
+                                <div class="icon-line horizontal"></div>
+                                <div class="icon-line vertical"></div>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            <ul>
+                                <li><strong>A)</strong> Manufacturing parts based on provided samples</li>
+                                <li><strong>B)</strong> Restoring damaged parts</li>
+                                <li><strong>C)</strong> Producing spare parts and molds according to technical documentation</li>
+                                <li><strong>D)</strong> Designing and manufacturing parts based on technical specifications</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>What are the technical competencies of your FabLab?</h3>
+                            <div class="icon-container">
+                                <div class="icon-line horizontal"></div>
+                                <div class="icon-line vertical"></div>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            <ul>
+                                <li><strong>FDM and SLA 3D printing</strong> are used for spare part production and equipment repair.</li>
+                                <li><strong>CNC machines and laser cutting</strong> are used for preparing blanks and molds.</li>
+                                <li><strong>Production of a wide range of spare parts and repair kits</strong> for enterprises in various industries.</li>
+                                <li>To restore unique spare parts, <strong>3D scanning</strong> is used to create a digital model, followed by <strong>AutoCAD</strong> processing for full documentation.</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>Which industries do you provide manufacturing services for?</h3>
+                            <div class="icon-container">
+                                <div class="icon-line horizontal"></div>
+                                <div class="icon-line vertical"></div>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            <p>We provide spare parts and repair kits for enterprises in various industries including:</p>
+                            <ul>
+                                <li>Textile industry</li>
+                                <li>Food processing industry</li>
+                                <li>Printing industry</li>
+                                <li>Furniture manufacturing</li>
+                                <li>And other industrial sectors requiring precision parts</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject" required>
-                            <option value="" disabled selected>Select a subject</option>
-                            <option value="General Inquiry">General Inquiry</option>
-                            <option value="Equipment Rental">Equipment Rental</option>
-                            <option value="Workshop Registration">Workshop Registration</option>
-                            <option value="Partnership">Partnership Opportunities</option>
-                            <option value="Other">Other</option>
-                        </select>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h3>How do you handle the restoration of damaged or obsolete parts?</h3>
+                            <div class="icon-container">
+                                <div class="icon-line horizontal"></div>
+                                <div class="icon-line vertical"></div>
+                            </div>
+                        </div>
+                        <div class="faq-content">
+                            <p>Our restoration process includes:</p>
+                            <ol>
+                                <li>3D scanning of the damaged part to create a digital model</li>
+                                <li>Processing the model in AutoCAD for creating complete technical documentation</li>
+                                <li>Manufacturing the replacement part using appropriate technology</li>
+                                <li>Quality control testing to ensure the part meets all specifications</li>
+                            </ol>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -850,10 +959,10 @@
         <div class="footer-links">
             <h3>Contact Info</h3>
             <ul>
-                <li>+998 77 088 39 77</li>
+                <li>+998 (77) 088 39 77 (ru/uz)</li>
+                <li>+998 (77) 088 49 77 (ru/en)</li>
                 <li>Info@cfyi.uz</li>
-                <li>Tashkent, Mirzo-Ulugbek dist. Olmachi 17 100007</li>
-                <li>Monday - Friday: 9am - 6pm</li>
+                <li>Olmachi St. 17 Mirzo-Ulugbek district, Tashkent, Uzbekistan</li>
             </ul>
         </div>
     </div>

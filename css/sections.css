@@ -6,7 +6,8 @@
  * 3. Portfolio Section
  * 4. Equipment Section
  * 5. About Section
- * 6. Contact Section
+ * 6. FAQ Section
+ * 7. Contact Section
  */
 
 /* =====================
@@ -57,26 +58,633 @@
 }
 
 /* =====================
-   6. Contact Section
+   FAQ and Contact Section - Modern Design
    ===================== */
-/* Contact section styling already covered in layout.css and components.css */
+   .faq-contact {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background-color: #f8f9fc;
+}
 
-@media screen and (max-width: 576px) {
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-    }
-    
-    .cta-button {
-        padding: 12px 25px;
-        font-size: 1rem;
-    }
+/* Background Elements */
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.05;
+}
+
+.shape-1 {
+    top: -150px;
+    right: -150px;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    animation: float 15s ease-in-out infinite;
+}
+
+.shape-2 {
+    bottom: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    animation: float 18s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+    top: 40%;
+    right: 15%;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    animation: float 12s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, 15px) rotate(5deg); }
+    50% { transform: translate(5px, 10px) rotate(0deg); }
+    75% { transform: translate(-5px, 5px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Layout */
+.faq-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contact Panel */
+.contact-panel {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.contact-panel:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.form-container {
+    padding: 40px;
+}
+
+/* Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-row .input-group {
+    margin-bottom: 0;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e1e5ee;
+    border-radius: 8px;
+    background-color: #f8f9fc;
+    font-size: 15px;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: var(--primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    outline: none;
+}
+
+.input-group label {
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    font-size: 15px;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group select:focus + label,
+.input-group select:not([value=""]):valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 0 6px;
+    color: var(--primary);
+    background-color: #fff;
+}
+
+.input-group input::placeholder,
+.input-group select::placeholder,
+.input-group textarea::placeholder {
+    color: transparent;
+}
+
+.textarea-group {
+    margin-bottom: 25px;
+}
+
+.input-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* File Upload Styling */
+.file-upload-container {
+    margin-bottom: 25px;
+}
+
+.file-upload-area {
+    position: relative;
+    border: 2px dashed #e1e5ee;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #f8f9fc;
+    cursor: pointer;
+}
+
+.file-upload-area:hover,
+.file-upload-area.highlight {
+    border-color: var(--primary);
+    background-color: rgba(74, 144, 226, 0.05);
+}
+
+.file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-content {
+    pointer-events: none;
+}
+
+.upload-content i {
+    font-size: 36px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.upload-content p {
+    margin: 5px 0;
+    color: var(--text-muted);
+}
+
+.browse-text {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.upload-info {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.file-list {
+    margin-top: 15px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    background-color: #f8f9fc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.file-item-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.file-item-name i {
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+.file-item-size {
+    margin: 0 15px;
+    color: var(--text-muted);
+}
+
+.remove-file {
+    color: #f44336;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.remove-file:hover {
+    transform: scale(1.1);
+}
+
+/* Submit Button */
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+.submit-button span {
+    margin-right: 8px;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* FAQ Panel */
+.faq-panel {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-panel:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.faq-container {
+    padding: 40px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fc;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-header h3 {
+    flex: 1;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.icon-container {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.icon-line {
+    position: absolute;
+    background-color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.icon-line.horizontal {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon-line.vertical {
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.faq-item.active .icon-line.vertical {
+    transform: translateX(-50%) scaleY(0);
+}
+
+.faq-content {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.51, 0.92, 0.24, 1.15);
+}
+
+.faq-item.active {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item.active .faq-header h3 {
+    color: var(--primary);
+}
+
+.faq-item.active .faq-content {
+    padding: 0 25px 25px;
+    max-height: 1000px;
+}
+
+.faq-content p {
+    margin-top: 0;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.faq-content ul, 
+.faq-content ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.faq-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.faq-content strong {
+    color: var(--primary);
+    font-weight: 600;
 }
 
 /* Dark Mode Adjustments */
-body.dark-mode .about-text p {
-    color: var(--text-muted-light);
+body.dark-mode .faq-contact {
+    background-color: #1a1f2c;
+}
+
+body.dark-mode .main-title {
+    color: white;
+}
+
+body.dark-mode .subtitle {
+    color: #a0a9c0;
+}
+
+body.dark-mode .contact-panel,
+body.dark-mode .faq-panel {
+    background-color: #242936;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .input-group input,
+body.dark-mode .input-group select,
+body.dark-mode .input-group textarea {
+    background-color: #1a1f2c;
+    border-color: #3a4055;
+    color: white;
+}
+
+body.dark-mode .input-group input:focus,
+body.dark-mode .input-group select:focus,
+body.dark-mode .input-group textarea:focus {
+    background-color: #242936;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
+}
+
+body.dark-mode .input-group input:focus + label,
+body.dark-mode .input-group input:not(:placeholder-shown) + label,
+body.dark-mode .input-group select:focus + label,
+body.dark-mode .input-group select:not([value=""]):valid + label,
+body.dark-mode .input-group textarea:focus + label,
+body.dark-mode .input-group textarea:not(:placeholder-shown) + label {
+    background-color: #242936;
+    color: var(--primary-light);
+}
+
+body.dark-mode .input-group label {
+    color: #a0a9c0;
+}
+
+body.dark-mode .file-upload-area {
+    background-color: #1a1f2c;
+    border-color: #3a4055;
+}
+
+body.dark-mode .file-upload-area:hover,
+body.dark-mode .file-upload-area.highlight {
+    border-color: var(--primary-light);
+    background-color: rgba(100, 181, 246, 0.05);
+}
+
+body.dark-mode .upload-content p {
+    color: #a0a9c0;
+}
+
+body.dark-mode .browse-text {
+    color: var(--primary-light);
+}
+
+body.dark-mode .file-item {
+    background-color: #1a1f2c;
+}
+
+body.dark-mode .file-item-size {
+    color: #a0a9c0;
+}
+
+body.dark-mode .faq-item {
+    background-color: #1a1f2c;
+}
+
+body.dark-mode .faq-item.active {
+    background-color: #242936;
+}
+
+body.dark-mode .faq-header h3 {
+    color: white;
+}
+
+body.dark-mode .faq-item.active .faq-header h3 {
+    color: var(--primary-light);
+}
+
+body.dark-mode .faq-content p,
+body.dark-mode .faq-content li {
+    color: #a0a9c0;
+}
+
+body.dark-mode .submit-button {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+
+/* Media Queries */
+@media screen and (max-width: 992px) {
+    .faq-contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .main-title {
+        font-size: 2.2rem;
+    }
+    
+    .form-container,
+    .faq-container {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .faq-contact {
+        padding: 70px 0;
+    }
+    
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .form-container,
+    .faq-container {
+        padding: 25px;
+    }
+    
+    .faq-header,
+    .faq-item.active .faq-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .file-upload-area {
+        padding: 20px 15px;
+    }
+    
+    .upload-content i {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .faq-contact {
+        padding: 50px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .form-container,
+    .faq-container {
+        padding: 20px;
+    }
+    
+    .faq-header h3 {
+        font-size: 15px;
+    }
 }
