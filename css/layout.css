@@ -4,13 +4,14 @@
  * 1. Navigation
  * 2. Section Layouts
  * 3. Footer
- * 4. Media Queries
+ * 4. Dark Mode Layouts
+ * 5. Media Queries
  */
 
 /* =====================
    1. Navigation
    ===================== */
-nav {
+   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,28 +52,31 @@ nav.scrolled .logo h1 {
 
 .nav-links {
     display: flex;
-    justify-content: space-around;
-    width: 40%;
+    justify-content: center;
+    width: auto;
     flex-wrap: nowrap;
     white-space: nowrap;
 }
 
 .nav-links li {
     list-style: none;
+    margin: 0 5px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-weight: bold;
     font-size: 15px;
     padding: 8px 10px;
     transition: var(--transition-normal);
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
     color: var(--primary);
+    background-color: transparent;
 }
 
 nav.scrolled .nav-links a {
@@ -82,11 +86,12 @@ nav.scrolled .nav-links a {
 nav.scrolled .nav-links a:hover {
     color: var(--primary);
     transform: translateY(-3px) scale(1.05);
+    background-color: transparent;
 }
 
-/* Burger Menu Styles */
+/* Burger Menu */
 .burger {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     cursor: pointer;
     z-index: 1000;
 }
@@ -103,7 +108,7 @@ nav.scrolled .burger div {
     background-color: var(--text-dark);
 }
 
-/* Burger Animation - Transform into "X" */
+/* Burger Animation */
 .burger.toggle .line1 {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -116,7 +121,7 @@ nav.scrolled .burger div {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Navigation Controls (Theme Toggle & Language Selector) */
+/* Navigation Controls */
 .nav-controls {
     display: flex;
     align-items: center;
@@ -138,7 +143,7 @@ nav.scrolled .burger div {
 }
 
 .theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
 }
 
 .theme-toggle i {
@@ -187,6 +192,7 @@ nav.scrolled .select-selected {
 
 .select-selected:hover {
     border-color: var(--primary);
+    background-color: transparent;
 }
 
 .select-selected i {
@@ -278,7 +284,7 @@ nav.scrolled .select-selected {
 /* Services Section */
 .services {
     background-color: var(--bg-light-alt);
-    padding: 100px 0;
+    padding: 80px 0;
     position: relative;
     overflow: hidden;
 }
@@ -296,17 +302,26 @@ nav.scrolled .select-selected {
 }
 
 .services-container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
+    margin: 40px auto 0;
+    padding: 0 15px;
+    max-width: 1200px;
 }
 
 .services-intro {
     animation: fadeIn 0.8s ease-out forwards;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services .section-title {
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
 .services-intro p {
@@ -314,20 +329,19 @@ nav.scrolled .select-selected {
     line-height: 1.8;
     color: var(--text-muted);
     text-align: center;
-    max-width: 800px;
     margin: 0 auto 40px;
-    padding: 0 var(--space-md);
+    padding: 0 20px;
 }
 
-/* Equipment Section */
-.equipment {
+/* Equipment & Portfolio Sections */
+.equipment, .portfolio {
     padding: 80px 0;
     background-color: var(--bg-light-alt2);
     position: relative;
     overflow: hidden;
 }
 
-.equipment::before {
+.equipment::before, .portfolio::before {
     content: '';
     position: absolute;
     top: 0;
@@ -340,24 +354,14 @@ nav.scrolled .select-selected {
     pointer-events: none;
 }
 
-.equipment-grid {
+.equipment-grid, .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    margin-top: 30px;
-}
-
-/* Portfolio Section */
-.portfolio {
-    padding: 65px 0 40px;
-    background-color: var(--bg-light-alt2);
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin: 0 auto;
+    margin-top: 40px;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 40px auto 0;
 }
 
 /* About Section */
@@ -419,7 +423,7 @@ nav.scrolled .select-selected {
    3. Footer
    ===================== */
 footer {
-    background-color: #222;
+    background-color: #5a5a5a;
     color: var(--text-light);
     padding: 70px 0 20px;
 }
@@ -438,8 +442,55 @@ footer {
     flex-direction: column;
 }
 
-.footer-logo img {
-    max-width: 180px;
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 25px;
+}
+
+.footer-logo-link {
+    display: block;
+    transition: transform 0.3s ease;
+    position: relative;
+    background: none !important;
+}
+
+.footer-logo-link:hover {
+    transform: translateY(-3px);
+    background: none !important;
+}
+
+.footer-logo-link:hover .footer-fablab-logo,
+.footer-logo-link:hover .footer-cfyi-logo {
+    box-shadow: none;
+    background: none !important;
+}
+
+.footer-fablab-logo {
+    height: 75px;
+    width: auto;
+    background: none !important;
+    padding: 0;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+}
+
+.footer-cfyi-logo {
+    height: 65px;
+    width: auto;
+    background: none !important;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.footer-social h3 {
+    color: #ffffff;
     margin-bottom: 15px;
 }
 
@@ -452,122 +503,29 @@ footer {
     margin-top: 50px;
 }
 
-/* Dark Mode Adjustments */
-/* Remove black background on dark mode header */
+/* =====================
+   4. Dark Mode Layouts
+   ===================== */
 body.dark-mode nav {
     background-color: transparent;
 }
 
 body.dark-mode nav.scrolled {
-    background-color: rgba(26, 26, 26, 0.98);
+    background-color: #242936;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* Remove black background on main nav */
+/* Clean up background transparency */
 .nav-links, 
 .nav-links li,
 .nav-links a {
     background-color: transparent !important;
 }
 
-/* For dark mode */
 body.dark-mode .nav-links, 
 body.dark-mode .nav-links li,
 body.dark-mode .nav-links a {
     background-color: transparent !important;
-}
-
-/* Mobile Header Styles */
-@media screen and (max-width: 768px) {
-    nav {
-        padding: 10px 15px;
-        background-color: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        height: 60px;
-        display: flex;
-        align-items: center;
-    }
-    
-    body.dark-mode nav {
-        background-color: rgba(26, 26, 26, 0.95);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .logo {
-        max-width: 50%;
-        display: flex;
-        align-items: center;
-    }
-    
-    .logo img {
-        max-height: 40px;
-        width: auto;
-    }
-    
-    .logo h1 {
-        font-size: 16px;
-        margin-left: 8px;
-    }
-    
-    .nav-controls {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .theme-toggle {
-        margin-right: 0;
-    }
-    
-    .select-selected {
-        padding: 6px 10px;
-        min-width: 100px;
-        font-size: 14px;
-        border-radius: var(--radius-round);
-    }
-    
-    .burger {
-        margin-left: 15px;
-    }
-    
-    /* Always use contrasting colors regardless of scroll state */
-    body:not(.dark-mode) .burger div {
-        background-color: var(--text-dark);
-    }
-    
-    body:not(.dark-mode) .theme-toggle i {
-        color: var(--text-dark);
-    }
-    
-    body:not(.dark-mode) .logo h1 {
-        color: var(--text-dark);
-    }
-    
-    body:not(.dark-mode) .select-selected {
-        border-color: rgba(0, 0, 0, 0.15);
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-    
-    body.dark-mode .burger div {
-        background-color: var(--text-light);
-    }
-    
-    body.dark-mode .theme-toggle i {
-        color: var(--text-light);
-    }
-    
-    body.dark-mode .logo h1 {
-        color: var(--text-light);
-    }
-    
-    body.dark-mode .select-selected {
-        border-color: rgba(255, 255, 255, 0.1);
-        background-color: var(--bg-dark-alt);
-        color: var(--text-light);
-    }
 }
 
 body.dark-mode .logo h1 {
@@ -588,14 +546,9 @@ body.dark-mode nav.scrolled .nav-links a {
 
 body.dark-mode nav.scrolled .nav-links a:hover {
     color: var(--primary-light);
-    transform: translateY(-3px) scale(1.05);
 }
 
 body.dark-mode .theme-toggle i {
-    color: var(--text-light);
-}
-
-body.dark-mode nav.scrolled .theme-toggle i {
     color: var(--text-light);
 }
 
@@ -603,16 +556,10 @@ body.dark-mode .burger div {
     background-color: var(--text-light);
 }
 
-body.dark-mode nav.scrolled .burger div {
-    background-color: var(--text-light);
-}
-
 body.dark-mode .select-selected {
     border-color: rgba(255, 255, 255, 0.15);
     background-color: rgba(0, 0, 0, 0.5);
     color: var(--text-light);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 body.dark-mode nav.scrolled .select-selected {
@@ -639,29 +586,16 @@ body.dark-mode .select-item.selected {
     color: var(--primary-light);
 }
 
-body.dark-mode .nav-links {
-    background-color: var(--bg-dark);
-}
-
-body.dark-mode .services {
+body.dark-mode .services,
+body.dark-mode .equipment,
+body.dark-mode .portfolio,
+body.dark-mode .contact {
     background-color: var(--bg-dark);
 }
 
 body.dark-mode .services::before {
     background: radial-gradient(circle at top left, rgba(100, 181, 246, 0.03), transparent 70%),
                 radial-gradient(circle at bottom right, rgba(100, 181, 246, 0.03), transparent 70%);
-}
-
-body.dark-mode .equipment {
-    background-color: var(--bg-dark);
-}
-
-body.dark-mode .portfolio {
-    background-color: var(--bg-dark);
-}
-
-body.dark-mode .contact {
-    background-color: var(--bg-dark);
 }
 
 body.dark-mode .services-intro p {
@@ -672,37 +606,92 @@ body.dark-mode .services-intro strong {
     color: var(--primary-light);
 }
 
+body.dark-mode footer {
+    background-color: #242936;
+}
+
+body.dark-mode .footer-logo p,
+body.dark-mode .footer-social h3 {
+    color: #d0d9f0;
+}
+
+body.dark-mode .footer-fablab-logo,
+body.dark-mode .footer-cfyi-logo {
+    filter: brightness(1.2);
+    background-color: transparent;
+}
+
 /* =====================
-   4. Media Queries
+   5. Media Queries
    ===================== */
 @media screen and (max-width: 1366px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
     }
 }
 
 @media screen and (max-width: 1200px) {
     .nav-links {
-        width: 50%;
+        width: auto;
     }
     
-    .services-container {
-        padding: 0 30px;
+    .nav-links a {
+        font-size: 14px;
+        padding: 8px 8px;
     }
     
-    .equipment-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    .services-container,
+    .equipment-grid,
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 }
 
 @media screen and (max-width: 992px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
+    nav {
+        padding: 0 10px;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        max-width: 40%;
+    }
+    
+    .logo h1 {
+        font-size: 16px;
+        margin-left: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .logo img {
+        max-width: 35px;
+        min-width: 35px;
+    }
+    
+    .nav-controls {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
     }
     
     .nav-links {
-        width: 70%;
+        display: none;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .portfolio-grid,
+    .services-container,
+    .equipment-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .hero-content h1 {
@@ -713,42 +702,32 @@ body.dark-mode .services-intro strong {
         font-size: 2.2rem;
     }
     
-    .services-container {
-        flex-wrap: wrap;
-        gap: 30px 20px;
-    }
-    
-    .equipment-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    
     .contact-container {
         grid-template-columns: 1fr;
+    }
+    
+    .portfolio-nav, .equipment-nav {
+        overflow-x: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 5px;
+        margin-bottom: 25px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .portfolio-nav::-webkit-scrollbar, .equipment-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .portfolio-tab, .equipment-tab {
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 }
 
 @media screen and (max-width: 768px) {
-    nav {
-        padding: 0 15px;
-    }
-
-    .logo {
-        max-width: 70%;
-    }
-    
-    .logo h1 {
-        font-size: 18px;
-    }
-    
-    .logo img {
-        max-width: 120px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-    
     .hero-content h1 {
         font-size: 2.2rem;
         word-wrap: break-word;
@@ -767,7 +746,7 @@ body.dark-mode .services-intro strong {
         right: 0px;
         height: 100vh;
         top: 0;
-        background-color: white !important;
+        background-color: #242936 !important;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -776,10 +755,11 @@ body.dark-mode .services-intro strong {
         transform: translateX(100%);
         transition: transform 0.5s ease-in;
         z-index: 999;
+        margin-right: 0;
     }
     
     body.dark-mode .nav-links {
-        background-color: var(--bg-dark) !important;
+        background-color: #242936 !important;
     }
     
     .nav-links li {
@@ -827,21 +807,28 @@ body.dark-mode .services-intro strong {
         margin-top: 20px;
     }
     
-    .portfolio-nav {
+    .portfolio-nav, .equipment-nav {
         flex-wrap: wrap;
         white-space: normal;
         overflow-x: visible;
         justify-content: center;
+        gap: 8px;
     }
     
-    .portfolio-tab {
-        margin-bottom: 8px;
+    .portfolio-tab, .equipment-tab {
+        margin-bottom: 0;
+    }
+    
+    .footer-fablab-logo,
+    .footer-cfyi-logo {
+        height: 60px;
     }
 }
 
 @media screen and (max-width: 576px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     
     .hero-content h1 {
@@ -857,12 +844,13 @@ body.dark-mode .services-intro strong {
     }
     
     .services-container {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .equipment-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .modal-content {
@@ -880,6 +868,29 @@ body.dark-mode .services-intro strong {
     .contact-info, 
     .contact-form {
         padding: 20px;
+    }
+    
+    .footer-fablab-logo,
+    .footer-cfyi-logo {
+        height: 50px;
+    }
+    
+    .portfolio-image {
+        max-width: 100%;
+    }
+    
+    .portfolio-item h3 {
+        max-width: 100%;
+        font-size: 16px;
+    }
+    
+    .portfolio-nav-container, .equipment-nav {
+        margin-bottom: 20px;
+    }
+    
+    .portfolio-tab, .equipment-tab {
+        padding: 8px 15px;
+        font-size: 13px;
     }
 }
 

@@ -1,18 +1,12 @@
 /* 
  * FabLab - Theme Styles
  * Contents:
- * 1. Media Queries
- * 2. Browser Compatibility
- * 3. Dark Mode Overrides
+ * 1. Browser Compatibility
+ * 2. Print Styles
  */
 
 /* =====================
-   1. Media Queries
-   ===================== */
-/* These were moved to layout.css for better organization */
-
-/* =====================
-   2. Browser Compatibility
+   1. Browser Compatibility
    ===================== */
 /* Fix for Firefox browser */
 @-moz-document url-prefix() {
@@ -52,7 +46,9 @@
     }
 }
 
-/* Print styles (additional ones) */
+/* =====================
+   2. Print Styles
+   ===================== */
 @media print {
     nav, 
     .slideshow-navigation,
@@ -72,8 +68,3 @@
         border: 1px solid #ddd;
     }
 }
-
-/* =====================
-   3. Dark Mode Overrides
-   ===================== */
-/* These were moved to their respective component files for better organization */

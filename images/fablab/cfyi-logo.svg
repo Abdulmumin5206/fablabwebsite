@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <style>
+    .text { font-family: 'Arial', sans-serif; font-weight: bold; }
+    .cfyi { font-size: 40px; fill: #2196f3; }
+    .full { font-size: 14px; fill: #e0e0e0; }
+  </style>
+  <g transform="translate(10, 50)">
+    <text class="text cfyi">CFYI</text>
+    <text class="text full" x="5" y="20">Center for Youth Initiatives</text>
+    <path d="M0,5 L280,5" stroke="#2196f3" stroke-width="3" opacity="0.3" />
+  </g>
+</svg> 
