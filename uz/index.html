@@ -21,7 +21,8 @@
     <meta name="description" content="Yuqori sifatli 3D printer xizmati, lazer kesish, CNC ishlov berish va prototiplash. Raqamli ishlab chiqarish va muhandislik yechimlari O‘zbekistonda!">
     <meta name="keywords" content="3D printer xizmati, 3D bosib chiqarish, 3d printer toshkent, ishlab chiqarish, lazer kesish xizmatlari, CNC ishlov berish, sanoat qurilmalari, sanoat dizayn, muhandislik xizmatlari, 3D model yaratish, UV bosma, maxsus ishlab chiqarish">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/uz/">
+    <link rel="canonical" href="https://fablab-cfyi.uz/uz/">
+
     
     <!-- Yaxshilangan Open Graph teglar -->
     <meta property="og:title" content="FabLab Raqamli Ishlab Chiqarish Markazi | 3D Printer, Lazer Kesish, CNC">
@@ -772,70 +773,256 @@
 </div>
 </section>
 
-<!-- "Biz haqimizda" bo‘limi -->
+
+<!-- About Section - Uzbek -->
 <section id="about" class="about">
     <h2 class="section-title">Biz haqimizda</h2>
     <div class="about-content">
         <div class="about-text">
-            <p>Bizning FabLab zamonaviy ishlab chiqarish asboblari bilan jihozlangan va tajribali mutaxassislar tomonidan boshqariladi. Biz shaxsiy mijozlar, startaplar va kompaniyalar uchun prototiplash, ijodiy loyihalar yaratish va innovatsiyalarni amalga oshirish xizmatlarini taklif qilamiz.</p>
-            <p>Ko‘p yillik raqamli ishlab chiqarish tajribasiga ega jamoamiz g‘oyalaringizni haqiqatga aylantirishga yordam beradi.</p>
+            <p>Bizning FabLab zamonaviy ishlab chiqarish asbob-uskunalari bilan jihozlangan va tajribali yaratuvchilar tomonidan boshqariladi. Biz prototip yaratish, ijod qilish va innovatsiyalarni amalga oshirishga intilayotgan shaxslar, startaplar va o‘z biznesi bor korxonalarga xizmatlar ko‘rsatamiz.</p>
+            <p>Raqamli ishlab chiqarish bo‘yicha yillik tajribamiz bilan, jamoamiz sizning g‘oyalaringizni hayotga tatbiq etishda yordam bera oladi.</p>
         </div>
         <div class="team-container">
             <div class="team-member">
-                <img src="/api/placeholder/150/150" loading="lazy" alt="Jamoa a'zosi">
+                <img src="/api/placeholder/150/150" loading="lazy" alt="Jamoa A'zosi">
                 <h3></h3>
-                <p>FabLab muhandisi</p>
+                <p>FabLab Muhandisi</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Zamonaviy FAQ va aloqa bo‘limi -->
+<section id="faq-contact" class="faq-contact">
+    <div class="section-background">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
 
-  <!-- "Aloqa" bo'limi SVG ikonalar bilan -->
-<section id="contact" class="contact">
     <div class="container">
-        <h2 class="section-title">Biz bilan bog‘laning</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <h3>Bizga xabar yuboring</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Ism</label>
-                        <input type="text" id="name" name="name" required>
+        <div class="section-header">
+            <h2 class="main-title">Sizga qanday yordam bera olamiz?</h2>
+            <p class="subtitle">Ko‘p uchraydigan savollarga javob oling yoki bizga xabar yuboring</p>
+        </div>
+
+        <div class="faq-contact-wrapper">
+            <!-- Aloqa shakli (Chap tomon) -->
+            <div class="contact-panel">
+                <div class="form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">To‘liq ism-sharifingiz</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Elektron pochta manzili</label>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="tel" id="phone" name="phone">
+                                <label for="phone">Telefon raqami</label>
+                            </div>
+                            <div class="input-group">
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="Umumiy so‘rov">Umumiy so‘rov</option>
+                                    <option value="Uskunani ijaraga olish">Uskunani ijaraga olish</option>
+                                    <option value="Seminarga ro‘yxatdan o‘tish">Seminarga ro‘yxatdan o‘tish</option>
+                                    <option value="Hamkorlik">Hamkorlik imkoniyatlari</option>
+                                    <option value="Boshqa">Boshqa</option>
+                                </select>
+                                <label for="subject">Mavzu</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group textarea-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Xabaringiz matni</label>
+                        </div>
+
+                        <div class="file-upload-container">
+                            <div class="file-upload-area" id="drop-area">
+                                <input type="file" id="file-upload" name="files" multiple class="file-input">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Fayllarni bu yerga torting yoki <span class="browse-text">tanlang</span></p>
+                                    <p class="upload-info">Maksimal 5 ta fayl (PDF, JPG, PNG)</p>
+                                </div>
+                            </div>
+                            <div id="file-list" class="file-list"></div>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            <span>Xabar yuborish</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+           <!-- FAQ Accordion (Uzbek) -->
+<div class="faq-panel">
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>CFYA innovatsiya markazi qanday ishlab chiqarish xizmatlarini taqdim etadi?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="service-item">
+                        <span class="service-indicator">A</span>
+                        <p>Taqdim etilgan namunalar asosida qismlarni ishlab chiqarish</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Elektron pochta</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="service-item">
+                        <span class="service-indicator">B</span>
+                        <p>Shikastlangan qismlarni tiklash</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone">
+                    <div class="service-item">
+                        <span class="service-indicator">C</span>
+                        <p>Texnik hujjatlar asosida ehtiyot qismlar va qoliplarni ishlab chiqarish</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Mavzu</label>
-                        <select id="subject" name="subject" required>
-                            <option value="" disabled selected>Mavzuni tanlang</option>
-                            <option value="General Inquiry">Umumiy so‘rov</option>
-                            <option value="Equipment Rental">Uskunalarni ijaraga olish</option>
-                            <option value="Workshop Registration">Seminarga ro‘yxatdan o‘tish</option>
-                            <option value="Partnership">Hamkorlik imkoniyatlari</option>
-                            <option value="Other">Boshqa</option>
-                        </select>
+                    <div class="service-item">
+                        <span class="service-indicator">D</span>
+                        <p>Texnik spetsifikatsiyalar asosida detallarni loyihalash va ishlab chiqarish</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Xabar</label>
-                        <textarea id="message" name="message" required></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>FabLab'ingizning texnik imkoniyatlari qanday?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="competency-item">
+                        <div class="competency-title">FDM va SLA 3D bosib chiqarish</div>
+                        <div class="competency-desc">Ehtiyot qismlarni ishlab chiqarish va uskunalarni ta'mirlash uchun ishlatiladi</div>
                     </div>
-                    
-                    <button type="submit" class="submit-btn">Xabar yuborish</button>
-                </form>
+                    <div class="competency-item">
+                        <div class="competency-title">CNC mashinalar va lazer kesish</div>
+                        <div class="competency-desc">Zagotovka va qoliplarni tayyorlash uchun ishlatiladi</div>
+                    </div>
+                    <div class="competency-item">
+                        <div class="competency-title">Keng doiradagi ehtiyot qismlar va ta'mirlash to'plamlari</div>
+                        <div class="competency-desc">Turli sohalardagi korxonalar uchun</div>
+                    </div>
+                    <div class="competency-item">
+                        <div class="competency-title">3D skanerlash va AutoCAD'da ishlash</div>
+                        <div class="competency-desc">Noyob ehtiyot qismlarni tiklash va to'liq hujjatlashtirish uchun</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Qaysi sohalar uchun ishlab chiqarish xizmatlarini ko'rsatasiz?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <p class="industry-intro">Biz quyidagi sohalarda faoliyat ko'rsatayotgan korxonalar uchun ehtiyot qismlar va ta'mirlash to'plamlarini taqdim etamiz:</p>
+                    <div class="industry-cards">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2M3 7h18M3 7v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7M12 12v7M8 12v7M16 12v7M8 3v4M12 3v4M16 3v4"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">To'qimachilik</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 2h10M9 2v2h6V2M8 6h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM6 12h4M6 16h4M14 12h4M14 16h4"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Oziq-ovqat</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 16.5a1.5 1.5 0 0 0 3 0m-3 0a1.5 1.5 0 0 1 3 0M6 12h12M2 9h20a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM2 7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7zM18 16.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0-3 0"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Poligrafiya</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v10M2 22h20M2 16h20M6 12v10M18 12v10"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Mebel</div>
+                        </div>
+                    </div>
+                    <p class="industry-outro">Va aniq detallarni talab qiladigan boshqa sanoat sohalari</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Shikastlangan yoki eskirgan detallarni qanday tiklaysiz?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h4>3D skanerlash</h4>
+                                <p>Shikastlangan detalning raqamli modelini yaratish</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h4>AutoCAD'da ishlash</h4>
+                                <p>To'liq texnik hujjatlarni yaratish</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h4>Ishlab chiqarish</h4>
+                                <p>Tegishli texnologiyadan foydalanib ishlab chiqarish</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h4>Sifat nazorati</h4>
+                                <p>Barcha talablarga javob berishini ta'minlash uchun sinov</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </section>
 
 
@@ -895,7 +1082,7 @@
                 <li><a href="#equipment">Uskunalar</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#about">Biz haqimizda</a></li>
-                <li><a href="#contact">Aloqa</a></li>
+                <li><a href="#contact">Savollar va Aloqa</a></li>
             </ul>
         </div>
         

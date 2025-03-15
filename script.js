@@ -429,27 +429,26 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormAnimations();
 });
 
-// FAQ Accordion
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     
-    // Animate FAQ items on load
+    // Animate FAQ items on load with stagger effect
     setTimeout(() => {
         faqItems.forEach((item, index) => {
             setTimeout(() => {
                 item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
+                item.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                     item.style.opacity = '1';
                     item.style.transform = 'translateY(0)';
                 }, 50);
-            }, index * 100);
+            }, index * 150);
         });
     }, 300);
     
-    // Add click event to each FAQ header
+    // Add click event to each FAQ header with enhanced interactions
     faqItems.forEach(item => {
         const header = item.querySelector('.faq-header');
         
@@ -457,26 +456,123 @@ function initFAQ() {
             // Check if this item is already active
             const isActive = item.classList.contains('active');
             
-            // Close all items
+            // Add subtle ripple effect on click
+            const ripple = document.createElement('span');
+            ripple.classList.add('header-ripple');
+            header.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 500);
+            
+            // Close all items with smooth animation
             faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    const content = otherItem.querySelector('.content-wrapper');
+                    content.style.opacity = '0';
+                    content.style.transform = 'translateY(10px)';
+                    
+                    setTimeout(() => {
+                        otherItem.classList.remove('active');
+                    }, 200);
+                }
             });
             
-            // If clicked item wasn't active, make it active
+            // If clicked item wasn't active, make it active with enhanced animation
             if (!isActive) {
                 item.classList.add('active');
+                
+                const content = item.querySelector('.content-wrapper');
+                setTimeout(() => {
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 200);
+            } else {
+                // If it was active, deactivate it
+                const content = item.querySelector('.content-wrapper');
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(10px)';
+                
+                setTimeout(() => {
+                    item.classList.remove('active');
+                }, 200);
+            }
+        });
+        
+        // Add hover effect
+        header.addEventListener('mouseenter', () => {
+            if (!item.classList.contains('active')) {
+                header.style.background = 'rgba(248, 250, 255, 0.8)';
+            }
+        });
+        
+        header.addEventListener('mouseleave', () => {
+            if (!item.classList.contains('active')) {
+                header.style.background = 'transparent';
             }
         });
     });
     
-    // Open first FAQ item by default
+    // Open first FAQ item by default with a delay for initial animation
     if (faqItems.length > 0) {
         setTimeout(() => {
             faqItems[0].classList.add('active');
-        }, 800);
+            const content = faqItems[0].querySelector('.content-wrapper');
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+        }, 1000);
+    }
+    
+    // Add subtle animation to icons
+    const icons = document.querySelectorAll('.competency-icon, .industry-icon');
+    icons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.1)';
+            icon.style.boxShadow = '0 5px 15px rgba(49, 130, 206, 0.25)';
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'scale(1)';
+            icon.style.boxShadow = '0 3px 10px rgba(49, 130, 206, 0.15)';
+        });
+    });
+    
+    // Add subtle pulse animation to step numbers
+    const stepNumbers = document.querySelectorAll('.step-number');
+    stepNumbers.forEach(step => {
+        step.addEventListener('mouseenter', () => {
+            step.style.animation = 'pulse 1.5s infinite';
+        });
+        
+        step.addEventListener('mouseleave', () => {
+            step.style.animation = 'none';
+        });
+    });
+    
+    // Add ripple style to head if not already present
+    if (!document.querySelector('#ripple-style')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-style';
+        style.textContent = `
+            .header-ripple {
+                position: absolute;
+                background: rgba(49, 130, 206, 0.2);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.5s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
-
 // Advanced File Upload
 function initFileUpload() {
     const dropArea = document.getElementById('drop-area');
@@ -630,7 +726,7 @@ function initFormAnimations() {
     });
 }
 
-// Update navigation menu to include FAQ-Contact
+// Update navigation menu to include FAQ-Contact with proper localization
 function updateNavigation() {
     const navLinks = document.querySelector('.nav-links');
     const contactLink = document.querySelector('.nav-links li a[href="#contact"]');
@@ -640,16 +736,32 @@ function updateNavigation() {
         const faqContactLink = document.createElement('a');
         
         faqContactLink.href = '#faq-contact';
-        faqContactLink.setAttribute('data-i18n', 'faqContact');
         faqContactLink.setAttribute('itemprop', 'url');
-        faqContactLink.setAttribute('title', 'FAQ & Contact');
+        
+        // Determine the current language from the HTML element's lang attribute.
+        const currentLang = document.documentElement.lang || 'en';
+        let titleText = '';
+        
+        switch (currentLang.toLowerCase()) {
+            case 'ru':
+                titleText = 'Вопросы и контакты';
+                break;
+            case 'uz':
+                titleText = 'Savollar va Aloqa';
+                break;
+            default:
+                titleText = 'FAQ & Contact';
+        }
+        
+        faqContactLink.setAttribute('title', titleText);
         
         const nameSpan = document.createElement('span');
         nameSpan.setAttribute('itemprop', 'name');
-        nameSpan.textContent = 'FAQ & Contact';
+        nameSpan.textContent = titleText;
         
         faqContactLink.appendChild(nameSpan);
         contactListItem.innerHTML = '';
         contactListItem.appendChild(faqContactLink);
     }
 }
+

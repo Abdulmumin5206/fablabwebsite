@@ -21,7 +21,8 @@
     <meta name="description" content="FabLab Ташкент предлагает услуги 3D-печати, лазерной резки, ЧПУ обработки и прототипирования в Узбекистане. Реализуйте свои идеи с профессиональными технологиями.">
     <meta name="keywords" content="3D-печать Ташкент, цифровое производство Узбекистан, услуги лазерной резки, ЧПУ обработка, быстрое прототипирование, изготовление на заказ">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://abdulmumin5206.github.io/fablabwebsite/ru/">
+    <link rel="canonical" href="https://fablab-cfyi.uz/ru/">
+
     
     <!-- Open Graph (для соцсетей) -->
     <meta property="og:title" content="FabLab Ташкент | Цифровое производство и 3D-печать">
@@ -729,13 +730,13 @@
 </div>
 </section>
 
-<!-- Раздел "О нас" -->
+<!-- About Section - Russian -->
 <section id="about" class="about">
     <h2 class="section-title">О нас</h2>
     <div class="about-content">
         <div class="about-text">
-            <p>Наш FabLab оснащен современными инструментами для производства и укомплектован опытными мастерами. Мы предоставляем услуги частным лицам, стартапам и компаниям, которые хотят создавать прототипы, изобретать и внедрять инновации.</p>
-            <p>С многолетним опытом в цифровом производстве наша команда поможет воплотить ваши идеи в жизнь.</p>
+            <p>Наш FabLab оснащён передовыми производственными инструментами и укомплектован опытными специалистами. Мы предоставляем услуги частным лицам, стартапам и устоявшимся компаниям, стремящимся создавать прототипы, творить и внедрять инновации.</p>
+            <p>С годами опыта в цифровом производстве, наша команда поможет воплотить ваши идеи в жизнь.</p>
         </div>
         <div class="team-container">
             <div class="team-member">
@@ -747,52 +748,239 @@
     </div>
 </section>
 
-  <!-- Раздел "Контакты" с SVG-иконками -->
-<section id="contact" class="contact">
+<!-- Современный раздел часто задаваемых вопросов и контактов -->
+<section id="faq-contact" class="faq-contact">
+    <div class="section-background">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
+    
     <div class="container">
-        <h2 class="section-title">Свяжитесь с нами</h2>
-        <div class="contact-container">
-            <div class="contact-form">
-                <h3>Отправьте нам сообщение</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Имя</label>
-                        <input type="text" id="name" name="name" required>
+        <div class="section-header">
+            <h2 class="main-title">Как мы можем вам помочь?</h2>
+            <p class="subtitle">Получите ответы на часто задаваемые вопросы или отправьте нам сообщение</p>
+        </div>
+        
+        <div class="faq-contact-wrapper">
+            <!-- Форма обратной связи (левая часть) -->
+            <div class="contact-panel">
+                <div class="form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Полное имя</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Электронная почта</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="tel" id="phone" name="phone">
+                                <label for="phone">Номер телефона</label>
+                            </div>
+                            <div class="input-group">
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="General Inquiry">Общий вопрос</option>
+                                    <option value="Equipment Rental">Аренда оборудования</option>
+                                    <option value="Workshop Registration">Регистрация на семинар</option>
+                                    <option value="Partnership">Возможности партнерства</option>
+                                    <option value="Other">Другое</option>
+                                </select>
+                                <label for="subject">Тема обращения</label>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group textarea-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Ваше сообщение</label>
+                        </div>
+                        
+                        <div class="file-upload-container">
+                            <div class="file-upload-area" id="drop-area">
+                                <input type="file" id="file-upload" name="files" multiple class="file-input">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Перетащите файлы сюда или <span class="browse-text">выберите</span></p>
+                                    <p class="upload-info">Макс. 5 файлов (PDF, JPG, PNG)</p>
+                                </div>
+                            </div>
+                            <div id="file-list" class="file-list"></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span>Отправить сообщение</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- FAQ Accordion (Russian) -->
+<div class="faq-panel">
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Какие виды производственных услуг предлагает Инновационный центр CFYA?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="service-item">
+                        <span class="service-indicator">A</span>
+                        <p>Изготовление деталей по предоставленным образцам</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Электронная почта</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="service-item">
+                        <span class="service-indicator">B</span>
+                        <p>Восстановление поврежденных деталей</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" name="phone">
+                    <div class="service-item">
+                        <span class="service-indicator">C</span>
+                        <p>Производство запасных частей и форм согласно технической документации</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Тема</label>
-                        <select id="subject" name="subject" required>
-                            <option value="" disabled selected>Выберите тему</option>
-                            <option value="General Inquiry">Общий запрос</option>
-                            <option value="Equipment Rental">Аренда оборудования</option>
-                            <option value="Workshop Registration">Регистрация на мастер-класс</option>
-                            <option value="Partnership">Возможности сотрудничества</option>
-                            <option value="Other">Другое</option>
-                        </select>
+                    <div class="service-item">
+                        <span class="service-indicator">D</span>
+                        <p>Проектирование и изготовление деталей на основе технических спецификаций</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Сообщение</label>
-                        <textarea id="message" name="message" required></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Каковы технические компетенции вашей FabLab?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="competency-item">
+                        <div class="competency-title">FDM и SLA 3D-печать</div>
+                        <div class="competency-desc">Используется для производства запчастей и ремонта оборудования</div>
                     </div>
-                    
-                    <button type="submit" class="submit-btn">Отправить сообщение</button>
-                </form>
+                    <div class="competency-item">
+                        <div class="competency-title">Станки с ЧПУ и лазерная резка</div>
+                        <div class="competency-desc">Используются для подготовки заготовок и форм</div>
+                    </div>
+                    <div class="competency-item">
+                        <div class="competency-title">Широкий спектр запчастей и ремонтных комплектов</div>
+                        <div class="competency-desc">Для предприятий различных отраслей</div>
+                    </div>
+                    <div class="competency-item">
+                        <div class="competency-title">3D-сканирование и обработка в AutoCAD</div>
+                        <div class="competency-desc">Для восстановления уникальных запчастей и создания полной документации</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Для каких отраслей вы предоставляете производственные услуги?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <p class="industry-intro">Мы предоставляем запчасти и ремонтные комплекты для предприятий в различных отраслях, включая:</p>
+                    <div class="industry-cards">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2M3 7h18M3 7v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7M12 12v7M8 12v7M16 12v7M8 3v4M12 3v4M16 3v4"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Текстильная</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 2h10M9 2v2h6V2M8 6h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM6 12h4M6 16h4M14 12h4M14 16h4"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Пищевая</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 16.5a1.5 1.5 0 0 0 3 0m-3 0a1.5 1.5 0 0 1 3 0M6 12h12M2 9h20a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM2 7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7zM18 16.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 1 0-3 0"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Полиграфическая</div>
+                        </div>
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v10M2 22h20M2 16h20M6 12v10M18 12v10"/>
+                                </svg>
+                            </div>
+                            <div class="industry-name">Мебельная</div>
+                        </div>
+                    </div>
+                    <p class="industry-outro">И другие промышленные сектора, требующие прецизионных деталей</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-header">
+                <h3>Как вы восстанавливаете поврежденные или устаревшие детали?</h3>
+                <div class="icon-container">
+                    <div class="icon-line horizontal"></div>
+                    <div class="icon-line vertical"></div>
+                </div>
+            </div>
+            <div class="faq-content">
+                <div class="content-wrapper">
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h4>3D-сканирование</h4>
+                                <p>Создание цифровой модели поврежденной детали</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h4>Обработка в AutoCAD</h4>
+                                <p>Создание полной технической документации</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h4>Производство</h4>
+                                <p>Изготовление с использованием соответствующей технологии</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h4>Контроль качества</h4>
+                                <p>Тестирование для обеспечения соответствия всем требованиям</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </section>
+
 
 <!-- Раздел "Футер" с SVG-иконками -->
 <footer>
@@ -850,7 +1038,7 @@
                 <li><a href="#equipment">Оборудование</a></li>
                 <li><a href="#portfolio">Портфолио</a></li>
                 <li><a href="#about">О нас</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#contact">Вопросы и контакты</a></li>
             </ul>
         </div>
         
